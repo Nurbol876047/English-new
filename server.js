@@ -2,10 +2,44 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const PORT = 8766;
-const ALLOWED_ORIGIN = "http://localhost:8765";
+const PORT = process.env.PORT || 8765;
 const CONFIG_PATH = path.join(__dirname, "openai.local.json");
 const MAX_BODY_BYTES = 12 * 1024 * 1024;
+
+const STATIC_ROOT = __dirname;
+const MIME_TYPES = {
+  ".html": "text/html; charset=utf-8",
+  ".js": "text/javascript; charset=utf-8",
+  ".css": "text/css; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".svg": "image/svg+xml",
+  ".ico": "image/x-icon",
+};
+
+function serveStaticFile(req, res) {
+  const requestPath = decodeURIComponent(req.url.split("?")[0]);
+  const relativePath = requestPath === "/" ? "index.html" : requestPath.replace(/^\/+/, "");
+  const filePath = path.normalize(path.join(STATIC_ROOT, relativePath));
+
+  if (!filePath.startsWith(STATIC_ROOT)) {
+    sendJson(res, 403, { error: "Forbidden." });
+    return;
+  }
+
+  fs.readFile(filePath, (error, data) => {
+    if (error) {
+      sendJson(res, 404, { error: "Not found." });
+      return;
+    }
+
+    const contentType = MIME_TYPES[path.extname(filePath)] || "application/octet-stream";
+    res.writeHead(200, { "Content-Type": contentType });
+    res.end(data);
+  });
+}
 
 function loadApiKey() {
   if (process.env.OPENAI_API_KEY) {
@@ -24,12 +58,6 @@ function loadApiKey() {
     console.error("Could not read openai.local.json:", error.message);
     return null;
   }
-}
-
-function setCors(res) {
-  res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 }
 
 function sendJson(res, status, payload) {
@@ -137,14 +165,6 @@ async function handleChatMessage(req, res) {
 }
 
 const server = http.createServer((req, res) => {
-  setCors(res);
-
-  if (req.method === "OPTIONS") {
-    res.writeHead(204);
-    res.end();
-    return;
-  }
-
   if (req.method === "POST" && req.url === "/api/chat") {
     handleChatMessage(req, res).catch((error) => {
       sendJson(res, 500, { error: error.message });
@@ -152,14 +172,19 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (req.method === "GET" || req.method === "HEAD") {
+    serveStaticFile(req, res);
+    return;
+  }
+
   sendJson(res, 404, { error: "Not found." });
 });
 
 server.listen(PORT, () => {
-  console.log(`AI photo-description proxy running at http://localhost:${PORT}`);
+  console.log(`English For Everyone server running at http://localhost:${PORT}`);
   if (!loadApiKey()) {
     console.warn(
-      "Warning: no API key found. Copy openai.local.example.json to openai.local.json and add your OpenAI key."
+      "Warning: no OpenAI API key found. Copy openai.local.example.json to openai.local.json and add your key, or set the OPENAI_API_KEY environment variable."
     );
   }
 });

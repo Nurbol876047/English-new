@@ -1509,7 +1509,7 @@ function renderVocabGrid() {
   });
 }
 
-const CHAT_API_URL = "http://localhost:8766/api/chat";
+const CHAT_API_URL = "/api/chat";
 
 function appendChatMessage(role, text) {
   const bubble = document.createElement("div");
