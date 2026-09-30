@@ -4,19 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gesture Sentence Builder</title>
-    <link rel="stylesheet" href="./styles.css?v=20260425-english" />
+    <link rel="stylesheet" href="./styles.css?v=20260930-vocab-chat" />
   </head>
   <body>
     <div id="featureOneScreen" class="feature-screen active">
       <div class="page-shell">
         <header class="hero">
           <div class="hero-copy">
-            <p class="eyebrow">English Practice</p>
-            <h1>Build sentences with hand gestures</h1>
+            <p class="eyebrow">English Practice · Eco-Dictionary</p>
+            <h1>Build eco-friendly sentences with hand gestures</h1>
             <p class="hero-text">
               Turn on the camera, pinch your fingers to grab a word, and move
-              it to the correct slot. Each picture shows one action, and you
-              build the right English sentence from the mixed words.
+              it to the correct slot. Each picture shows an eco-friendly
+              action, and you build the right English sentence while
+              learning new ecology words.
             </p>
             <div class="hero-actions">
               <button id="cameraButton" class="primary-button">
@@ -134,12 +135,13 @@
       <div class="page-shell">
         <header class="hero hero-voice">
           <div class="hero-copy">
-            <p class="eyebrow">Speaking Task</p>
+            <p class="eyebrow">Speaking Task · Eco-Dictionary</p>
             <h1 class="voice-task-title">SPEAKING TASK</h1>
             <p class="hero-text">
-              This section works separately from the first task. Look at the
-              picture and say a full English sentence. The system checks the
-              meaning, so your answer does not have to match word for word.
+              Look at each eco-friendly picture and say a full English
+              sentence about the action. The system checks the meaning, so
+              your answer does not have to match word for word, while your
+              ecology vocabulary keeps growing.
             </p>
             <div class="hero-actions">
               <button id="backToFeatureOneButton" class="secondary-button" type="button">
@@ -166,9 +168,9 @@
               <p class="panel-label">Topic</p>
               <h3>Look at the picture and speak English</h3>
               <p class="camera-hint">
-                There are 7 new pictures here. Look at a picture and say an
-                English sentence, for example: "The boy is playing football."
-                The system will try to recognize the key meaning.
+                There are 7 eco-friendly pictures here. Look at a picture and
+                say an English sentence, for example: "The girl is planting a
+                tree." The system will try to recognize the key meaning.
               </p>
               <button id="speechHintButton" class="secondary-button" type="button">
                 Show Example Sentence
@@ -430,12 +432,13 @@
       <div class="page-shell">
         <header class="hero hero-quiz">
           <div class="hero-copy">
-            <p class="eyebrow">Section 4</p>
-            <h1>Finger Quiz</h1>
+            <p class="eyebrow">Section 4 · Eco-Dictionary</p>
+            <h1>Grow your eco-vocabulary with AI</h1>
             <p class="hero-text">
-              In this final section, answer quiz questions by hand. Turn on the
-              camera and show 1, 2, or 3 fingers, and the system automatically
-              selects that option.
+              An eco-dictionary helps you learn English faster by connecting new
+              words to real environmental ideas. Turn on the camera, and AI hand
+              tracking reads your fingers, 1, 2, or 3, to answer each question
+              and build your ecology vocabulary.
             </p>
             <div class="hero-actions">
               <button id="backToFeatureThreeButton" class="secondary-button" type="button">
@@ -446,6 +449,9 @@
               </button>
               <button id="quizResetButton" class="ghost-button" type="button">
                 Restart Quiz
+              </button>
+              <button id="openAiChatFeatureButton" class="ghost-button" type="button">
+                Open AI Photo Chat
               </button>
             </div>
             <div class="hero-status">
@@ -496,14 +502,22 @@
 
             <article class="task-card quiz-task-card">
               <div class="quiz-question-card">
-                <p class="instruction-label">Question Number</p>
-                <div id="quizQuestionNumber" class="quiz-question-number">01</div>
-                <p id="quizHintText" class="quiz-hint-text">
-                  Show 1, 2, or 3 fingers and hold for a moment.
-                </p>
-                <p id="quizDetectedText" class="manual-fallback-note quiz-detected-text">
-                  The camera is waiting for your hand.
-                </p>
+                <div class="quiz-image-frame">
+                  <img id="quizQuestionImage" class="quiz-question-image" src="" alt="" draggable="false" />
+                </div>
+                <div class="quiz-question-overlay" aria-hidden="true"></div>
+                <div class="quiz-question-badge">
+                  <span class="badge-eyebrow">Word</span>
+                  <div id="quizQuestionNumber" class="quiz-question-number">01</div>
+                </div>
+                <div class="quiz-caption">
+                  <p id="quizHintText" class="quiz-hint-text">
+                    Show 1, 2, or 3 fingers and hold for a moment.
+                  </p>
+                  <p id="quizDetectedText" class="manual-fallback-note quiz-detected-text">
+                    The camera is waiting for your hand.
+                  </p>
+                </div>
               </div>
 
               <div class="task-content">
@@ -564,6 +578,12 @@
               <p class="panel-label">All Questions</p>
               <div id="quizQuestionList" class="task-list"></div>
             </div>
+
+            <div class="feature-switch-row">
+              <button id="openAiChatFeatureButtonBottom" class="feature-switch-button" type="button">
+                Next section: AI Photo Chat
+              </button>
+            </div>
           </section>
         </main>
 
@@ -576,12 +596,157 @@
         </section>
       </div>
     </div>
+
+    <div id="featureFiveScreen" class="feature-screen">
+      <div class="page-shell">
+        <header class="hero hero-chat">
+          <div class="hero-copy">
+            <p class="eyebrow">Section 5 · AI Photo Chat</p>
+            <h1>Ask AI about a photo</h1>
+            <p class="hero-text">
+              Send any photo, in any format, and the AI will describe what it
+              sees in clear English inside the chat below. It is a great way
+              to practice new vocabulary from your own pictures.
+            </p>
+            <div class="hero-actions">
+              <button id="backToFeatureFourButton" class="secondary-button" type="button">
+                Back to Fourth Section
+              </button>
+              <button id="openEcoVocabularyFeatureButton" class="ghost-button" type="button">
+                Open Eco Vocabulary
+              </button>
+            </div>
+            <div class="hero-status">
+              <span id="chatStatusPill" class="status-pill status-muted">
+                Choose a photo to begin
+              </span>
+            </div>
+          </div>
+        </header>
+
+        <main class="game-layout chat-layout">
+          <section class="game-panel chat-panel">
+            <div class="panel-topbar">
+              <div>
+                <p class="panel-label">AI Photo Chat</p>
+                <h2>Describe my photo</h2>
+              </div>
+            </div>
+
+            <div id="chatMessages" class="chat-messages">
+              <div class="chat-message chat-message-ai">
+                <span class="chat-message-author">AI</span>
+                <p class="chat-message-text">
+                  Hi! Send me a photo and I will describe it for you in English.
+                </p>
+              </div>
+            </div>
+
+            <div class="chat-composer">
+              <div class="chat-composer-photo-row">
+                <input id="chatImageInput" type="file" accept="image/*" hidden />
+                <button id="chatAttachButton" class="secondary-button" type="button">
+                  Choose Photo
+                </button>
+                <span id="chatSelectedFileName" class="chat-file-name">No photo selected</span>
+              </div>
+              <div class="chat-composer-text-row">
+                <input
+                  id="chatTextInput"
+                  type="text"
+                  class="chat-text-input"
+                  placeholder="Type a message in English..."
+                  autocomplete="off"
+                />
+                <button id="chatSendButton" class="primary-button" type="button" disabled>
+                  Send
+                </button>
+              </div>
+            </div>
+            <p id="chatStatusText" class="manual-fallback-note chat-status-text"></p>
+
+            <div class="feature-switch-row">
+              <button id="openEcoVocabularyFeatureButtonBottom" class="feature-switch-button" type="button">
+                Next section: Eco Vocabulary
+              </button>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="featureSixScreen" class="feature-screen">
+      <div class="page-shell">
+        <header class="hero hero-vocab">
+          <div class="hero-copy">
+            <p class="eyebrow">Section 6 · Eco Vocabulary</p>
+            <h1>Ecology Dictionary</h1>
+            <p class="hero-text">
+              Ten key ecology words to build your English vocabulary. Study the
+              picture, the word, and the simple definition for each entry.
+            </p>
+            <div class="hero-actions">
+              <button id="backToFeatureFiveButton" class="secondary-button" type="button">
+                Back to Fifth Section
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main class="vocab-layout">
+          <section class="game-panel vocab-panel">
+            <div class="panel-topbar">
+              <div>
+                <p class="panel-label">Eco Vocabulary</p>
+                <h2>10 ecology words</h2>
+              </div>
+            </div>
+
+            <div id="vocabGrid" class="vocab-grid"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="quizResultsOverlay" class="quiz-results-overlay" hidden>
+      <div id="quizResultsConfetti" class="quiz-results-confetti" aria-hidden="true"></div>
+      <div class="quiz-results-card">
+        <p class="quiz-results-eyebrow">Eco-Dictionary · Quiz Complete</p>
+        <h2 id="quizResultsHeadline" class="quiz-results-headline">Great job!</h2>
+
+        <div class="quiz-results-score-ring">
+          <svg viewBox="0 0 200 200" class="quiz-results-ring-svg">
+            <circle cx="100" cy="100" r="86" class="ring-track"></circle>
+            <circle id="quizResultsRingProgress" cx="100" cy="100" r="86" class="ring-progress"></circle>
+          </svg>
+          <div class="quiz-results-score-value">
+            <span id="quizResultsScoreNumber">0</span>
+            <span class="quiz-results-score-max">/100</span>
+          </div>
+        </div>
+
+        <p id="quizResultsSubtext" class="quiz-results-subtext">
+          You learned 10 of 10 new ecology words correctly.
+        </p>
+
+        <div id="quizResultsWords" class="quiz-results-words"></div>
+
+        <div class="quiz-results-actions">
+          <button id="quizResultsRestartButton" class="primary-button" type="button">
+            Restart Quiz
+          </button>
+          <button id="quizResultsCloseButton" class="ghost-button" type="button">
+            Review Answers
+          </button>
+        </div>
+      </div>
+    </div>
     <div id="cursor" class="hand-cursor hidden"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="./app.js?v=20260425-english"></script>
+    <script src="./app.js?v=20260930-vocab-chat"></script>
     <script src="./english-3d.js?v=20260421-2015"></script>
   </body>
 </html>

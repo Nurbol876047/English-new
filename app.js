@@ -2,74 +2,74 @@ const ASSET_VERSION = "20260421-0435";
 
 const tasks = [
   {
-    id: "basketball",
-    title: "Playing Basketball",
-    instruction: "Build an English sentence that says the boy is playing basketball.",
-    answer: ["He", "is", "playing", "basketball", "now"],
-    image: `./assets/images/task-01-basketball.png?v=${ASSET_VERSION}`,
+    id: "planting-tree",
+    title: "Planting a Tree",
+    instruction: "Build an English sentence that says the girl is planting a tree.",
+    answer: ["She", "is", "planting", "a", "tree"],
+    image: `./assets/images/task-eco-01-planting.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "feeding-pet",
-    title: "Feeding His Pet",
-    instruction: "Build an English sentence that says the boy is feeding his pet.",
-    answer: ["He", "is", "feeding", "his", "pet"],
-    image: `./assets/images/task-02-feeding-pet.png?v=${ASSET_VERSION}`,
+    id: "recycling-bottles",
+    title: "Recycling Bottles",
+    instruction: "Build an English sentence that says the boy is recycling plastic bottles.",
+    answer: ["He", "is", "recycling", "plastic", "bottles"],
+    image: `./assets/images/task-eco-02-recycling.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "temperature",
-    title: "Talking on the Phone",
-    instruction: "Build an English sentence that says the boy is talking on the phone.",
-    answer: ["He", "is", "talking", "on", "the", "phone"],
-    image: `./assets/images/task-03-temperature.png?v=${ASSET_VERSION}`,
+    id: "reusable-bag",
+    title: "Using a Reusable Bag",
+    instruction: "Build an English sentence that says the girl is using a reusable bag.",
+    answer: ["She", "is", "using", "a", "reusable", "bag"],
+    image: `./assets/images/task-eco-03-reusable-bag.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "computer",
-    title: "Using a Laptop",
-    instruction: "Build an English sentence that says the girl is using a laptop.",
-    answer: ["She", "is", "using", "a", "laptop"],
-    image: `./assets/images/task-04-computer.png?v=${ASSET_VERSION}`,
+    id: "cleaning-beach",
+    title: "Cleaning the Beach",
+    instruction: "Build an English sentence that says the kids are cleaning the beach.",
+    answer: ["They", "are", "cleaning", "the", "beach"],
+    image: `./assets/images/task-eco-04-cleaning-beach.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "bicycle",
-    title: "Riding a Bicycle",
-    instruction: "Build an English sentence that says the boy is riding a bicycle.",
-    answer: ["He", "is", "riding", "a", "bicycle"],
-    image: `./assets/images/task-05-bicycle.png?v=${ASSET_VERSION}`,
+    id: "saving-water",
+    title: "Saving Water",
+    instruction: "Build an English sentence that says the girl is saving water now.",
+    answer: ["She", "is", "saving", "water", "now"],
+    image: `./assets/images/task-eco-05-saving-water.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "cooking",
-    title: "Cooking Together",
-    instruction: "Build an English sentence that says the family is cooking together.",
-    answer: ["They", "are", "cooking", "together", "now"],
-    image: `./assets/images/task-06-cooking.png?v=${ASSET_VERSION}`,
+    id: "sorting-trash",
+    title: "Sorting the Trash",
+    instruction: "Build an English sentence that says the family is sorting the trash.",
+    answer: ["They", "are", "sorting", "the", "trash"],
+    image: `./assets/images/task-eco-06-sorting-trash.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "watching-tv",
-    title: "Watching TV",
-    instruction: "Build an English sentence that says the children are watching TV together.",
-    answer: ["They", "are", "watching", "TV", "together"],
-    image: `./assets/images/task-07-watching-tv.png?v=${ASSET_VERSION}`,
+    id: "turning-off-lights",
+    title: "Turning Off the Lights",
+    instruction: "Build an English sentence that says the boy is turning off the lights.",
+    answer: ["He", "is", "turning", "off", "the", "lights"],
+    image: `./assets/images/task-eco-07-turning-off-lights.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "dancing",
-    title: "Jumping on a Trampoline",
-    instruction: "Build an English sentence that says the children are jumping on a trampoline.",
-    answer: ["They", "are", "jumping", "on", "a", "trampoline"],
-    image: `./assets/images/task-08-dancing.png?v=${ASSET_VERSION}`,
+    id: "composting-scraps",
+    title: "Composting Food Scraps",
+    instruction: "Build an English sentence that says the girl is composting food scraps.",
+    answer: ["She", "is", "composting", "food", "scraps"],
+    image: `./assets/images/task-eco-08-composting.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "cleaning-room",
-    title: "Cleaning the Room",
-    instruction: "Build an English sentence that says the girls are cleaning the room.",
-    answer: ["They", "are", "cleaning", "the", "room"],
-    image: `./assets/images/task-09-cleaning-room.png?v=${ASSET_VERSION}`,
+    id: "installing-solar",
+    title: "Installing Solar Panels",
+    instruction: "Build an English sentence that says the man is installing solar panels.",
+    answer: ["He", "is", "installing", "solar", "panels"],
+    image: `./assets/images/task-eco-09-installing-solar.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "painting",
-    title: "Painting a Picture",
-    instruction: "Build an English sentence that says the boy is painting a picture.",
-    answer: ["He", "is", "painting", "a", "picture"],
-    image: `./assets/images/task-10-painting.png?v=${ASSET_VERSION}`,
+    id: "protecting-animals",
+    title: "Protecting Wild Animals",
+    instruction: "Build an English sentence that says the rangers are protecting wild animals.",
+    answer: ["They", "are", "protecting", "wild", "animals"],
+    image: `./assets/images/task-eco-10-protecting-animals.jpg?v=${ASSET_VERSION}`,
   },
 ].map((task, index) => ({
   ...task,
@@ -79,100 +79,101 @@ const tasks = [
 
 const speechTasks = [
   {
-    id: "speech-football",
-    title: "Playing Football",
-    prompt: "Look at the picture and say what the boy is doing in a complete English sentence.",
-    example: "The boy is playing football.",
-    image: `./assets/images/speech-01-football.png?v=${ASSET_VERSION}`,
+    id: "speech-eco-planting",
+    title: "Planting a Tree",
+    prompt: "Look at the picture and say what the girl is doing in a complete English sentence.",
+    example: "The girl is planting a tree.",
+    image: `./assets/images/speech-eco-01-planting.jpg?v=${ASSET_VERSION}`,
     required: [
-      ["boy", "kid", "child", "he"],
-      ["play", "playing", "plays", "kick", "kicking"],
-      ["football", "soccer", "ball"],
+      ["girl", "kid", "child", "she", "boy", "he"],
+      ["plant", "planting", "plants"],
+      ["tree", "sapling", "seedling"],
     ],
     mustInclude: [1, 2],
     minGroups: 2,
   },
   {
-    id: "speech-reading",
-    title: "Reading a Book",
-    prompt: "Look at the picture and say what the person is doing in English.",
-    example: "The woman is reading a book.",
-    image: `./assets/images/speech-02-reading.png?v=${ASSET_VERSION}`,
-    required: [
-      ["woman", "lady", "girl", "she", "person"],
-      ["read", "reading", "reads"],
-      ["book"],
-    ],
-    mustInclude: [1],
-    minGroups: 2,
-  },
-  {
-    id: "speech-apple",
-    title: "Eating an Apple",
-    prompt: "Look at the picture and say what the boy is eating in English.",
-    example: "The boy is eating an apple.",
-    image: `./assets/images/speech-03-apple.png?v=${ASSET_VERSION}`,
-    required: [
-      ["boy", "kid", "child", "he"],
-      ["eat", "eating", "eats"],
-      ["apple", "fruit"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
-  },
-  {
-    id: "speech-guitar",
-    title: "Playing the Guitar",
-    prompt: "Look at the picture and say what the boy is doing with the musical instrument.",
-    example: "The boy is playing the guitar.",
-    image: `./assets/images/speech-04-guitar.png?v=${ASSET_VERSION}`,
-    required: [
-      ["boy", "kid", "child", "he"],
-      ["play", "playing", "plays"],
-      ["guitar"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
-  },
-  {
-    id: "speech-laptop",
-    title: "Using a Laptop",
-    prompt: "Look at the picture and say what the boy is doing with the laptop in English.",
-    example: "The boy is using a laptop.",
-    image: `./assets/images/speech-05-laptop.png?v=${ASSET_VERSION}`,
-    required: [
-      ["boy", "kid", "child", "he", "student"],
-      ["use", "using", "work", "working", "type", "typing", "study", "studying"],
-      ["laptop", "computer"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
-  },
-  {
-    id: "speech-running",
-    title: "Running",
+    id: "speech-eco-recycling",
+    title: "Recycling Bottles",
     prompt: "Look at the picture and say what the boy is doing in English.",
-    example: "The boy is running.",
-    image: `./assets/images/speech-06-running.png?v=${ASSET_VERSION}`,
+    example: "The boy is recycling a plastic bottle.",
+    image: `./assets/images/speech-eco-02-recycling.jpg?v=${ASSET_VERSION}`,
     required: [
-      ["boy", "kid", "child", "he"],
-      ["run", "running", "runs"],
+      ["boy", "kid", "child", "he", "girl", "she"],
+      ["recycle", "recycling", "recycles"],
+      ["plastic", "bottle", "bottles", "waste"],
     ],
-    mustInclude: [1],
+    mustInclude: [1, 2],
     minGroups: 2,
   },
   {
-    id: "speech-sleeping",
-    title: "Sleeping in Bed",
-    prompt: "Look at the picture and say what the boy is doing in a complete English sentence.",
-    example: "The boy is sleeping in bed.",
-    image: `./assets/images/speech-07-sleeping.png?v=${ASSET_VERSION}`,
+    id: "speech-eco-bicycle",
+    title: "Riding a Bicycle",
+    prompt: "Look at the picture and say what the boy is doing to help the environment.",
+    example: "The boy is riding a bicycle instead of a car.",
+    image: `./assets/images/speech-eco-03-bicycle.jpg?v=${ASSET_VERSION}`,
     required: [
-      ["boy", "kid", "child", "he"],
-      ["sleep", "sleeping", "sleeps", "rest", "resting"],
-      ["bed", "bedroom"],
+      ["boy", "kid", "child", "he", "girl", "she", "man", "woman"],
+      ["ride", "riding", "rides", "cycle", "cycling"],
+      ["bicycle", "bike"],
     ],
-    mustInclude: [1],
+    mustInclude: [1, 2],
+    minGroups: 2,
+  },
+  {
+    id: "speech-eco-cleanup",
+    title: "Cleaning the Beach",
+    prompt: "Look at the picture and say what the kids are doing in a complete English sentence.",
+    example: "The kids are picking up trash from the beach.",
+    image: `./assets/images/speech-eco-04-cleanup.jpg?v=${ASSET_VERSION}`,
+    required: [
+      ["kid", "kids", "boy", "girl", "children", "he", "she", "they"],
+      ["pick", "picking", "collect", "collecting", "clean", "cleaning"],
+      ["trash", "litter", "rubbish", "garbage", "waste", "beach"],
+    ],
+    mustInclude: [1, 2],
+    minGroups: 2,
+  },
+  {
+    id: "speech-eco-watering",
+    title: "Watering Plants",
+    prompt: "Look at the picture and say what the girl is doing in the garden.",
+    example: "The girl is watering the plants.",
+    image: `./assets/images/speech-eco-05-watering.jpg?v=${ASSET_VERSION}`,
+    required: [
+      ["girl", "boy", "kid", "she", "he", "child"],
+      ["water", "watering", "waters"],
+      ["plant", "plants", "garden", "flowers"],
+    ],
+    mustInclude: [1, 2],
+    minGroups: 2,
+  },
+  {
+    id: "speech-eco-solar",
+    title: "Installing Solar Panels",
+    prompt: "Look at the picture and say what the man is doing on the roof.",
+    example: "The man is installing solar panels.",
+    image: `./assets/images/speech-eco-06-solar.jpg?v=${ASSET_VERSION}`,
+    required: [
+      ["man", "woman", "he", "she", "worker", "person"],
+      ["install", "installing", "installs", "fix", "fixing", "set up", "setting"],
+      ["solar", "panel", "panels"],
+    ],
+    mustInclude: [1, 2],
+    minGroups: 2,
+  },
+  {
+    id: "speech-eco-sorting",
+    title: "Sorting Waste",
+    prompt: "Look at the picture and say what the family is doing in a complete English sentence.",
+    example: "The family is sorting waste into recycling bins.",
+    image: `./assets/images/speech-eco-07-sorting.jpg?v=${ASSET_VERSION}`,
+    required: [
+      ["family", "boy", "girl", "kid", "he", "she", "they"],
+      ["sort", "sorting", "separate", "separating"],
+      ["waste", "recycling", "trash", "garbage", "bin", "bins"],
+    ],
+    mustInclude: [1, 2],
     minGroups: 2,
   },
 ].map((task, index) => ({
@@ -182,69 +183,160 @@ const speechTasks = [
 
 const quizTasks = [
   {
-    id: "quiz-apple",
-    prompt: "Which word names a common red or green fruit?",
-    options: ["Apple", "Chair", "Window"],
+    id: "quiz-recycle",
+    title: "Recycle",
+    prompt: "Which word means to use something again instead of throwing it away?",
+    options: ["Recycle", "Waste", "Ignore"],
     correctIndex: 0,
+    image: `./assets/images/eco-recycle.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-reading",
-    prompt: "Choose the correct sentence.",
-    options: ["He is reading a book.", "He are reading a book.", "He reading a book."],
+    id: "quiz-pollution",
+    title: "Pollution",
+    prompt: "What do we call dirty air, water, or soil caused by harmful substances?",
+    options: ["Pollution", "Decoration", "Celebration"],
     correctIndex: 0,
+    image: `./assets/images/eco-pollution.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-color",
-    prompt: "Which word is a color?",
-    options: ["Blue", "Run", "Milk"],
+    id: "quiz-renewable",
+    title: "Renewable",
+    prompt: "Which word describes energy that never runs out, like sunlight or wind?",
+    options: ["Renewable", "Disposable", "Artificial"],
     correctIndex: 0,
+    image: `./assets/images/eco-renewable.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-she-is",
-    prompt: "Complete the sentence: She ___ playing.",
-    options: ["is", "are", "am"],
+    id: "quiz-climate",
+    title: "Climate change",
+    prompt: "What do we call the long-term change in the Earth's weather patterns?",
+    options: ["Climate change", "Fashion trend", "Time zone"],
     correctIndex: 0,
+    image: `./assets/images/eco-climate-change.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-cat",
-    prompt: 'Which animal says "meow"?',
-    options: ["Cat", "Dog", "Cow"],
+    id: "quiz-deforestation",
+    title: "Deforestation",
+    prompt: "What do we call cutting down large areas of forest?",
+    options: ["Deforestation", "Construction", "Irrigation"],
     correctIndex: 0,
+    image: `./assets/images/eco-deforestation.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-fruit",
-    prompt: "Choose the fruit.",
-    options: ["Banana", "Pencil", "Pillow"],
+    id: "quiz-endangered",
+    title: "Endangered",
+    prompt: "Animals that are at risk of disappearing forever are called...?",
+    options: ["Endangered", "Domesticated", "Imaginary"],
     correctIndex: 0,
+    image: `./assets/images/eco-endangered.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-football",
-    prompt: "Complete the sentence: They are ___ football.",
-    options: ["playing", "plays", "played"],
+    id: "quiz-compost",
+    title: "Compost",
+    prompt: "What do we call decayed food and plant material used to enrich soil?",
+    options: ["Compost", "Cement", "Plastic"],
     correctIndex: 0,
+    image: `./assets/images/eco-compost.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-school",
-    prompt: "Which one belongs to school?",
-    options: ["Notebook", "Carrot", "Blanket"],
+    id: "quiz-sustainability",
+    title: "Sustainability",
+    prompt: "Using resources today in a way that protects them for the future is called...?",
+    options: ["Sustainability", "Consumption", "Extraction"],
     correctIndex: 0,
+    image: `./assets/images/eco-sustainability.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-drink",
-    prompt: "What do we drink?",
-    options: ["Water", "Shoe", "Tree"],
+    id: "quiz-ocean-plastic",
+    title: "Plastic",
+    prompt: "Which material is a major cause of ocean pollution?",
+    options: ["Plastic", "Cotton", "Wood"],
     correctIndex: 0,
+    image: `./assets/images/eco-ocean-plastic.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-hello",
-    prompt: "Choose the English greeting.",
-    options: ["Hello", "Banana", "Jump"],
+    id: "quiz-carbon-footprint",
+    title: "Carbon footprint",
+    prompt: "The amount of carbon dioxide a person or activity produces is called a...?",
+    options: ["Carbon footprint", "Shoe size", "Water level"],
     correctIndex: 0,
+    image: `./assets/images/eco-carbon-footprint.jpg?v=${ASSET_VERSION}`,
   },
 ].map((task, index) => ({
   ...task,
   order: index + 1,
 }));
+
+const vocabWords = [
+  {
+    word: "Recycle",
+    definition: "To use something again instead of throwing it away, like turning old paper into new paper.",
+    image: `./assets/images/eco-recycle.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Pollution",
+    definition: "Dirty air, water, or soil caused by harmful substances or waste released into the environment.",
+    image: `./assets/images/eco-pollution.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Renewable",
+    definition: "Describes energy or resources that naturally replenish and never run out, like sunlight or wind.",
+    image: `./assets/images/eco-renewable.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Climate change",
+    definition: "The long-term change in the Earth's weather patterns and average temperatures.",
+    image: `./assets/images/eco-climate-change.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Deforestation",
+    definition: "Cutting down large areas of forest, usually to use the land for other purposes.",
+    image: `./assets/images/eco-deforestation.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Endangered",
+    definition: "Describes a plant or animal species that is at serious risk of disappearing forever.",
+    image: `./assets/images/eco-endangered.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Compost",
+    definition: "Decayed food and plant material used to enrich soil and help new plants grow.",
+    image: `./assets/images/eco-compost.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Sustainability",
+    definition: "Using resources today in a way that protects them and keeps them available for the future.",
+    image: `./assets/images/eco-sustainability.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Ocean plastic",
+    definition: "Plastic waste that ends up in the sea and harms marine animals and ecosystems.",
+    image: `./assets/images/eco-ocean-plastic.jpg?v=${ASSET_VERSION}`,
+  },
+  {
+    word: "Carbon footprint",
+    definition: "The total amount of carbon dioxide a person or activity produces.",
+    image: `./assets/images/eco-carbon-footprint.jpg?v=${ASSET_VERSION}`,
+  },
+];
+
+function shuffleQuizOptions() {
+  quizTasks.forEach((task) => {
+    if (!task.baseOptions) {
+      task.baseOptions = task.options.slice();
+      task.baseCorrectIndex = task.correctIndex;
+    }
+
+    const order = task.baseOptions.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+
+    task.options = order.map((originalIndex) => task.baseOptions[originalIndex]);
+    task.correctIndex = order.indexOf(task.baseCorrectIndex);
+  });
+}
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
 const requestFrame =
@@ -319,6 +411,13 @@ const state = {
     holdProgress: 0,
     gestureLockedUntil: 0,
     autoAdvanceTimer: null,
+    resultsShown: false,
+    resultsTimer: null,
+  },
+  chat: {
+    selectedFile: null,
+    selectedFilePreviewUrl: null,
+    sending: false,
   },
 };
 
@@ -355,6 +454,23 @@ const elements = {
   featureTwoScreen: document.querySelector("#featureTwoScreen"),
   featureThreeScreen: document.querySelector("#featureThreeScreen"),
   featureFourScreen: document.querySelector("#featureFourScreen"),
+  featureFiveScreen: document.querySelector("#featureFiveScreen"),
+  featureSixScreen: document.querySelector("#featureSixScreen"),
+  openAiChatFeatureButton: document.querySelector("#openAiChatFeatureButton"),
+  openAiChatFeatureButtonBottom: document.querySelector("#openAiChatFeatureButtonBottom"),
+  backToFeatureFourButton: document.querySelector("#backToFeatureFourButton"),
+  openEcoVocabularyFeatureButton: document.querySelector("#openEcoVocabularyFeatureButton"),
+  openEcoVocabularyFeatureButtonBottom: document.querySelector("#openEcoVocabularyFeatureButtonBottom"),
+  backToFeatureFiveButton: document.querySelector("#backToFeatureFiveButton"),
+  vocabGrid: document.querySelector("#vocabGrid"),
+  chatStatusPill: document.querySelector("#chatStatusPill"),
+  chatMessages: document.querySelector("#chatMessages"),
+  chatImageInput: document.querySelector("#chatImageInput"),
+  chatAttachButton: document.querySelector("#chatAttachButton"),
+  chatSelectedFileName: document.querySelector("#chatSelectedFileName"),
+  chatTextInput: document.querySelector("#chatTextInput"),
+  chatSendButton: document.querySelector("#chatSendButton"),
+  chatStatusText: document.querySelector("#chatStatusText"),
   taskTitle: document.querySelector("#taskTitle"),
   taskInstruction: document.querySelector("#taskInstruction"),
   taskImage: document.querySelector("#taskImage"),
@@ -432,6 +548,7 @@ const elements = {
   quizTaskTitle: document.querySelector("#quizTaskTitle"),
   quizQuestionNumber: document.querySelector("#quizQuestionNumber"),
   quizQuestionText: document.querySelector("#quizQuestionText"),
+  quizQuestionImage: document.querySelector("#quizQuestionImage"),
   quizHintText: document.querySelector("#quizHintText"),
   quizDetectedValue: document.querySelector("#quizDetectedValue"),
   quizDetectedText: document.querySelector("#quizDetectedText"),
@@ -442,6 +559,15 @@ const elements = {
   quizPrevButton: document.querySelector("#quizPrevButton"),
   quizNextButton: document.querySelector("#quizNextButton"),
   quizQuestionList: document.querySelector("#quizQuestionList"),
+  quizResultsOverlay: document.querySelector("#quizResultsOverlay"),
+  quizResultsConfetti: document.querySelector("#quizResultsConfetti"),
+  quizResultsHeadline: document.querySelector("#quizResultsHeadline"),
+  quizResultsSubtext: document.querySelector("#quizResultsSubtext"),
+  quizResultsScoreNumber: document.querySelector("#quizResultsScoreNumber"),
+  quizResultsRingProgress: document.querySelector("#quizResultsRingProgress"),
+  quizResultsWords: document.querySelector("#quizResultsWords"),
+  quizResultsRestartButton: document.querySelector("#quizResultsRestartButton"),
+  quizResultsCloseButton: document.querySelector("#quizResultsCloseButton"),
 };
 
 bootstrap();
@@ -451,7 +577,9 @@ function bootstrap() {
   renderCurrentTask();
   renderSpeechTask();
   resetVoiceGame();
+  shuffleQuizOptions();
   renderQuiz();
+  renderVocabGrid();
   bindUI();
   initSpeechRecognition();
   initVoiceGameRecognition();
@@ -485,6 +613,27 @@ function bindUI() {
   elements.quizResetButton.addEventListener("click", resetQuiz);
   elements.quizPrevButton.addEventListener("click", () => moveQuizTask(-1));
   elements.quizNextButton.addEventListener("click", () => moveQuizTask(1));
+  elements.quizResultsRestartButton.addEventListener("click", () => {
+    hideQuizResults();
+    resetQuiz();
+  });
+  elements.quizResultsCloseButton.addEventListener("click", hideQuizResults);
+  elements.openAiChatFeatureButton.addEventListener("click", () => showFeature("featureFive"));
+  elements.openAiChatFeatureButtonBottom.addEventListener("click", () => showFeature("featureFive"));
+  elements.backToFeatureFourButton.addEventListener("click", () => showFeature("featureFour"));
+  elements.openEcoVocabularyFeatureButton.addEventListener("click", () => showFeature("featureSix"));
+  elements.openEcoVocabularyFeatureButtonBottom.addEventListener("click", () => showFeature("featureSix"));
+  elements.backToFeatureFiveButton.addEventListener("click", () => showFeature("featureFive"));
+  elements.chatAttachButton.addEventListener("click", () => elements.chatImageInput.click());
+  elements.chatImageInput.addEventListener("change", handleChatFileSelect);
+  elements.chatTextInput.addEventListener("input", updateChatSendButtonState);
+  elements.chatTextInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendChatMessage();
+    }
+  });
+  elements.chatSendButton.addEventListener("click", sendChatMessage);
   elements.voiceGameCommandButtons.forEach((button) => {
     button.addEventListener("click", () => {
       triggerVoiceGameButtonCommand(button.dataset.voiceCommandButton);
@@ -501,11 +650,15 @@ function showFeature(featureName) {
   const showSecond = featureName === "featureTwo";
   const showThird = featureName === "featureThree";
   const showFourth = featureName === "featureFour";
+  const showFifth = featureName === "featureFive";
+  const showSixth = featureName === "featureSix";
 
   elements.featureOneScreen.classList.toggle("active", showFirst);
   elements.featureTwoScreen.classList.toggle("active", showSecond);
   elements.featureThreeScreen.classList.toggle("active", showThird);
   elements.featureFourScreen.classList.toggle("active", showFourth);
+  elements.featureFiveScreen.classList.toggle("active", showFifth);
+  elements.featureSixScreen.classList.toggle("active", showSixth);
 
   if (state.camera.streamStarted && state.camera.ownerFeature !== featureName) {
     stopCamera();
@@ -1088,6 +1241,8 @@ function renderQuiz() {
 
   elements.quizTaskTitle.textContent = `${task.order} / ${quizTasks.length}`;
   elements.quizQuestionNumber.textContent = String(task.order).padStart(2, "0");
+  elements.quizQuestionImage.src = task.image;
+  elements.quizQuestionImage.alt = `${task.title} illustration`;
   elements.quizQuestionText.textContent = task.prompt;
   elements.quizHintText.textContent =
     selectedAnswer === null
@@ -1103,6 +1258,11 @@ function renderQuiz() {
       const isSelected = selectedAnswer === index;
       const isCorrect = selectedAnswer !== null && index === task.correctIndex;
       const isWrongSelected = isSelected && selectedAnswer !== task.correctIndex;
+      const resultIcon = isCorrect
+        ? '<span class="quiz-option-result-icon icon-correct">✓</span>'
+        : isWrongSelected
+        ? '<span class="quiz-option-result-icon icon-wrong">✕</span>'
+        : "";
 
       return `
         <button
@@ -1112,6 +1272,7 @@ function renderQuiz() {
         >
           <span class="quiz-option-index">${index + 1}</span>
           <span class="quiz-option-text">${option}</span>
+          ${resultIcon}
         </button>
       `;
     })
@@ -1173,17 +1334,299 @@ function selectQuizAnswer(optionIndex, source = "gesture") {
   if (source === "gesture") {
     scheduleQuizAutoAdvance();
   }
+
+  if (countQuizAnswered() === quizTasks.length && !state.quiz.resultsShown) {
+    state.quiz.resultsShown = true;
+    clearTimeout(state.quiz.resultsTimer);
+    state.quiz.resultsTimer = setTimeout(showQuizResults, 700);
+  }
 }
 
 function resetQuiz() {
   clearQuizAutoAdvance();
+  clearTimeout(state.quiz.resultsTimer);
   state.quiz.currentTaskIndex = 0;
   state.quiz.answers = Array(quizTasks.length).fill(null);
   state.quiz.score = 0;
   state.quiz.gestureLockedUntil = 0;
+  state.quiz.resultsShown = false;
   resetQuizGestureTracking();
+  hideQuizResults();
+  shuffleQuizOptions();
   renderQuiz();
   setQuizIdleStatuses();
+}
+
+function getQuizResultTier(score, maxScore) {
+  const ratio = maxScore > 0 ? score / maxScore : 0;
+
+  if (ratio === 1) {
+    return {
+      headline: "Eco-Vocabulary Master!",
+      subtext: "Perfect score. Every word is locked into your vocabulary.",
+    };
+  }
+  if (ratio >= 0.8) {
+    return {
+      headline: "Excellent work!",
+      subtext: "Your eco-vocabulary is growing fast.",
+    };
+  }
+  if (ratio >= 0.5) {
+    return {
+      headline: "Good progress!",
+      subtext: "Keep practicing these words to make them stick.",
+    };
+  }
+  return {
+    headline: "Keep building your eco-vocabulary!",
+    subtext: "Review the words below and try again.",
+  };
+}
+
+function renderQuizResultsConfetti() {
+  const colors = ["#ff7b54", "#ffc857", "#63c7b2", "#8ecbff", "#2da18a"];
+  const pieceCount = 42;
+  const pieces = [];
+
+  for (let i = 0; i < pieceCount; i += 1) {
+    const left = Math.random() * 100;
+    const delay = Math.random() * 0.6;
+    const duration = 2.6 + Math.random() * 1.6;
+    const drift = (Math.random() - 0.5) * 160;
+    const rotation = Math.random() * 360;
+    const color = colors[i % colors.length];
+    pieces.push(
+      `<span class="confetti-piece" style="left:${left}%; background:${color}; animation-delay:${delay}s; animation-duration:${duration}s; --drift:${drift}px; --rotation:${rotation}deg;"></span>`
+    );
+  }
+
+  elements.quizResultsConfetti.innerHTML = pieces.join("");
+}
+
+function renderQuizResultsWords() {
+  elements.quizResultsWords.innerHTML = quizTasks
+    .map((task, index) => {
+      const isCorrect = state.quiz.answers[index] === task.correctIndex;
+      return `
+        <span class="quiz-results-word ${isCorrect ? "is-correct" : "is-wrong"}">
+          <span class="quiz-results-word-icon">${isCorrect ? "✓" : "✕"}</span>
+          ${task.title}
+        </span>
+      `;
+    })
+    .join("");
+}
+
+function animateQuizResultsScore(score, maxScore) {
+  const circumference = 2 * Math.PI * 86;
+  const ratio = maxScore > 0 ? score / maxScore : 0;
+  elements.quizResultsRingProgress.style.strokeDasharray = `${circumference}`;
+  elements.quizResultsRingProgress.style.strokeDashoffset = `${circumference}`;
+
+  requestAnimationFrame(() => {
+    elements.quizResultsRingProgress.style.transition = "stroke-dashoffset 1.1s ease-out";
+    elements.quizResultsRingProgress.style.strokeDashoffset = `${circumference * (1 - ratio)}`;
+  });
+
+  const durationMs = 900;
+  const startTime = performance.now();
+
+  function tick(now) {
+    const elapsed = Math.min(1, (now - startTime) / durationMs);
+    const eased = 1 - Math.pow(1 - elapsed, 3);
+    elements.quizResultsScoreNumber.textContent = String(Math.round(score * eased));
+    if (elapsed < 1) {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+function showQuizResults() {
+  const maxScore = quizTasks.length * 10;
+  const tier = getQuizResultTier(state.quiz.score, maxScore);
+  const correctCount = quizTasks.filter(
+    (task, index) => state.quiz.answers[index] === task.correctIndex
+  ).length;
+
+  elements.quizResultsHeadline.textContent = tier.headline;
+  elements.quizResultsSubtext.textContent = `${tier.subtext} You learned ${correctCount} of ${quizTasks.length} new ecology words correctly.`;
+
+  renderQuizResultsWords();
+  renderQuizResultsConfetti();
+  animateQuizResultsScore(state.quiz.score, maxScore);
+
+  elements.quizResultsOverlay.hidden = false;
+  requestAnimationFrame(() => {
+    elements.quizResultsOverlay.classList.add("is-visible");
+  });
+}
+
+function hideQuizResults() {
+  elements.quizResultsOverlay.classList.remove("is-visible");
+  window.setTimeout(() => {
+    if (!elements.quizResultsOverlay.classList.contains("is-visible")) {
+      elements.quizResultsOverlay.hidden = true;
+    }
+  }, 320);
+}
+
+function renderVocabGrid() {
+  elements.vocabGrid.innerHTML = "";
+
+  vocabWords.forEach((entry, index) => {
+    const card = document.createElement("article");
+    card.className = "vocab-card";
+
+    const imageWrap = document.createElement("div");
+    imageWrap.className = "vocab-card-image-wrap";
+    const image = document.createElement("img");
+    image.className = "vocab-card-image";
+    image.src = entry.image;
+    image.alt = entry.word;
+    image.draggable = false;
+    imageWrap.appendChild(image);
+
+    const badge = document.createElement("span");
+    badge.className = "vocab-card-badge";
+    badge.textContent = String(index + 1).padStart(2, "0");
+    imageWrap.appendChild(badge);
+
+    const word = document.createElement("h3");
+    word.className = "vocab-card-word";
+    word.textContent = entry.word;
+
+    const definition = document.createElement("p");
+    definition.className = "vocab-card-definition";
+    definition.textContent = entry.definition;
+
+    card.appendChild(imageWrap);
+    card.appendChild(word);
+    card.appendChild(definition);
+    elements.vocabGrid.appendChild(card);
+  });
+}
+
+const CHAT_API_URL = "http://localhost:8766/api/chat";
+
+function appendChatMessage(role, text) {
+  const bubble = document.createElement("div");
+  bubble.className = `chat-message chat-message-${role}`;
+
+  const author = document.createElement("span");
+  author.className = "chat-message-author";
+  author.textContent = role === "user" ? "You" : "AI";
+  bubble.appendChild(author);
+
+  if (role === "user" && state.chat.selectedFilePreviewUrl) {
+    const img = document.createElement("img");
+    img.className = "chat-message-image";
+    img.src = state.chat.selectedFilePreviewUrl;
+    img.alt = "Uploaded photo";
+    bubble.appendChild(img);
+  }
+
+  const paragraph = document.createElement("p");
+  paragraph.className = "chat-message-text";
+  paragraph.textContent = text;
+  bubble.appendChild(paragraph);
+
+  elements.chatMessages.appendChild(bubble);
+  elements.chatMessages.scrollTop = elements.chatMessages.scrollHeight;
+}
+
+function setChatStatus(text, tone) {
+  elements.chatStatusText.textContent = text;
+  elements.chatStatusText.className = `manual-fallback-note chat-status-text ${tone || ""}`.trim();
+
+  if (elements.chatStatusPill) {
+    elements.chatStatusPill.textContent = text || "Choose a photo to begin";
+    elements.chatStatusPill.className = `status-pill ${
+      tone === "feedback-error" ? "status-error" : tone === "feedback-success" ? "status-live" : "status-muted"
+    }`;
+  }
+}
+
+function handleChatFileSelect(event) {
+  const file = event.target.files && event.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    setChatStatus("Please choose an image file.", "feedback-error");
+    return;
+  }
+
+  state.chat.selectedFile = file;
+  state.chat.selectedFilePreviewUrl = URL.createObjectURL(file);
+  elements.chatSelectedFileName.textContent = file.name;
+  updateChatSendButtonState();
+  setChatStatus("Photo ready. Add a message or press Send.", "");
+}
+
+function updateChatSendButtonState() {
+  const hasText = Boolean(elements.chatTextInput.value.trim());
+  const hasPhoto = Boolean(state.chat.selectedFile);
+  elements.chatSendButton.disabled = state.chat.sending || (!hasText && !hasPhoto);
+}
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+async function sendChatMessage() {
+  const messageText = elements.chatTextInput.value.trim();
+  const hasPhoto = Boolean(state.chat.selectedFile);
+
+  if (state.chat.sending || (!messageText && !hasPhoto)) {
+    return;
+  }
+
+  state.chat.sending = true;
+  elements.chatSendButton.disabled = true;
+  appendChatMessage("user", messageText || "What can you tell me about this photo?");
+  setChatStatus(hasPhoto ? "The AI is looking at your photo..." : "The AI is thinking...", "");
+
+  try {
+    const imageDataUrl = hasPhoto ? await readFileAsDataUrl(state.chat.selectedFile) : null;
+    const response = await fetch(CHAT_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: messageText, imageDataUrl }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "The AI service could not answer.");
+    }
+
+    appendChatMessage("ai", data.description);
+    setChatStatus("Done. You can keep chatting.", "feedback-success");
+  } catch (error) {
+    appendChatMessage(
+      "ai",
+      "Sorry, I could not respond. Make sure the AI proxy server (server.js) is running."
+    );
+    setChatStatus(error.message, "feedback-error");
+  } finally {
+    state.chat.sending = false;
+    state.chat.selectedFile = null;
+    state.chat.selectedFilePreviewUrl = null;
+    elements.chatImageInput.value = "";
+    elements.chatSelectedFileName.textContent = "No photo selected";
+    elements.chatTextInput.value = "";
+    updateChatSendButtonState();
+  }
 }
 
 function setVoiceGameFallbackMode(active, errorCode = "") {
