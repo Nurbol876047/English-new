@@ -2855,7 +2855,7 @@ button:disabled {
   border: 1px solid var(--line);
   background: var(--surface-strong);
   color: var(--text-main);
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-family: inherit;
 }
 
