@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gesture Sentence Builder</title>
-    <link rel="stylesheet" href="./styles.css?v=20260930-vocab-chat" />
+    <meta
+      name="description"
+      content="Eco-Dictionary: learn English ecology vocabulary with hand gestures, eco games, and an AI photo chat."
+    />
+    <link rel="stylesheet" href="./styles.css?v=20261011-games" />
   </head>
   <body>
     <div id="featureOneScreen" class="feature-screen active">
@@ -115,7 +119,7 @@
 
             <div class="feature-switch-row">
               <button id="openSpeechFeatureButton" class="feature-switch-button" type="button">
-                Next section: Speaking Practice
+                Next section: Clean the City
               </button>
             </div>
           </section>
@@ -131,117 +135,128 @@
       </div>
     </div>
 
+    <!-- Section 2 · Clean the City -->
     <div id="featureTwoScreen" class="feature-screen">
       <div class="page-shell">
         <header class="hero hero-voice">
           <div class="hero-copy">
-            <p class="eyebrow">Speaking Task · Eco-Dictionary</p>
-            <h1 class="voice-task-title">SPEAKING TASK</h1>
+            <p class="eyebrow">Section 2 · Eco-Dictionary</p>
+            <h1 class="voice-task-title">Clean the City</h1>
             <p class="hero-text">
-              Look at each eco-friendly picture and say a full English
-              sentence about the action. The system checks the meaning, so
-              your answer does not have to match word for word, while your
-              ecology vocabulary keeps growing.
+              The city is polluted, full of waste, and has lost its trees.
+              Answer each eco question correctly and watch the city change:
+              the smog clears, the trees grow back, and clean energy arrives.
             </p>
             <div class="hero-actions">
               <button id="backToFeatureOneButton" class="secondary-button" type="button">
                 Back to First Section
               </button>
-              <button id="speechListenButton" class="primary-button" type="button">
-                Start Speaking
+              <button id="cityRestartButton" class="ghost-button" type="button">
+                Restart City
               </button>
-              <button id="speechCheckButton" class="ghost-button" type="button">
-                Check Answer
-              </button>
-            </div>
-            <div class="hero-status">
-              <span id="speechSupportStatus" class="status-pill status-muted">
-                You can answer with the microphone
-              </span>
-              <span id="speechLiveStatus" class="status-pill status-idle">
-                Not listening yet
-              </span>
             </div>
           </div>
           <aside class="camera-panel speech-side-panel">
             <div class="speech-side-card">
-              <p class="panel-label">Topic</p>
-              <h3>Look at the picture and speak English</h3>
+              <p class="panel-label">City Health</p>
+              <h3>Fix 5 eco problems to make the city green</h3>
               <p class="camera-hint">
-                There are 7 eco-friendly pictures here. Look at a picture and
-                say an English sentence, for example: "The girl is planting a
-                tree." The system will try to recognize the key meaning.
+                Every correct answer repairs one part of the city: recycling
+                bins, clean air, renewable energy, clean streets, and new
+                trees.
               </p>
-              <button id="speechHintButton" class="secondary-button" type="button">
-                Show Example Sentence
-              </button>
-              <p id="speechModelText" class="speech-model-text hidden"></p>
+              <span id="cityHealthStatus" class="status-pill status-error">
+                City status: Polluted 🌫️
+              </span>
             </div>
           </aside>
         </header>
 
-        <main class="game-layout speech-layout">
+        <main class="game-layout">
           <section class="game-panel">
             <div class="panel-topbar">
               <div>
-                <p class="panel-label">Speaking Task</p>
-                <h2 id="speechTaskTitle">1 / 7</h2>
+                <p class="panel-label">City Problem</p>
+                <h2 id="cityTaskTitle">1 / 5</h2>
               </div>
               <div class="stats-row">
                 <div class="stat-card">
                   <span class="stat-label">Score</span>
-                  <strong id="speechScoreValue">0</strong>
+                  <strong id="cityScoreValue">0</strong>
                 </div>
                 <div class="stat-card">
-                  <span class="stat-label">Completed</span>
-                  <strong id="speechProgressValue">0/7</strong>
+                  <span class="stat-label">Fixed</span>
+                  <strong id="cityProgressValue">0/5</strong>
                 </div>
               </div>
             </div>
 
-            <article class="task-card speech-task-card">
-              <div class="task-image-wrap">
-                <div id="speechTaskImage" class="task-image"></div>
+            <article class="task-card">
+              <div id="cityScene" class="task-image-wrap city-scene" data-fixed="">
+                <div class="city-sky-dirty"></div>
+                <div class="city-sky-clean"></div>
+                <div class="city-ground-dirty"></div>
+                <div class="city-ground-clean"></div>
+                <span class="city-sun" aria-hidden="true">☀️</span>
+
+                <div class="city-row city-smog" aria-hidden="true">
+                  <span>🌫️</span><span>🌫️</span><span>🌫️</span><span>🌫️</span>
+                </div>
+                <span class="city-stack-smoke" aria-hidden="true">💨</span>
+                <div class="city-row city-renewable" aria-hidden="true">
+                  <span>🔆</span><span>🌬️</span><span>⚡</span>
+                </div>
+                <div class="city-row city-skyline" aria-hidden="true">
+                  <span>🏭</span><span>🏢</span><span>🏬</span><span>🏠</span><span>🏢</span>
+                </div>
+
+                <div class="city-row city-stumps" aria-hidden="true">
+                  <span>🪵</span><span>🪵</span><span>🪵</span>
+                </div>
+                <div class="city-row city-trees" aria-hidden="true">
+                  <span>🌳</span><span>🌲</span><span>🌳</span>
+                </div>
+
+                <div class="city-row city-bins-dirty" aria-hidden="true">
+                  <span>🗑️</span><span>🧴</span><span>📰</span>
+                </div>
+                <div class="city-row city-bins-clean" aria-hidden="true">
+                  <span>♻️</span><span>♻️</span><span>♻️</span>
+                </div>
+
+                <div class="city-row city-trash" aria-hidden="true">
+                  <span>🥤</span><span>🍫</span><span>🧃</span><span>🛍️</span><span>🥫</span>
+                </div>
+                <div class="city-row city-plants" aria-hidden="true">
+                  <span>🌷</span><span>🌼</span><span>🌱</span><span>🌻</span><span>🌷</span>
+                </div>
+
                 <div class="task-badge">
-                  <span id="speechTaskIndexBadge">01</span>
+                  <span id="cityTaskIndexBadge">01</span>
                 </div>
               </div>
 
               <div class="task-content">
                 <div class="instruction-box">
-                  <p class="instruction-label">Instructions</p>
-                  <p id="speechTaskInstruction" class="instruction-text">
-                    Look at the picture and say a complete English sentence.
+                  <p class="instruction-label">Question</p>
+                  <p id="cityTaskInstruction" class="instruction-text">
+                    The question text will appear here.
                   </p>
                 </div>
 
-                <div class="speech-transcript-area">
-                  <p class="section-label">Heard Sentence</p>
-                  <textarea
-                    id="speechTranscript"
-                    class="speech-transcript"
-                    placeholder="Your spoken sentence will appear here..."
-                  ></textarea>
-                  <p id="speechTranscriptStatus" class="speech-transcript-status">
-                    Press the microphone button and say a sentence about the picture.
-                  </p>
-                  <p id="speechManualFallback" class="manual-fallback-note hidden">
-                    If the microphone does not work in this browser, type your
-                    sentence in this field and press <strong>Check Answer</strong>.
-                  </p>
-                </div>
+                <div id="cityOptions" class="quiz-options"></div>
 
                 <div class="task-feedback">
-                  <p id="speechFeedbackText" class="feedback-text">
-                    Say the action in the picture aloud in English.
+                  <p id="cityFeedbackText" class="feedback-text">
+                    Choose the best answer to help clean up the city.
                   </p>
                 </div>
               </div>
             </article>
 
             <div class="navigation-row">
-              <button id="speechPrevButton" class="secondary-button" type="button">Back</button>
-              <button id="speechNextButton" class="secondary-button" type="button">Next</button>
+              <button id="cityPrevButton" class="secondary-button" type="button">Back</button>
+              <button id="cityNextButton" class="secondary-button" type="button">Next</button>
             </div>
 
             <div class="feature-switch-row">
@@ -251,7 +266,7 @@
                 type="button"
               >
                 <span class="feature-switch-kicker">NEXT GAME</span>
-                <span class="feature-switch-title">Open Voice Game</span>
+                <span class="feature-switch-title">Open Recycle Rush</span>
                 <span class="feature-switch-caption">Go to the next game page</span>
               </button>
             </div>
@@ -259,133 +274,125 @@
 
           <section class="task-list-panel">
             <div class="panel-heading">
-              <p class="panel-label">Speaking Exercises</p>
-              <h3>7 speech tasks checked by meaning</h3>
+              <p class="panel-label">City Problems</p>
+              <h3>5 problems to fix</h3>
             </div>
-            <div id="speechTaskList" class="task-list"></div>
+            <div id="cityTaskList" class="task-list"></div>
           </section>
         </main>
       </div>
     </div>
 
+    <!-- Section 3 · Recycle Rush -->
     <div id="featureThreeScreen" class="feature-screen">
       <div class="page-shell">
         <header class="hero hero-voice-game">
           <div class="hero-copy">
-            <p class="eyebrow">Section 3</p>
-            <h1>Control the game with your voice</h1>
+            <p class="eyebrow">Section 3 · Eco-Dictionary</p>
+            <h1>Recycle Rush: sort the falling waste</h1>
             <p class="hero-text">
-              Say one English command and the game will react right away.
-              Only three words are used: <strong>forward</strong>,
-              <strong>jump</strong>, <strong>stop</strong>.
+              Items fall from the sky one by one. Click the correct bin,
+              <strong>Plastic</strong>, <strong>Paper</strong>,
+              <strong>Glass</strong>, or <strong>Organic Waste</strong>,
+              before the item lands on the ground.
             </p>
             <div class="hero-actions">
               <button id="backToFeatureTwoButton" class="secondary-button" type="button">
                 Back to Second Section
               </button>
-              <button id="voiceGameListenButton" class="primary-button" type="button">
-                Start Voice Control
+              <button id="recycleStartButton" class="primary-button" type="button">
+                Start Sorting
               </button>
-              <button id="voiceGameResetButton" class="ghost-button" type="button">
+              <button id="recycleResetButton" class="ghost-button" type="button">
                 Restart Game
               </button>
             </div>
             <div class="hero-status">
-              <span id="voiceGameSupportStatus" class="status-pill status-muted">
-                Voice commands ready
-              </span>
-              <span id="voiceGameLiveStatus" class="status-pill status-idle">
-                Say "forward", "jump", or "stop"
+              <span id="recycleRushStatus" class="status-pill status-idle">
+                Press Start Sorting to begin
               </span>
             </div>
-            <div class="voice-command-button-row">
-              <button class="voice-command-button" data-voice-command-button="forward" type="button">
-                FORWARD
-              </button>
-              <button class="voice-command-button" data-voice-command-button="jump" type="button">
-                JUMP
-              </button>
-              <button class="voice-command-button" data-voice-command-button="stop" type="button">
-                STOP
-              </button>
-            </div>
-            <p id="voiceGameControlHint" class="manual-fallback-note">
-              If the microphone does not respond in your browser, you can keep
-              playing with these buttons too.
-            </p>
           </div>
           <aside class="camera-panel speech-side-panel">
             <div class="speech-side-card command-side-card">
-              <p class="panel-label">Command Words</p>
+              <p class="panel-label">Recycling Bins</p>
               <div class="command-pills">
-                <span class="command-pill">FORWARD</span>
-                <span class="command-pill">JUMP</span>
-                <span class="command-pill">STOP</span>
+                <span class="command-pill">PLASTIC</span>
+                <span class="command-pill">PAPER</span>
+                <span class="command-pill">GLASS</span>
+                <span class="command-pill">ORGANIC</span>
               </div>
               <p class="camera-hint">
-                Say <strong>forward</strong> to start running,
-                <strong>jump</strong> to jump over an obstacle, and
-                <strong>stop</strong> to stop the game.
+                A wrong bin or a missed item costs one life. You have
+                <strong>5 lives</strong>, so sort carefully and quickly.
               </p>
               <div class="voice-command-preview">
-                <p class="panel-label">Last Command</p>
-                <strong id="voiceGameLastCommand">Waiting...</strong>
+                <p class="panel-label">Current Item</p>
+                <strong id="recycleCurrentItemLabel">Press Start</strong>
               </div>
             </div>
           </aside>
         </header>
 
-        <main class="game-layout voice-game-layout">
+        <main class="game-layout">
           <section class="game-panel voice-game-panel">
             <div class="panel-topbar">
               <div>
                 <p class="panel-label">Mini Game</p>
-                <h2>Voice Runner</h2>
+                <h2>Recycle Rush</h2>
               </div>
               <div class="stats-row">
                 <div class="stat-card">
                   <span class="stat-label">Score</span>
-                  <strong id="voiceGameScoreValue">0</strong>
+                  <strong id="recycleScoreValue">0</strong>
                 </div>
                 <div class="stat-card">
-                  <span class="stat-label">Apples</span>
-                  <strong id="voiceGameApplesValue">0</strong>
+                  <span class="stat-label">Sorted</span>
+                  <strong id="recycleSortedValue">0/8</strong>
                 </div>
                 <div class="stat-card">
                   <span class="stat-label">Lives</span>
-                  <strong id="voiceGameHitsValue">0</strong>
+                  <strong id="recycleLivesValue">5</strong>
                 </div>
               </div>
             </div>
 
             <article class="voice-game-card">
-              <div id="voiceGameStage" class="voice-game-stage">
-                <div class="voice-game-sky">
-                  <span class="voice-cloud cloud-one"></span>
-                  <span class="voice-cloud cloud-two"></span>
-                  <span class="voice-cloud cloud-three"></span>
+              <div id="recycleStage" class="voice-game-stage recycle-stage">
+                <div id="recycleFallingItem" class="recycle-falling-item" hidden>
+                  <span id="recycleFallingIcon" class="recycle-falling-icon">🧴</span>
                 </div>
-                <div id="voiceGameObjects" class="voice-game-objects"></div>
-                <div id="voiceGamePlayer" class="voice-game-player">
-                  <span class="voice-game-avatar">🦖</span>
-                </div>
-                <div class="voice-game-ground">
-                  <span class="voice-game-grass"></span>
-                  <span class="voice-game-dirt"></span>
+                <div class="recycle-bins">
+                  <button class="recycle-bin" data-bin="plastic" type="button">
+                    <span class="recycle-bin-icon">🟡</span>
+                    Plastic
+                  </button>
+                  <button class="recycle-bin" data-bin="paper" type="button">
+                    <span class="recycle-bin-icon">🔵</span>
+                    Paper
+                  </button>
+                  <button class="recycle-bin" data-bin="glass" type="button">
+                    <span class="recycle-bin-icon">🟢</span>
+                    Glass
+                  </button>
+                  <button class="recycle-bin" data-bin="organic" type="button">
+                    <span class="recycle-bin-icon">🟤</span>
+                    Organic Waste
+                  </button>
                 </div>
               </div>
 
-            <div class="voice-game-info-grid">
+              <div class="voice-game-info-grid">
                 <div class="instruction-box">
                   <p class="instruction-label">Game Rules</p>
-                  <p id="voiceGameStateText" class="instruction-text">
-                    Start listening, say "forward", and jump over the crates.
+                  <p id="recycleRulesText" class="instruction-text">
+                    Press "Start Sorting" and click the correct bin before the item lands.
                   </p>
                 </div>
                 <div class="instruction-box">
-                  <p class="instruction-label">Heard Word</p>
-                  <p id="voiceGameHeardText" class="instruction-text">
-                    No command heard yet.
+                  <p class="instruction-label">Last Result</p>
+                  <p id="recycleResultText" class="instruction-text">
+                    No item sorted yet.
                   </p>
                 </div>
               </div>
@@ -393,190 +400,174 @@
 
             <div class="feature-switch-row">
               <button id="openFingerQuizFeatureButton" class="feature-switch-button" type="button">
-                Next section: Finger Quiz
+                Next section: Monster Battle
               </button>
             </div>
           </section>
 
           <section class="task-list-panel voice-game-side-panel">
             <div class="panel-heading">
-              <p class="panel-label">Main Commands</p>
-              <h3>Say a command and watch the game react</h3>
+              <p class="panel-label">Where does it go?</p>
+              <h3>Match each item to its bin</h3>
             </div>
 
             <div class="voice-game-legend">
               <div class="voice-legend-item">
-                <strong>FORWARD</strong>
-                <span>Starts running to the right</span>
+                <strong>PLASTIC</strong>
+                <span>Plastic bottles and plastic bags</span>
               </div>
               <div class="voice-legend-item">
-                <strong>JUMP</strong>
-                <span>Jumps over the next obstacle</span>
+                <strong>PAPER</strong>
+                <span>Newspapers and cardboard boxes</span>
               </div>
               <div class="voice-legend-item">
-                <strong>STOP</strong>
-                <span>Stops movement immediately</span>
+                <strong>GLASS</strong>
+                <span>Glass jars and glass bottles</span>
+              </div>
+              <div class="voice-legend-item">
+                <strong>ORGANIC WASTE</strong>
+                <span>Banana peels and apple cores</span>
               </div>
             </div>
 
             <div class="voice-game-log-card">
-              <p class="panel-label">Recent Commands</p>
-              <ul id="voiceGameCommandLog" class="voice-game-command-log"></ul>
+              <p class="panel-label">Sorting Log</p>
+              <ul id="recycleLog" class="voice-game-command-log"></ul>
             </div>
           </section>
         </main>
       </div>
     </div>
 
+    <!-- Section 4 · Monster Battle -->
     <div id="featureFourScreen" class="feature-screen">
       <div class="page-shell">
         <header class="hero hero-quiz">
           <div class="hero-copy">
             <p class="eyebrow">Section 4 · Eco-Dictionary</p>
-            <h1>Grow your eco-vocabulary with AI</h1>
+            <h1>Defeat the Pollution Monster</h1>
             <p class="hero-text">
-              An eco-dictionary helps you learn English faster by connecting new
-              words to real environmental ideas. Turn on the camera, and AI hand
-              tracking reads your fingers, 1, 2, or 3, to answer each question
-              and build your ecology vocabulary.
+              Each eco problem is an attack. Choose the best solution to hit
+              the monster. A wrong answer lets the monster strike back, so
+              use your ecology vocabulary wisely.
             </p>
             <div class="hero-actions">
               <button id="backToFeatureThreeButton" class="secondary-button" type="button">
                 Back to Third Section
               </button>
-              <button id="quizCameraButton" class="primary-button" type="button">
-                Start Camera
+              <button id="battleStartButton" class="primary-button" type="button">
+                Start Battle
               </button>
-              <button id="quizResetButton" class="ghost-button" type="button">
-                Restart Quiz
+              <button id="battleResetButton" class="ghost-button" type="button">
+                Restart Battle
               </button>
               <button id="openAiChatFeatureButton" class="ghost-button" type="button">
                 Open AI Photo Chat
               </button>
             </div>
-            <div class="hero-status">
-              <span id="quizCameraStatus" class="status-pill status-idle">
-                Camera off
-              </span>
-              <span id="quizGestureStatus" class="status-pill status-muted">
-                Turn on the camera and show 1, 2, or 3 fingers
-              </span>
-            </div>
           </div>
-          <aside class="camera-panel">
-            <div class="camera-frame">
-              <video id="quizCameraVideo" autoplay playsinline muted></video>
-              <canvas id="quizCameraCanvas"></canvas>
+          <aside class="camera-panel speech-side-panel">
+            <div class="speech-side-card">
+              <p class="panel-label">Battle Status</p>
+              <h3>Correct answer = −10% monster HP</h3>
+              <p class="camera-hint">
+                A wrong answer costs you 20% HP. Bring the monster down to 0%
+                before your own HP runs out.
+              </p>
+              <span id="battleStatus" class="status-pill status-idle">
+                Press Start Battle to begin
+              </span>
+              <div class="voice-command-preview">
+                <p class="panel-label">Current Problem</p>
+                <strong id="battleCurrentProblemLabel">Recycle</strong>
+              </div>
             </div>
-            <p class="camera-hint">
-              Hand answer rule:
-              <strong>1 finger = option 1</strong>,
-              <strong>2 fingers = option 2</strong>,
-              <strong>3 fingers = option 3</strong>.
-            </p>
           </aside>
         </header>
 
-        <main class="game-layout quiz-layout">
+        <main class="game-layout">
           <section class="game-panel quiz-game-panel">
             <div class="panel-topbar">
               <div>
-                <p class="panel-label">Quiz</p>
-                <h2 id="quizTaskTitle">1 / 10</h2>
+                <p class="panel-label">Battle Round</p>
+                <h2 id="battleTaskTitle">1 / 10</h2>
               </div>
               <div class="stats-row">
                 <div class="stat-card">
                   <span class="stat-label">Score</span>
-                  <strong id="quizScoreValue">0</strong>
+                  <strong id="battleScoreValue">0</strong>
                 </div>
                 <div class="stat-card">
-                  <span class="stat-label">Completed</span>
-                  <strong id="quizProgressValue">0/10</strong>
-                </div>
-                <div class="stat-card">
-                  <span class="stat-label">Fingers</span>
-                  <strong id="quizDetectedValue">0</strong>
+                  <span class="stat-label">Answered</span>
+                  <strong id="battleProgressValue">0/10</strong>
                 </div>
               </div>
             </div>
 
             <article class="task-card quiz-task-card">
-              <div class="quiz-question-card">
+              <div class="task-image-wrap">
                 <div class="quiz-image-frame">
-                  <img id="quizQuestionImage" class="quiz-question-image" src="" alt="" draggable="false" />
+                  <img id="battleProblemImage" class="quiz-question-image" src="" alt="" draggable="false" />
                 </div>
                 <div class="quiz-question-overlay" aria-hidden="true"></div>
-                <div class="quiz-question-badge">
-                  <span class="badge-eyebrow">Word</span>
-                  <div id="quizQuestionNumber" class="quiz-question-number">01</div>
+                <div class="task-badge">
+                  <span id="battleTaskIndexBadge">01</span>
                 </div>
-                <div class="quiz-caption">
-                  <p id="quizHintText" class="quiz-hint-text">
-                    Show 1, 2, or 3 fingers and hold for a moment.
-                  </p>
-                  <p id="quizDetectedText" class="manual-fallback-note quiz-detected-text">
-                    The camera is waiting for your hand.
-                  </p>
+                <div class="battle-monster-row">
+                  <span id="battleMonsterAvatar" class="battle-avatar">👾</span>
+                  <div class="battle-hp-wrap">
+                    <div class="battle-hp-label">
+                      <span>Pollution Monster</span>
+                      <span id="battleMonsterHpText">100%</span>
+                    </div>
+                    <div class="battle-hp-bar">
+                      <div id="battleMonsterHpFill" class="battle-hp-fill battle-hp-fill-monster"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div class="task-content">
+                <div class="battle-player-row">
+                  <span id="battlePlayerAvatar" class="battle-avatar">🦸</span>
+                  <div class="battle-hp-wrap">
+                    <div class="battle-hp-label">
+                      <span>Eco Hero (You)</span>
+                      <span id="battlePlayerHpText">100%</span>
+                    </div>
+                    <div class="battle-hp-bar">
+                      <div id="battlePlayerHpFill" class="battle-hp-fill battle-hp-fill-player"></div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="instruction-box">
-                  <p class="instruction-label">Question</p>
-                  <p id="quizQuestionText" class="instruction-text">
-                    The question text will appear here.
+                  <p class="instruction-label">Eco Problem</p>
+                  <p id="battleProblemText" class="instruction-text">
+                    The problem text will appear here.
                   </p>
                 </div>
 
-                <div id="quizOptions" class="quiz-options"></div>
+                <div id="battleOptions" class="quiz-options"></div>
 
                 <div class="task-feedback">
-                  <p id="quizFeedbackText" class="feedback-text">
-                    Turn on the camera and answer the question with your fingers.
+                  <p id="battleFeedbackText" class="feedback-text">
+                    Choose the best solution to attack the monster.
                   </p>
                 </div>
               </div>
             </article>
-
-            <div class="navigation-row">
-              <button id="quizPrevButton" class="secondary-button" type="button">Back</button>
-              <button id="quizNextButton" class="secondary-button" type="button">Next</button>
-            </div>
           </section>
 
           <section class="task-list-panel quiz-side-panel">
             <div class="panel-heading">
-              <p class="panel-label">Questions</p>
-              <h3>10 questions selected with fingers</h3>
-            </div>
-
-            <div class="quiz-idea-card">
-              <p>👉 Camera is on</p>
-              <p>👉 The student shows fingers:</p>
-              <p>☝️ = Option 1</p>
-              <p>✌️ = Option 2</p>
-              <p>🤟 = Option 3</p>
-              <p>👉 The system reads the gesture and selects the answer</p>
-            </div>
-
-            <div class="voice-game-legend quiz-legend-card">
-              <div class="voice-legend-item">
-                <strong>1 FINGER</strong>
-                <span>Selects the first answer option</span>
-              </div>
-              <div class="voice-legend-item">
-                <strong>2 FINGERS</strong>
-                <span>Selects the second answer option</span>
-              </div>
-              <div class="voice-legend-item">
-                <strong>3 FINGERS</strong>
-                <span>Selects the third answer option</span>
-              </div>
+              <p class="panel-label">Battle Rounds</p>
+              <h3>10 eco problems</h3>
             </div>
 
             <div class="voice-game-log-card">
-              <p class="panel-label">All Questions</p>
-              <div id="quizQuestionList" class="task-list"></div>
+              <p class="panel-label">All Rounds</p>
+              <div id="battleTaskList" class="task-list"></div>
             </div>
 
             <div class="feature-switch-row">
@@ -708,45 +699,12 @@
       </div>
     </div>
 
-    <div id="quizResultsOverlay" class="quiz-results-overlay" hidden>
-      <div id="quizResultsConfetti" class="quiz-results-confetti" aria-hidden="true"></div>
-      <div class="quiz-results-card">
-        <p class="quiz-results-eyebrow">Eco-Dictionary · Quiz Complete</p>
-        <h2 id="quizResultsHeadline" class="quiz-results-headline">Great job!</h2>
-
-        <div class="quiz-results-score-ring">
-          <svg viewBox="0 0 200 200" class="quiz-results-ring-svg">
-            <circle cx="100" cy="100" r="86" class="ring-track"></circle>
-            <circle id="quizResultsRingProgress" cx="100" cy="100" r="86" class="ring-progress"></circle>
-          </svg>
-          <div class="quiz-results-score-value">
-            <span id="quizResultsScoreNumber">0</span>
-            <span class="quiz-results-score-max">/100</span>
-          </div>
-        </div>
-
-        <p id="quizResultsSubtext" class="quiz-results-subtext">
-          You learned 10 of 10 new ecology words correctly.
-        </p>
-
-        <div id="quizResultsWords" class="quiz-results-words"></div>
-
-        <div class="quiz-results-actions">
-          <button id="quizResultsRestartButton" class="primary-button" type="button">
-            Restart Quiz
-          </button>
-          <button id="quizResultsCloseButton" class="ghost-button" type="button">
-            Review Answers
-          </button>
-        </div>
-      </div>
-    </div>
     <div id="cursor" class="hand-cursor hidden"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="./app.js?v=20260930-vocab-chat"></script>
+    <script src="./app.js?v=20261011-games"></script>
     <script src="./english-3d.js?v=20260421-2015"></script>
   </body>
 </html>

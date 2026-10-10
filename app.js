@@ -77,188 +77,164 @@ const tasks = [
   scrambled: shuffleArray([...task.answer]),
 }));
 
-const speechTasks = [
+const cityTasks = [
   {
-    id: "speech-eco-planting",
-    title: "Planting a Tree",
-    prompt: "Look at the picture and say what the girl is doing in a complete English sentence.",
-    example: "The girl is planting a tree.",
-    image: `./assets/images/speech-eco-01-planting.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["girl", "kid", "child", "she", "boy", "he"],
-      ["plant", "planting", "plants"],
-      ["tree", "sapling", "seedling"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
+    id: "city-recycle",
+    layer: "recycle",
+    icon: "♻️",
+    title: "Recycle",
+    prompt: "Plastic bottles and old paper are piling up on the street. What should the city do with them?",
+    options: ["Throw them on the street", "Recycle them in the correct bins", "Burn them in the yard"],
+    correctIndex: 1,
+    fact: "Recycling turns used bottles and paper into new products and keeps trash out of landfills.",
   },
   {
-    id: "speech-eco-recycling",
-    title: "Recycling Bottles",
-    prompt: "Look at the picture and say what the boy is doing in English.",
-    example: "The boy is recycling a plastic bottle.",
-    image: `./assets/images/speech-eco-02-recycling.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["boy", "kid", "child", "he", "girl", "she"],
-      ["recycle", "recycling", "recycles"],
-      ["plastic", "bottle", "bottles", "waste"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
+    id: "city-pollution",
+    layer: "pollution",
+    icon: "🌫️",
+    title: "Pollution",
+    prompt: "Thick gray smoke is covering the sky above the city. What is this problem called?",
+    options: ["Pollution", "Decoration", "Celebration"],
+    correctIndex: 0,
+    fact: "Pollution is dirty air, water, or soil caused by harmful waste and smoke.",
   },
   {
-    id: "speech-eco-bicycle",
-    title: "Riding a Bicycle",
-    prompt: "Look at the picture and say what the boy is doing to help the environment.",
-    example: "The boy is riding a bicycle instead of a car.",
-    image: `./assets/images/speech-eco-03-bicycle.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["boy", "kid", "child", "he", "girl", "she", "man", "woman"],
-      ["ride", "riding", "rides", "cycle", "cycling"],
-      ["bicycle", "bike"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
+    id: "city-renewable",
+    layer: "renewable",
+    icon: "☀️",
+    title: "Renewable Energy",
+    prompt: "The power plant burns coal and makes dark smoke. Which clean energy source could replace it?",
+    options: ["More coal", "Solar and wind power", "More plastic"],
+    correctIndex: 1,
+    fact: "Renewable energy, like sunlight and wind, never runs out and does not pollute the air.",
   },
   {
-    id: "speech-eco-cleanup",
-    title: "Cleaning the Beach",
-    prompt: "Look at the picture and say what the kids are doing in a complete English sentence.",
-    example: "The kids are picking up trash from the beach.",
-    image: `./assets/images/speech-eco-04-cleanup.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["kid", "kids", "boy", "girl", "children", "he", "she", "they"],
-      ["pick", "picking", "collect", "collecting", "clean", "cleaning"],
-      ["trash", "litter", "rubbish", "garbage", "waste", "beach"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
+    id: "city-waste",
+    layer: "waste",
+    icon: "🗑️",
+    title: "Waste",
+    prompt: "Food wrappers and bottles are scattered across the sidewalk. What do we call this kind of rubbish?",
+    options: ["Treasure", "Waste", "Furniture"],
+    correctIndex: 1,
+    fact: "Waste is rubbish that people throw away. Reducing it keeps cities clean and healthy.",
   },
   {
-    id: "speech-eco-watering",
-    title: "Watering Plants",
-    prompt: "Look at the picture and say what the girl is doing in the garden.",
-    example: "The girl is watering the plants.",
-    image: `./assets/images/speech-eco-05-watering.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["girl", "boy", "kid", "she", "he", "child"],
-      ["water", "watering", "waters"],
-      ["plant", "plants", "garden", "flowers"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
-  },
-  {
-    id: "speech-eco-solar",
-    title: "Installing Solar Panels",
-    prompt: "Look at the picture and say what the man is doing on the roof.",
-    example: "The man is installing solar panels.",
-    image: `./assets/images/speech-eco-06-solar.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["man", "woman", "he", "she", "worker", "person"],
-      ["install", "installing", "installs", "fix", "fixing", "set up", "setting"],
-      ["solar", "panel", "panels"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
-  },
-  {
-    id: "speech-eco-sorting",
-    title: "Sorting Waste",
-    prompt: "Look at the picture and say what the family is doing in a complete English sentence.",
-    example: "The family is sorting waste into recycling bins.",
-    image: `./assets/images/speech-eco-07-sorting.jpg?v=${ASSET_VERSION}`,
-    required: [
-      ["family", "boy", "girl", "kid", "he", "she", "they"],
-      ["sort", "sorting", "separate", "separating"],
-      ["waste", "recycling", "trash", "garbage", "bin", "bins"],
-    ],
-    mustInclude: [1, 2],
-    minGroups: 2,
+    id: "city-deforestation",
+    layer: "deforestation",
+    icon: "🌳",
+    title: "Deforestation",
+    prompt: "All the trees near the city were cut down and only stumps are left. What is this problem called?",
+    options: ["Deforestation", "Construction", "Irrigation"],
+    correctIndex: 0,
+    fact: "Deforestation is cutting down large areas of forest. Planting new trees helps the planet breathe.",
   },
 ].map((task, index) => ({
   ...task,
   order: index + 1,
 }));
 
-const quizTasks = [
+const recycleItems = [
+  { id: "plastic-bottle", icon: "🧴", label: "Plastic bottle", bin: "plastic" },
+  { id: "plastic-bag", icon: "🛍️", label: "Plastic bag", bin: "plastic" },
+  { id: "newspaper", icon: "📰", label: "Newspaper", bin: "paper" },
+  { id: "cardboard-box", icon: "📦", label: "Cardboard box", bin: "paper" },
+  { id: "glass-jar", icon: "🫙", label: "Glass jar", bin: "glass" },
+  { id: "glass-bottle", icon: "🍾", label: "Glass bottle", bin: "glass" },
+  { id: "banana-peel", icon: "🍌", label: "Banana peel", bin: "organic" },
+  { id: "apple-core", icon: "🍎", label: "Apple core", bin: "organic" },
+].map((item, index) => ({
+  ...item,
+  order: index + 1,
+}));
+
+const RECYCLE_BIN_LABELS = {
+  plastic: "Plastic",
+  paper: "Paper",
+  glass: "Glass",
+  organic: "Organic Waste",
+};
+
+const RECYCLE_FALL_DURATION_MS = 3600;
+const RECYCLE_START_LIVES = 5;
+
+const battleProblems = [
   {
-    id: "quiz-recycle",
+    id: "battle-recycle",
     title: "Recycle",
-    prompt: "Which word means to use something again instead of throwing it away?",
-    options: ["Recycle", "Waste", "Ignore"],
+    prompt: "Plastic bottles are piling up in the regular trash instead of being reused.",
+    options: ["Recycle them in the correct bin", "Burn them in the garden", "Leave them on the street"],
     correctIndex: 0,
     image: `./assets/images/eco-recycle.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-pollution",
+    id: "battle-pollution",
     title: "Pollution",
-    prompt: "What do we call dirty air, water, or soil caused by harmful substances?",
-    options: ["Pollution", "Decoration", "Celebration"],
-    correctIndex: 0,
+    prompt: "Thick black smoke is filling the sky above the factory.",
+    options: ["Burn more coal for power", "Reduce the factory's smoke and waste", "Ignore the smoke"],
+    correctIndex: 1,
     image: `./assets/images/eco-pollution.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-renewable",
-    title: "Renewable",
-    prompt: "Which word describes energy that never runs out, like sunlight or wind?",
-    options: ["Renewable", "Disposable", "Artificial"],
-    correctIndex: 0,
+    id: "battle-renewable",
+    title: "Renewable Energy",
+    prompt: "The city needs more electricity, but burning coal pollutes the air.",
+    options: ["Build more coal power plants", "Use solar and wind power", "Waste more electricity"],
+    correctIndex: 1,
     image: `./assets/images/eco-renewable.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-climate",
-    title: "Climate change",
-    prompt: "What do we call the long-term change in the Earth's weather patterns?",
-    options: ["Climate change", "Fashion trend", "Time zone"],
-    correctIndex: 0,
+    id: "battle-climate",
+    title: "Climate Change",
+    prompt: "Average temperatures keep rising around the world every year.",
+    options: ["Drive petrol cars more often", "Use renewable energy and plant trees", "Cut down more forests"],
+    correctIndex: 1,
     image: `./assets/images/eco-climate-change.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-deforestation",
+    id: "battle-deforestation",
     title: "Deforestation",
-    prompt: "What do we call cutting down large areas of forest?",
-    options: ["Deforestation", "Construction", "Irrigation"],
+    prompt: "A large forest was cut down to build a new road.",
+    options: ["Plant trees", "Use more plastic", "Waste water"],
     correctIndex: 0,
     image: `./assets/images/eco-deforestation.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-endangered",
-    title: "Endangered",
-    prompt: "Animals that are at risk of disappearing forever are called...?",
-    options: ["Endangered", "Domesticated", "Imaginary"],
+    id: "battle-endangered",
+    title: "Endangered Animals",
+    prompt: "Hunters are chasing the last wild tigers in the forest.",
+    options: ["Protect their habitat from hunting", "Hunt more wild animals", "Destroy their forest home"],
     correctIndex: 0,
     image: `./assets/images/eco-endangered.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-compost",
-    title: "Compost",
-    prompt: "What do we call decayed food and plant material used to enrich soil?",
-    options: ["Compost", "Cement", "Plastic"],
-    correctIndex: 0,
+    id: "battle-compost",
+    title: "Food Waste",
+    prompt: "The kitchen bin is full of banana peels and vegetable scraps.",
+    options: ["Throw the food scraps in the trash", "Make compost from the food scraps", "Burn the food scraps"],
+    correctIndex: 1,
     image: `./assets/images/eco-compost.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-sustainability",
+    id: "battle-sustainability",
     title: "Sustainability",
-    prompt: "Using resources today in a way that protects them for the future is called...?",
-    options: ["Sustainability", "Consumption", "Extraction"],
+    prompt: "A factory uses up all of its resources today with no plan for tomorrow.",
+    options: ["Use resources sustainably for the future", "Use up every resource right now", "Ignore future generations"],
     correctIndex: 0,
     image: `./assets/images/eco-sustainability.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-ocean-plastic",
-    title: "Plastic",
-    prompt: "Which material is a major cause of ocean pollution?",
-    options: ["Plastic", "Cotton", "Wood"],
+    id: "battle-ocean-plastic",
+    title: "Ocean Plastic",
+    prompt: "Plastic bags and bottles are floating in the ocean.",
+    options: ["Use reusable bags and bottles", "Throw more plastic into the sea", "Burn plastic on the beach"],
     correctIndex: 0,
     image: `./assets/images/eco-ocean-plastic.jpg?v=${ASSET_VERSION}`,
   },
   {
-    id: "quiz-carbon-footprint",
-    title: "Carbon footprint",
-    prompt: "The amount of carbon dioxide a person or activity produces is called a...?",
-    options: ["Carbon footprint", "Shoe size", "Water level"],
+    id: "battle-carbon-footprint",
+    title: "Carbon Footprint",
+    prompt: "A family flies or drives everywhere, even for very short trips.",
+    options: ["Walk, cycle, or use public transport", "Fly more often for fun", "Drive alone every day"],
     correctIndex: 0,
     image: `./assets/images/eco-carbon-footprint.jpg?v=${ASSET_VERSION}`,
   },
@@ -320,28 +296,23 @@ const vocabWords = [
   },
 ];
 
-function shuffleQuizOptions() {
-  quizTasks.forEach((task) => {
-    if (!task.baseOptions) {
-      task.baseOptions = task.options.slice();
-      task.baseCorrectIndex = task.correctIndex;
+function shuffleBattleOptions() {
+  battleProblems.forEach((problem) => {
+    if (!problem.baseOptions) {
+      problem.baseOptions = problem.options.slice();
+      problem.baseCorrectIndex = problem.correctIndex;
     }
 
-    const order = task.baseOptions.map((_, i) => i);
+    const order = problem.baseOptions.map((_, i) => i);
     for (let i = order.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
       [order[i], order[j]] = [order[j], order[i]];
     }
 
-    task.options = order.map((originalIndex) => task.baseOptions[originalIndex]);
-    task.correctIndex = order.indexOf(task.baseCorrectIndex);
+    problem.options = order.map((originalIndex) => problem.baseOptions[originalIndex]);
+    problem.correctIndex = order.indexOf(problem.baseCorrectIndex);
   });
 }
-
-const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
-const requestFrame =
-  window.requestAnimationFrame?.bind(window) ||
-  (() => 0);
 
 const state = {
   activeFeature: "featureOne",
@@ -368,51 +339,35 @@ const state = {
     cameraFeed: null,
     ownerFeature: "",
   },
-  speech: {
-    supported: Boolean(SpeechRecognitionCtor),
-    recognition: null,
-    listening: false,
-    fallbackToTyping: false,
+  city: {
     currentTaskIndex: 0,
-    completed: Array(speechTasks.length).fill(false),
+    answers: Array(cityTasks.length).fill(null),
+    completed: Array(cityTasks.length).fill(false),
     score: 0,
-    transcript: "",
-    hintVisible: false,
   },
-  voiceGame: {
-    supported: Boolean(SpeechRecognitionCtor),
-    recognition: null,
-    listening: false,
-    fallbackToButtons: false,
+  recycle: {
     running: false,
     gameOver: false,
+    queue: [],
+    queueIndex: 0,
     score: 0,
-    apples: 0,
-    hits: 0,
-    lastCommand: "Waiting...",
-    heardText: "No command heard yet.",
-    commandLog: [],
-    playerY: 0,
-    velocityY: 0,
-    objects: [],
-    nextSpawnInMs: 780,
-    lastFrameTime: 0,
-    loopStarted: false,
-    objectSerial: 0,
+    sorted: 0,
+    lives: RECYCLE_START_LIVES,
+    log: [],
+    currentItem: null,
+    fallTimer: null,
   },
-  quiz: {
-    currentTaskIndex: 0,
-    answers: Array(quizTasks.length).fill(null),
+  battle: {
+    currentIndex: 0,
+    running: false,
+    gameOver: false,
+    outcome: "",
     score: 0,
-    detectedFingers: 0,
-    recentFingerCounts: [],
-    lastGestureCount: 0,
-    holdStartedAt: 0,
-    holdProgress: 0,
-    gestureLockedUntil: 0,
+    hits: 0,
+    monsterHp: 100,
+    playerHp: 100,
+    answers: Array(battleProblems.length).fill(null),
     autoAdvanceTimer: null,
-    resultsShown: false,
-    resultsTimer: null,
   },
   chat: {
     selectedFile: null,
@@ -426,27 +381,6 @@ const GESTURE_HOTZONE = {
   xMax: 0.98,
   yMin: 0.04,
   yMax: 0.96,
-};
-
-const VOICE_GAME_CONFIG = {
-  stageWidth: 960,
-  playerX: 104,
-  playerWidth: 64,
-  playerHeight: 76,
-  maxLives: 10,
-  gravity: 1820,
-  jumpVelocity: 760,
-  runSpeed: 205,
-  groundBottom: 58,
-  initialSpawnDelayMin: 3200,
-  initialSpawnDelayMax: 4200,
-  spawnDelayMin: 2800,
-  spawnDelayMax: 4200,
-  crateSpawnOffsetMin: 280,
-  crateSpawnOffsetMax: 520,
-  appleOffsetMin: 140,
-  appleOffsetMax: 220,
-  appleSpawnChance: 0.45,
 };
 
 const elements = {
@@ -500,74 +434,56 @@ const elements = {
   cameraCanvas: document.querySelector("#cameraCanvas"),
   cursor: document.querySelector("#cursor"),
   backToFeatureOneButton: document.querySelector("#backToFeatureOneButton"),
-  speechListenButton: document.querySelector("#speechListenButton"),
-  speechCheckButton: document.querySelector("#speechCheckButton"),
-  speechHintButton: document.querySelector("#speechHintButton"),
-  speechSupportStatus: document.querySelector("#speechSupportStatus"),
-  speechLiveStatus: document.querySelector("#speechLiveStatus"),
-  speechTaskTitle: document.querySelector("#speechTaskTitle"),
-  speechTaskInstruction: document.querySelector("#speechTaskInstruction"),
-  speechTaskImage: document.querySelector("#speechTaskImage"),
-  speechTaskIndexBadge: document.querySelector("#speechTaskIndexBadge"),
-  speechTranscript: document.querySelector("#speechTranscript"),
-  speechTranscriptStatus: document.querySelector("#speechTranscriptStatus"),
-  speechManualFallback: document.querySelector("#speechManualFallback"),
-  speechFeedbackText: document.querySelector("#speechFeedbackText"),
-  speechScoreValue: document.querySelector("#speechScoreValue"),
-  speechProgressValue: document.querySelector("#speechProgressValue"),
-  speechTaskList: document.querySelector("#speechTaskList"),
-  speechModelText: document.querySelector("#speechModelText"),
-  speechPrevButton: document.querySelector("#speechPrevButton"),
-  speechNextButton: document.querySelector("#speechNextButton"),
+  cityRestartButton: document.querySelector("#cityRestartButton"),
+  cityHealthStatus: document.querySelector("#cityHealthStatus"),
+  cityTaskTitle: document.querySelector("#cityTaskTitle"),
+  cityTaskInstruction: document.querySelector("#cityTaskInstruction"),
+  cityTaskIndexBadge: document.querySelector("#cityTaskIndexBadge"),
+  cityScene: document.querySelector("#cityScene"),
+  cityOptions: document.querySelector("#cityOptions"),
+  cityFeedbackText: document.querySelector("#cityFeedbackText"),
+  cityScoreValue: document.querySelector("#cityScoreValue"),
+  cityProgressValue: document.querySelector("#cityProgressValue"),
+  cityTaskList: document.querySelector("#cityTaskList"),
+  cityPrevButton: document.querySelector("#cityPrevButton"),
+  cityNextButton: document.querySelector("#cityNextButton"),
   openVoiceGameFeatureButton: document.querySelector("#openVoiceGameFeatureButton"),
   backToFeatureTwoButton: document.querySelector("#backToFeatureTwoButton"),
-  voiceGameListenButton: document.querySelector("#voiceGameListenButton"),
-  voiceGameResetButton: document.querySelector("#voiceGameResetButton"),
-  voiceGameControlHint: document.querySelector("#voiceGameControlHint"),
-  voiceGameCommandButtons: document.querySelectorAll("[data-voice-command-button]"),
-  voiceGameSupportStatus: document.querySelector("#voiceGameSupportStatus"),
-  voiceGameLiveStatus: document.querySelector("#voiceGameLiveStatus"),
-  voiceGameLastCommand: document.querySelector("#voiceGameLastCommand"),
-  voiceGameScoreValue: document.querySelector("#voiceGameScoreValue"),
-  voiceGameApplesValue: document.querySelector("#voiceGameApplesValue"),
-  voiceGameHitsValue: document.querySelector("#voiceGameHitsValue"),
-  voiceGameStage: document.querySelector("#voiceGameStage"),
-  voiceGameObjects: document.querySelector("#voiceGameObjects"),
-  voiceGamePlayer: document.querySelector("#voiceGamePlayer"),
-  voiceGameStateText: document.querySelector("#voiceGameStateText"),
-  voiceGameHeardText: document.querySelector("#voiceGameHeardText"),
-  voiceGameCommandLog: document.querySelector("#voiceGameCommandLog"),
+  recycleStartButton: document.querySelector("#recycleStartButton"),
+  recycleResetButton: document.querySelector("#recycleResetButton"),
+  recycleRushStatus: document.querySelector("#recycleRushStatus"),
+  recycleCurrentItemLabel: document.querySelector("#recycleCurrentItemLabel"),
+  recycleScoreValue: document.querySelector("#recycleScoreValue"),
+  recycleSortedValue: document.querySelector("#recycleSortedValue"),
+  recycleLivesValue: document.querySelector("#recycleLivesValue"),
+  recycleStage: document.querySelector("#recycleStage"),
+  recycleFallingItem: document.querySelector("#recycleFallingItem"),
+  recycleFallingIcon: document.querySelector("#recycleFallingIcon"),
+  recycleBins: document.querySelectorAll("[data-bin]"),
+  recycleRulesText: document.querySelector("#recycleRulesText"),
+  recycleResultText: document.querySelector("#recycleResultText"),
+  recycleLog: document.querySelector("#recycleLog"),
   openFingerQuizFeatureButton: document.querySelector("#openFingerQuizFeatureButton"),
   backToFeatureThreeButton: document.querySelector("#backToFeatureThreeButton"),
-  quizCameraButton: document.querySelector("#quizCameraButton"),
-  quizResetButton: document.querySelector("#quizResetButton"),
-  quizCameraStatus: document.querySelector("#quizCameraStatus"),
-  quizGestureStatus: document.querySelector("#quizGestureStatus"),
-  quizCameraVideo: document.querySelector("#quizCameraVideo"),
-  quizCameraCanvas: document.querySelector("#quizCameraCanvas"),
-  quizTaskTitle: document.querySelector("#quizTaskTitle"),
-  quizQuestionNumber: document.querySelector("#quizQuestionNumber"),
-  quizQuestionText: document.querySelector("#quizQuestionText"),
-  quizQuestionImage: document.querySelector("#quizQuestionImage"),
-  quizHintText: document.querySelector("#quizHintText"),
-  quizDetectedValue: document.querySelector("#quizDetectedValue"),
-  quizDetectedText: document.querySelector("#quizDetectedText"),
-  quizFeedbackText: document.querySelector("#quizFeedbackText"),
-  quizScoreValue: document.querySelector("#quizScoreValue"),
-  quizProgressValue: document.querySelector("#quizProgressValue"),
-  quizOptions: document.querySelector("#quizOptions"),
-  quizPrevButton: document.querySelector("#quizPrevButton"),
-  quizNextButton: document.querySelector("#quizNextButton"),
-  quizQuestionList: document.querySelector("#quizQuestionList"),
-  quizResultsOverlay: document.querySelector("#quizResultsOverlay"),
-  quizResultsConfetti: document.querySelector("#quizResultsConfetti"),
-  quizResultsHeadline: document.querySelector("#quizResultsHeadline"),
-  quizResultsSubtext: document.querySelector("#quizResultsSubtext"),
-  quizResultsScoreNumber: document.querySelector("#quizResultsScoreNumber"),
-  quizResultsRingProgress: document.querySelector("#quizResultsRingProgress"),
-  quizResultsWords: document.querySelector("#quizResultsWords"),
-  quizResultsRestartButton: document.querySelector("#quizResultsRestartButton"),
-  quizResultsCloseButton: document.querySelector("#quizResultsCloseButton"),
+  battleStartButton: document.querySelector("#battleStartButton"),
+  battleResetButton: document.querySelector("#battleResetButton"),
+  battleStatus: document.querySelector("#battleStatus"),
+  battleCurrentProblemLabel: document.querySelector("#battleCurrentProblemLabel"),
+  battleTaskTitle: document.querySelector("#battleTaskTitle"),
+  battleTaskIndexBadge: document.querySelector("#battleTaskIndexBadge"),
+  battleProblemImage: document.querySelector("#battleProblemImage"),
+  battleProblemText: document.querySelector("#battleProblemText"),
+  battleOptions: document.querySelector("#battleOptions"),
+  battleFeedbackText: document.querySelector("#battleFeedbackText"),
+  battleScoreValue: document.querySelector("#battleScoreValue"),
+  battleProgressValue: document.querySelector("#battleProgressValue"),
+  battleMonsterAvatar: document.querySelector("#battleMonsterAvatar"),
+  battleMonsterHpFill: document.querySelector("#battleMonsterHpFill"),
+  battleMonsterHpText: document.querySelector("#battleMonsterHpText"),
+  battlePlayerAvatar: document.querySelector("#battlePlayerAvatar"),
+  battlePlayerHpFill: document.querySelector("#battlePlayerHpFill"),
+  battlePlayerHpText: document.querySelector("#battlePlayerHpText"),
+  battleTaskList: document.querySelector("#battleTaskList"),
 };
 
 bootstrap();
@@ -575,15 +491,11 @@ bootstrap();
 function bootstrap() {
   renderTaskList();
   renderCurrentTask();
-  renderSpeechTask();
-  resetVoiceGame();
-  shuffleQuizOptions();
-  renderQuiz();
+  renderCityGame();
+  resetRecycleGame();
+  resetBattle();
   renderVocabGrid();
   bindUI();
-  initSpeechRecognition();
-  initVoiceGameRecognition();
-  startVoiceGameLoop();
   showFeature("featureOne");
   window.addEventListener("resize", handleResize);
   handleResize();
@@ -598,26 +510,17 @@ function bindUI() {
   elements.cameraButton.addEventListener("click", toggleCamera);
   elements.openSpeechFeatureButton.addEventListener("click", () => showFeature("featureTwo"));
   elements.backToFeatureOneButton.addEventListener("click", () => showFeature("featureOne"));
-  elements.speechListenButton.addEventListener("click", toggleSpeechListening);
-  elements.speechCheckButton.addEventListener("click", checkSpeechTask);
-  elements.speechHintButton.addEventListener("click", toggleSpeechHint);
-  elements.speechPrevButton.addEventListener("click", () => moveSpeechTask(-1));
-  elements.speechNextButton.addEventListener("click", () => moveSpeechTask(1));
+  elements.cityRestartButton.addEventListener("click", resetCityGame);
+  elements.cityPrevButton.addEventListener("click", () => moveCityTask(-1));
+  elements.cityNextButton.addEventListener("click", () => moveCityTask(1));
   elements.openVoiceGameFeatureButton.addEventListener("click", () => showFeature("featureThree"));
   elements.backToFeatureTwoButton.addEventListener("click", () => showFeature("featureTwo"));
   elements.openFingerQuizFeatureButton.addEventListener("click", () => showFeature("featureFour"));
   elements.backToFeatureThreeButton.addEventListener("click", () => showFeature("featureThree"));
-  elements.voiceGameListenButton.addEventListener("click", toggleVoiceGameListening);
-  elements.voiceGameResetButton.addEventListener("click", resetVoiceGame);
-  elements.quizCameraButton.addEventListener("click", toggleCamera);
-  elements.quizResetButton.addEventListener("click", resetQuiz);
-  elements.quizPrevButton.addEventListener("click", () => moveQuizTask(-1));
-  elements.quizNextButton.addEventListener("click", () => moveQuizTask(1));
-  elements.quizResultsRestartButton.addEventListener("click", () => {
-    hideQuizResults();
-    resetQuiz();
-  });
-  elements.quizResultsCloseButton.addEventListener("click", hideQuizResults);
+  elements.recycleStartButton.addEventListener("click", toggleRecycleGame);
+  elements.recycleResetButton.addEventListener("click", resetRecycleGame);
+  elements.battleStartButton.addEventListener("click", toggleBattle);
+  elements.battleResetButton.addEventListener("click", resetBattle);
   elements.openAiChatFeatureButton.addEventListener("click", () => showFeature("featureFive"));
   elements.openAiChatFeatureButtonBottom.addEventListener("click", () => showFeature("featureFive"));
   elements.backToFeatureFourButton.addEventListener("click", () => showFeature("featureFour"));
@@ -634,13 +537,10 @@ function bindUI() {
     }
   });
   elements.chatSendButton.addEventListener("click", sendChatMessage);
-  elements.voiceGameCommandButtons.forEach((button) => {
+  elements.recycleBins.forEach((button) => {
     button.addEventListener("click", () => {
-      triggerVoiceGameButtonCommand(button.dataset.voiceCommandButton);
+      handleRecycleBinClick(button.dataset.bin);
     });
-  });
-  elements.speechTranscript.addEventListener("input", () => {
-    state.speech.transcript = elements.speechTranscript.value;
   });
 }
 
@@ -668,607 +568,93 @@ function showFeature(featureName) {
     elements.cursor.classList.add("hidden");
   }
 
-  if (!showSecond && state.speech.listening) {
-    stopSpeechListening();
+  if (!showThird && state.recycle.running) {
+    pauseRecycleGame();
   }
 
-  if (!showThird && state.voiceGame.listening) {
-    stopVoiceGameListening();
-  }
-
-  if (!showFourth) {
-    clearQuizAutoAdvance();
-    resetQuizGestureTracking();
+  if (!showFourth && state.battle.running) {
+    pauseBattle();
   }
 
   if (showSecond) {
-    renderSpeechTask();
+    renderCityGame();
   }
 
   if (showThird) {
-    renderVoiceGame();
+    renderRecycleGame();
   }
 
   if (showFourth) {
-    renderQuiz();
-    setQuizIdleStatuses();
+    renderBattle();
   }
 
-  if (showFirst || showFourth) {
+  if (showFirst) {
     handleResize();
   }
 }
 
-function currentSpeechTask() {
-  return speechTasks[state.speech.currentTaskIndex];
+function currentCityTask() {
+  return cityTasks[state.city.currentTaskIndex];
 }
 
-function countSpeechCompleted() {
-  return state.speech.completed.filter(Boolean).length;
+function countCityCompleted() {
+  return state.city.completed.filter(Boolean).length;
 }
 
-function renderSpeechTask() {
-  const task = currentSpeechTask();
-  const speechImageWrap = elements.speechTaskImage.closest(".task-image-wrap");
+function cityStatusInfo(count, total) {
+  if (count === 0) {
+    return { text: "City status: Polluted 🌫️", tone: "status-error" };
+  }
+  if (count < total) {
+    return { text: "City status: Getting better 🌱", tone: "status-idle" };
+  }
+  return { text: "City status: Clean & Green! 🌳", tone: "status-live" };
+}
 
-  elements.speechTaskTitle.textContent = `${task.order} / ${speechTasks.length}`;
-  elements.speechTaskInstruction.textContent = task.prompt;
-  elements.speechTaskImage.innerHTML = taskVisualMarkup(task, false);
-  speechImageWrap.classList.toggle("task-image-wrap-photo", Boolean(task.image));
-  elements.speechTaskIndexBadge.textContent = String(task.order).padStart(2, "0");
-  elements.speechScoreValue.textContent = String(state.speech.score);
-  elements.speechProgressValue.textContent = `${countSpeechCompleted()}/${speechTasks.length}`;
-  elements.speechPrevButton.disabled = state.speech.currentTaskIndex === 0;
-  elements.speechNextButton.disabled = state.speech.currentTaskIndex === speechTasks.length - 1;
-  elements.speechModelText.textContent = `Example: ${task.example}`;
-  elements.speechModelText.classList.toggle("hidden", !state.speech.hintVisible);
-  elements.speechHintButton.textContent = state.speech.hintVisible
-    ? "Hide Example Sentence"
-    : "Show Example Sentence";
-  elements.speechTranscript.value = state.speech.transcript;
-  elements.speechManualFallback.classList.toggle(
-    "hidden",
-    !(state.speech.fallbackToTyping || !state.speech.supported),
+function updateCityScene() {
+  if (!elements.cityScene) {
+    return;
+  }
+
+  const fixedLayers = cityTasks
+    .filter((task, index) => state.city.completed[index])
+    .map((task) => task.layer);
+
+  elements.cityScene.dataset.fixed = fixedLayers.join(" ");
+  elements.cityScene.style.setProperty(
+    "--city-progress",
+    String(countCityCompleted() / cityTasks.length),
   );
-
-  setSpeechFeedback("Say the action in the picture aloud in English.", "");
-  if (state.speech.fallbackToTyping || !state.speech.supported) {
-    setSpeechLiveStatus("Manual typing mode", "status-idle");
-    setSpeechTranscriptStatus(
-      "If the microphone does not start, you can type the sentence and check it manually.",
-      "status-error-text",
-    );
-  } else {
-    if (!state.speech.listening) {
-      setSpeechLiveStatus("Not listening yet", "status-idle");
-    }
-    setSpeechTranscriptStatus(
-      "Press the microphone button and say a sentence about the picture.",
-      "",
-    );
-  }
-
-  renderSpeechTaskList();
-  updateSpeechButtons();
 }
 
-function renderSpeechTaskList() {
-  elements.speechTaskList.innerHTML = speechTasks
-    .map((task, index) => {
-      const active = index === state.speech.currentTaskIndex;
-      const done = state.speech.completed[index];
-      return `
-        <button class="task-list-item ${active ? "active" : ""} ${done ? "done" : ""}" data-speech-task-index="${index}" type="button">
-          <div class="task-mini">${taskVisualMarkup(task, true)}</div>
-          <div class="task-list-copy">
-            <strong>${task.order}. ${task.title}</strong>
-            <span>Checked by meaning</span>
-          </div>
-          <span class="completion-dot"></span>
-        </button>
-      `;
-    })
-    .join("");
-
-  document.querySelectorAll("[data-speech-task-index]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.speech.currentTaskIndex = Number(button.dataset.speechTaskIndex);
-      state.speech.transcript = "";
-      state.speech.hintVisible = false;
-      renderSpeechTask();
-    });
-  });
-}
-
-function moveSpeechTask(direction) {
-  const nextIndex = state.speech.currentTaskIndex + direction;
-  if (nextIndex < 0 || nextIndex >= speechTasks.length) {
-    return;
-  }
-
-  if (state.speech.listening) {
-    stopSpeechListening();
-  }
-
-  state.speech.currentTaskIndex = nextIndex;
-  state.speech.transcript = "";
-  state.speech.hintVisible = false;
-  renderSpeechTask();
-}
-
-function toggleSpeechHint() {
-  state.speech.hintVisible = !state.speech.hintVisible;
-  elements.speechModelText.classList.toggle("hidden", !state.speech.hintVisible);
-  elements.speechHintButton.textContent = state.speech.hintVisible
-    ? "Hide Example Sentence"
-    : "Show Example Sentence";
-}
-
-function initSpeechRecognition() {
-  if (!SpeechRecognitionCtor) {
-    setSpeechFallbackMode(true);
-    updateSpeechButtons();
-    return;
-  }
-
-  const recognition = new SpeechRecognitionCtor();
-  recognition.lang = "en-US";
-  recognition.interimResults = true;
-  recognition.continuous = false;
-  recognition.maxAlternatives = 1;
-
-  recognition.onstart = () => {
-    state.speech.listening = true;
-    setSpeechFallbackMode(false);
-    setSpeechLiveStatus("Listening...", "status-live");
-    setSpeechTranscriptStatus("Say a complete sentence in English.", "status-live-text");
-    updateSpeechButtons();
-  };
-
-  recognition.onresult = (event) => {
-    let finalText = "";
-    let interimText = "";
-
-    for (let index = event.resultIndex; index < event.results.length; index += 1) {
-      const transcript = event.results[index][0].transcript.trim();
-      if (event.results[index].isFinal) {
-        finalText += `${transcript} `;
-      } else {
-        interimText += `${transcript} `;
-      }
-    }
-
-    if (finalText.trim()) {
-      state.speech.transcript = finalText.trim();
-      elements.speechTranscript.value = state.speech.transcript;
-    }
-
-    if (interimText.trim()) {
-      setSpeechTranscriptStatus(`Listening: ${interimText.trim()}`, "status-live-text");
-    }
-  };
-
-  recognition.onerror = (event) => {
-    state.speech.listening = false;
-    updateSpeechButtons();
-
-    if (event.error === "no-speech") {
-      setSpeechLiveStatus("No speech heard", "status-idle");
-      setSpeechTranscriptStatus(
-        "Speech was not clear. Try again or type the sentence manually.",
-        "status-error-text",
-      );
-      return;
-    }
-
-    if (event.error === "aborted") {
-      setSpeechLiveStatus("Listening stopped", "status-idle");
-      return;
-    }
-
-    if (shouldUseVoiceFallback(event.error)) {
-      setSpeechFallbackMode(true, event.error);
-      setSpeechLiveStatus("Manual typing mode", "status-idle");
-      setSpeechTranscriptStatus(getSpeechErrorMessage(event.error), "status-error-text");
-      return;
-    }
-
-    setSpeechLiveStatus("Microphone error", "status-error");
-    setSpeechTranscriptStatus(getSpeechErrorMessage(event.error), "status-error-text");
-  };
-
-  recognition.onend = () => {
-    const wasListening = state.speech.listening;
-    state.speech.listening = false;
-    updateSpeechButtons();
-
-    if (!wasListening) {
-      return;
-    }
-
-    setSpeechLiveStatus("Listening finished", "status-idle");
-    if (state.speech.transcript.trim()) {
-      setSpeechTranscriptStatus("Your answer was recorded. You can check it now.", "");
-    } else {
-      setSpeechTranscriptStatus("Your voice was not clear. Try again.", "status-error-text");
-    }
-  };
-
-  state.speech.recognition = recognition;
-  setSpeechFallbackMode(false);
-}
-
-function toggleSpeechListening() {
-  if (!state.speech.supported || !state.speech.recognition) {
-    setSpeechFallbackMode(true);
-    setSpeechLiveStatus("Manual typing mode", "status-idle");
-    setSpeechTranscriptStatus(
-      "The microphone did not fully start in this browser. You can type the sentence manually.",
-      "status-error-text",
-    );
-    return;
-  }
-
-  if (state.speech.listening) {
-    stopSpeechListening();
-    return;
-  }
-
-  state.speech.transcript = "";
-  elements.speechTranscript.value = "";
-  setSpeechFeedback("Say the action in the picture aloud in English.", "");
-
-  try {
-    state.speech.recognition.start();
-  } catch (error) {
-    console.error(error);
-    state.speech.listening = false;
-    setSpeechFallbackMode(true);
-    setSpeechLiveStatus("Manual typing mode", "status-idle");
-    setSpeechTranscriptStatus(
-      "The microphone did not start. You can type the sentence and check it manually.",
-      "status-error-text",
-    );
-    updateSpeechButtons();
-  }
-}
-
-function stopSpeechListening() {
-  if (state.speech.recognition && state.speech.listening) {
-    state.speech.recognition.stop();
-  }
-}
-
-function updateSpeechButtons() {
-  elements.speechListenButton.textContent = state.speech.listening
-    ? "Stop Listening"
-    : state.speech.fallbackToTyping
-      ? "Try Microphone Again"
-      : "Start Speaking";
-  elements.speechListenButton.disabled = !state.speech.supported;
-}
-
-function checkSpeechTask() {
-  const task = currentSpeechTask();
-  const transcript = elements.speechTranscript.value.trim();
-  state.speech.transcript = transcript;
-
-  if (!transcript) {
-    setSpeechFeedback("First say a sentence or type your answer.", "feedback-error");
-    setSpeechTranscriptStatus("The answer is empty. Say an English sentence.", "status-error-text");
-    return;
-  }
-
-  const evaluation = evaluateSpeechMeaning(task, transcript);
-  if (evaluation.passed) {
-    if (!state.speech.completed[state.speech.currentTaskIndex]) {
-      state.speech.completed[state.speech.currentTaskIndex] = true;
-      state.speech.score += 10;
-    }
-
-    setSpeechFeedback("Great job! The system accepted the meaning.", "feedback-success");
-    setSpeechLiveStatus("Meaning recognized correctly", "status-live");
-  } else if (evaluation.partial) {
-    setSpeechFeedback(evaluation.message, "feedback-warm");
-    setSpeechLiveStatus("The answer is close", "status-muted");
-  } else {
-    setSpeechFeedback(evaluation.message, "feedback-error");
-    setSpeechLiveStatus("Try again", "status-error");
-  }
-
-  elements.speechScoreValue.textContent = String(state.speech.score);
-  elements.speechProgressValue.textContent = `${countSpeechCompleted()}/${speechTasks.length}`;
-  renderSpeechTaskList();
-}
-
-function setSpeechFeedback(message, tone) {
-  elements.speechFeedbackText.textContent = message;
-  elements.speechFeedbackText.className = `feedback-text ${tone}`;
-}
-
-function setSpeechSupportStatus(text, tone) {
-  elements.speechSupportStatus.textContent = text;
-  elements.speechSupportStatus.className = `status-pill ${tone}`;
-}
-
-function setSpeechLiveStatus(text, tone) {
-  elements.speechLiveStatus.textContent = text;
-  elements.speechLiveStatus.className = `status-pill ${tone}`;
-}
-
-function setSpeechTranscriptStatus(text, toneClass) {
-  elements.speechTranscriptStatus.textContent = text;
-  elements.speechTranscriptStatus.className = `speech-transcript-status ${toneClass}`.trim();
-}
-
-function shouldUseVoiceFallback(errorCode) {
-  return ["network", "service-not-allowed", "not-allowed", "audio-capture"].includes(errorCode);
-}
-
-function setSpeechFallbackMode(active, errorCode = "") {
-  state.speech.fallbackToTyping = active;
-  elements.speechManualFallback.classList.toggle("hidden", !(active || !state.speech.supported));
-
-  if (!active) {
-    if (state.speech.supported) {
-      setSpeechSupportStatus("You can answer with the microphone", "status-live");
-    } else {
-      setSpeechSupportStatus(
-        "The microphone does not fully work in this browser, but you can type your answer manually",
-        "status-muted",
-      );
-    }
-    return;
-  }
-
-  const supportText =
-    errorCode === "not-allowed"
-      ? "Microphone permission was denied. You can type and check your answer manually."
-      : "The browser voice service did not work. You can type and check your answer manually.";
-  setSpeechSupportStatus(supportText, "status-muted");
-}
-
-function evaluateSpeechMeaning(task, transcript) {
-  const normalized = normalizeSpeechText(transcript);
-  const matches = task.required.map((group) => matchesSpeechGroup(normalized, group));
-  const matchedCount = matches.filter(Boolean).length;
-  const mustIncludeOk = task.mustInclude.every((index) => matches[index]);
-  const partialThreshold = Math.max(1, task.minGroups - 1);
-
-  if (mustIncludeOk && matchedCount >= task.minGroups) {
-    return {
-      passed: true,
-      partial: false,
-      message: "The meaning was recognized correctly.",
-    };
-  }
-
-  if (matchedCount >= partialThreshold || task.mustInclude.some((index) => matches[index])) {
-    return {
-      passed: false,
-      partial: true,
-      message: `That was close. Try to get nearer to this example: ${task.example}`,
-    };
-  }
-
-  return {
-    passed: false,
-    partial: false,
-    message: "The meaning does not match the picture yet. Try another complete sentence.",
-  };
-}
-
-function normalizeSpeechText(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z\s']/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function matchesSpeechGroup(normalizedText, group) {
-  return group.some((variant) => containsSpeechVariant(normalizedText, variant));
-}
-
-function containsSpeechVariant(normalizedText, variant) {
-  const normalizedVariant = normalizeSpeechText(variant);
-  if (!normalizedVariant) {
-    return false;
-  }
-
-  const textTokens = normalizedText.split(" ").filter(Boolean).map(stemSpeechToken);
-  const variantTokens = normalizedVariant.split(" ").filter(Boolean).map(stemSpeechToken);
-
-  if (variantTokens.length === 1) {
-    return textTokens.includes(variantTokens[0]);
-  }
-
-  const stemmedText = textTokens.join(" ");
-  return stemmedText.includes(variantTokens.join(" "));
-}
-
-function stemSpeechToken(token) {
-  return token
-    .replace(/ing$/g, "")
-    .replace(/ed$/g, "")
-    .replace(/es$/g, "")
-    .replace(/s$/g, "");
-}
-
-function getSpeechErrorMessage(code) {
-  const messages = {
-    "audio-capture": "No microphone was found. Check your device.",
-    "not-allowed": "Microphone permission was denied.",
-    "service-not-allowed": "Speech recognition service is not allowed.",
-    "network": "The browser voice service did not respond. This often happens in Brave or when internet access is limited.",
-    "no-speech": "Speech was not clear.",
-  };
-
-  return messages[code] || "An error occurred during speech recognition.";
-}
-
-function currentQuizTask() {
-  return quizTasks[state.quiz.currentTaskIndex];
-}
-
-function countQuizAnswered() {
-  return state.quiz.answers.filter((answer) => answer !== null).length;
-}
-
-function recalculateQuizScore() {
-  state.quiz.score = state.quiz.answers.reduce((total, answer, index) => {
-    return total + (answer === quizTasks[index].correctIndex ? 10 : 0);
-  }, 0);
-}
-
-function clearQuizAutoAdvance() {
-  if (state.quiz.autoAdvanceTimer) {
-    clearTimeout(state.quiz.autoAdvanceTimer);
-    state.quiz.autoAdvanceTimer = null;
-  }
-}
-
-function resetQuizGestureTracking() {
-  state.quiz.detectedFingers = 0;
-  state.quiz.recentFingerCounts = [];
-  state.quiz.lastGestureCount = 0;
-  state.quiz.holdStartedAt = 0;
-  state.quiz.holdProgress = 0;
-}
-
-function setQuizIdleStatuses() {
-  if (state.camera.streamStarted && state.camera.ownerFeature === "featureFour") {
-    return;
-  }
-
-  setCameraStatus("Camera off", "status-idle", "featureFour");
-  setGestureStatus("Turn on the camera and show 1, 2, or 3 fingers", "status-muted", "featureFour");
-}
-
-function getQuizFeedbackState(taskIndex = state.quiz.currentTaskIndex) {
-  const task = quizTasks[taskIndex];
-  const answer = state.quiz.answers[taskIndex];
-
-  if (answer === null) {
-    return {
-      text:
-        countQuizAnswered() === quizTasks.length
-          ? `Quiz complete. Total score: ${state.quiz.score}/${quizTasks.length * 10}.`
-          : "Turn on the camera and answer with 1, 2, or 3 fingers.",
-      tone: "",
-    };
-  }
-
-  const baseMessage =
-    answer === task.correctIndex
-      ? "Correct answer! Well done!"
-      : `Incorrect. Correct answer: ${task.correctIndex + 1}) ${task.options[task.correctIndex]}`;
-
-  return {
-    text:
-      countQuizAnswered() === quizTasks.length
-        ? `${baseMessage} Quiz complete. Total score: ${state.quiz.score}/${quizTasks.length * 10}.`
-        : baseMessage,
-    tone: answer === task.correctIndex ? "feedback-success" : "feedback-error",
-  };
-}
-
-function setQuizFeedback(message, tone) {
-  elements.quizFeedbackText.textContent = message;
-  elements.quizFeedbackText.className = `feedback-text ${tone}`.trim();
-}
-
-function updateQuizDetectedDisplay() {
-  const cameraReady = state.camera.streamStarted && state.camera.ownerFeature === "featureFour";
-  elements.quizDetectedValue.textContent = String(state.quiz.detectedFingers || 0);
-
-  if (!cameraReady) {
-    elements.quizDetectedText.textContent = "Turn on the camera, then show 1, 2, or 3 fingers.";
-    return;
-  }
-
-  if (performance.now() < state.quiz.gestureLockedUntil && state.quiz.detectedFingers) {
-    elements.quizDetectedText.textContent = `Your answer was saved as option ${state.quiz.detectedFingers}.`;
-    return;
-  }
-
-  if (state.quiz.detectedFingers >= 1 && state.quiz.detectedFingers <= 3) {
-    const holdPercent = Math.max(0, Math.min(100, Math.round(state.quiz.holdProgress * 100)));
-    elements.quizDetectedText.textContent =
-      holdPercent >= 100
-        ? `${state.quiz.detectedFingers} finger(s) recognized.`
-        : `${state.quiz.detectedFingers} finger(s) recognized. Keep holding: ${holdPercent}%`;
-    return;
-  }
-
-  elements.quizDetectedText.textContent = "Show 1, 2, or 3 fingers to choose an answer.";
-}
-
-function renderQuizQuestionList() {
-  elements.quizQuestionList.innerHTML = quizTasks
-    .map((task, index) => {
-      const active = index === state.quiz.currentTaskIndex;
-      const answer = state.quiz.answers[index];
-      const answered = answer !== null;
-      const correct = answer === task.correctIndex;
-      return `
-        <button class="task-list-item ${active ? "active" : ""} ${answered ? "done" : ""} ${answered && !correct ? "quiz-wrong" : ""}" data-quiz-task-index="${index}" type="button">
-          <div class="task-mini quiz-mini-badge">${String(task.order).padStart(2, "0")}</div>
-          <div class="task-list-copy">
-            <strong>${task.order}. Question</strong>
-            <span>${answered ? (correct ? "Correct" : "Answered") : "Waiting for answer"}</span>
-          </div>
-          <span class="completion-dot"></span>
-        </button>
-      `;
-    })
-    .join("");
-
-  document.querySelectorAll("[data-quiz-task-index]").forEach((button) => {
-    button.addEventListener("click", () => {
-      clearQuizAutoAdvance();
-      resetQuizGestureTracking();
-      state.quiz.currentTaskIndex = Number(button.dataset.quizTaskIndex);
-      renderQuiz();
-    });
-  });
-}
-
-function renderQuiz() {
-  const task = currentQuizTask();
-  const selectedAnswer = state.quiz.answers[state.quiz.currentTaskIndex];
-  const feedback = getQuizFeedbackState();
-
-  elements.quizTaskTitle.textContent = `${task.order} / ${quizTasks.length}`;
-  elements.quizQuestionNumber.textContent = String(task.order).padStart(2, "0");
-  elements.quizQuestionImage.src = task.image;
-  elements.quizQuestionImage.alt = `${task.title} illustration`;
-  elements.quizQuestionText.textContent = task.prompt;
-  elements.quizHintText.textContent =
-    selectedAnswer === null
-      ? "Show 1, 2, or 3 fingers and hold for a moment."
-      : "Your answer is saved. You can change it if you want.";
-  elements.quizScoreValue.textContent = String(state.quiz.score);
-  elements.quizProgressValue.textContent = `${countQuizAnswered()}/${quizTasks.length}`;
-  elements.quizPrevButton.disabled = state.quiz.currentTaskIndex === 0;
-  elements.quizNextButton.disabled = state.quiz.currentTaskIndex === quizTasks.length - 1;
-
-  elements.quizOptions.innerHTML = task.options
+function renderCityGame() {
+  const task = currentCityTask();
+  const done = state.city.completed[state.city.currentTaskIndex];
+  const statusInfo = cityStatusInfo(countCityCompleted(), cityTasks.length);
+
+  elements.cityTaskTitle.textContent = `${task.order} / ${cityTasks.length}`;
+  elements.cityTaskIndexBadge.textContent = String(task.order).padStart(2, "0");
+  elements.cityTaskInstruction.textContent = task.prompt;
+  elements.cityScoreValue.textContent = String(state.city.score);
+  elements.cityProgressValue.textContent = `${countCityCompleted()}/${cityTasks.length}`;
+  elements.cityPrevButton.disabled = state.city.currentTaskIndex === 0;
+  elements.cityNextButton.disabled = state.city.currentTaskIndex === cityTasks.length - 1 || !done;
+  elements.cityHealthStatus.textContent = statusInfo.text;
+  elements.cityHealthStatus.className = `status-pill ${statusInfo.tone}`;
+
+  elements.cityOptions.innerHTML = task.options
     .map((option, index) => {
-      const isSelected = selectedAnswer === index;
-      const isCorrect = selectedAnswer !== null && index === task.correctIndex;
-      const isWrongSelected = isSelected && selectedAnswer !== task.correctIndex;
+      const isCorrect = done && index === task.correctIndex;
       const resultIcon = isCorrect
         ? '<span class="quiz-option-result-icon icon-correct">✓</span>'
-        : isWrongSelected
-        ? '<span class="quiz-option-result-icon icon-wrong">✕</span>'
         : "";
 
       return `
         <button
-          class="quiz-option ${isSelected ? "selected" : ""} ${isCorrect ? "correct" : ""} ${isWrongSelected ? "wrong" : ""}"
-          data-quiz-option-index="${index}"
+          class="quiz-option ${isCorrect ? "correct" : ""}"
+          data-city-option-index="${index}"
           type="button"
+          ${done ? "disabled" : ""}
         >
           <span class="quiz-option-index">${index + 1}</span>
           <span class="quiz-option-text">${option}</span>
@@ -1278,199 +664,352 @@ function renderQuiz() {
     })
     .join("");
 
-  document.querySelectorAll("[data-quiz-option-index]").forEach((button) => {
+  document.querySelectorAll("[data-city-option-index]").forEach((button) => {
     button.addEventListener("click", () => {
-      selectQuizAnswer(Number(button.dataset.quizOptionIndex), "click");
+      selectCityOption(Number(button.dataset.cityOptionIndex));
     });
   });
 
-  setQuizFeedback(feedback.text, feedback.tone);
-  updateQuizDetectedDisplay();
-  renderQuizQuestionList();
+  setCityFeedback(
+    done
+      ? `✅ Correct! ${task.fact}`
+      : "Choose the best answer to help clean up the city.",
+    done ? "feedback-success" : "",
+  );
+
+  updateCityScene();
+  renderCityTaskList();
 }
 
-function moveQuizTask(direction) {
-  const nextIndex = state.quiz.currentTaskIndex + direction;
-  if (nextIndex < 0 || nextIndex >= quizTasks.length) {
-    return;
-  }
-
-  clearQuizAutoAdvance();
-  resetQuizGestureTracking();
-  state.quiz.currentTaskIndex = nextIndex;
-  renderQuiz();
-}
-
-function scheduleQuizAutoAdvance() {
-  clearQuizAutoAdvance();
-
-  if (state.quiz.currentTaskIndex >= quizTasks.length - 1) {
-    renderQuiz();
-    return;
-  }
-
-  state.quiz.autoAdvanceTimer = setTimeout(() => {
-    state.quiz.currentTaskIndex += 1;
-    state.quiz.autoAdvanceTimer = null;
-    resetQuizGestureTracking();
-    renderQuiz();
-  }, 1200);
-}
-
-function selectQuizAnswer(optionIndex, source = "gesture") {
-  const now = performance.now();
-  clearQuizAutoAdvance();
-  state.quiz.answers[state.quiz.currentTaskIndex] = optionIndex;
-  recalculateQuizScore();
-
-  if (source === "gesture") {
-    state.quiz.detectedFingers = optionIndex + 1;
-    state.quiz.holdProgress = 1;
-    state.quiz.gestureLockedUntil = now + 1200;
-  }
-
-  renderQuiz();
-
-  if (source === "gesture") {
-    scheduleQuizAutoAdvance();
-  }
-
-  if (countQuizAnswered() === quizTasks.length && !state.quiz.resultsShown) {
-    state.quiz.resultsShown = true;
-    clearTimeout(state.quiz.resultsTimer);
-    state.quiz.resultsTimer = setTimeout(showQuizResults, 700);
-  }
-}
-
-function resetQuiz() {
-  clearQuizAutoAdvance();
-  clearTimeout(state.quiz.resultsTimer);
-  state.quiz.currentTaskIndex = 0;
-  state.quiz.answers = Array(quizTasks.length).fill(null);
-  state.quiz.score = 0;
-  state.quiz.gestureLockedUntil = 0;
-  state.quiz.resultsShown = false;
-  resetQuizGestureTracking();
-  hideQuizResults();
-  shuffleQuizOptions();
-  renderQuiz();
-  setQuizIdleStatuses();
-}
-
-function getQuizResultTier(score, maxScore) {
-  const ratio = maxScore > 0 ? score / maxScore : 0;
-
-  if (ratio === 1) {
-    return {
-      headline: "Eco-Vocabulary Master!",
-      subtext: "Perfect score. Every word is locked into your vocabulary.",
-    };
-  }
-  if (ratio >= 0.8) {
-    return {
-      headline: "Excellent work!",
-      subtext: "Your eco-vocabulary is growing fast.",
-    };
-  }
-  if (ratio >= 0.5) {
-    return {
-      headline: "Good progress!",
-      subtext: "Keep practicing these words to make them stick.",
-    };
-  }
-  return {
-    headline: "Keep building your eco-vocabulary!",
-    subtext: "Review the words below and try again.",
-  };
-}
-
-function renderQuizResultsConfetti() {
-  const colors = ["#ff7b54", "#ffc857", "#63c7b2", "#8ecbff", "#2da18a"];
-  const pieceCount = 42;
-  const pieces = [];
-
-  for (let i = 0; i < pieceCount; i += 1) {
-    const left = Math.random() * 100;
-    const delay = Math.random() * 0.6;
-    const duration = 2.6 + Math.random() * 1.6;
-    const drift = (Math.random() - 0.5) * 160;
-    const rotation = Math.random() * 360;
-    const color = colors[i % colors.length];
-    pieces.push(
-      `<span class="confetti-piece" style="left:${left}%; background:${color}; animation-delay:${delay}s; animation-duration:${duration}s; --drift:${drift}px; --rotation:${rotation}deg;"></span>`
-    );
-  }
-
-  elements.quizResultsConfetti.innerHTML = pieces.join("");
-}
-
-function renderQuizResultsWords() {
-  elements.quizResultsWords.innerHTML = quizTasks
+function renderCityTaskList() {
+  elements.cityTaskList.innerHTML = cityTasks
     .map((task, index) => {
-      const isCorrect = state.quiz.answers[index] === task.correctIndex;
+      const active = index === state.city.currentTaskIndex;
+      const done = state.city.completed[index];
       return `
-        <span class="quiz-results-word ${isCorrect ? "is-correct" : "is-wrong"}">
-          <span class="quiz-results-word-icon">${isCorrect ? "✓" : "✕"}</span>
-          ${task.title}
-        </span>
+        <button class="task-list-item ${active ? "active" : ""} ${done ? "done" : ""}" data-city-task-index="${index}" type="button">
+          <div class="task-mini">${task.icon}</div>
+          <div class="task-list-copy">
+            <strong>${task.order}. ${task.title}</strong>
+            <span>${done ? "City improved!" : "Not solved yet"}</span>
+          </div>
+          <span class="completion-dot"></span>
+        </button>
       `;
     })
     .join("");
+
+  document.querySelectorAll("[data-city-task-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.city.currentTaskIndex = Number(button.dataset.cityTaskIndex);
+      renderCityGame();
+    });
+  });
 }
 
-function animateQuizResultsScore(score, maxScore) {
-  const circumference = 2 * Math.PI * 86;
-  const ratio = maxScore > 0 ? score / maxScore : 0;
-  elements.quizResultsRingProgress.style.strokeDasharray = `${circumference}`;
-  elements.quizResultsRingProgress.style.strokeDashoffset = `${circumference}`;
-
-  requestAnimationFrame(() => {
-    elements.quizResultsRingProgress.style.transition = "stroke-dashoffset 1.1s ease-out";
-    elements.quizResultsRingProgress.style.strokeDashoffset = `${circumference * (1 - ratio)}`;
-  });
-
-  const durationMs = 900;
-  const startTime = performance.now();
-
-  function tick(now) {
-    const elapsed = Math.min(1, (now - startTime) / durationMs);
-    const eased = 1 - Math.pow(1 - elapsed, 3);
-    elements.quizResultsScoreNumber.textContent = String(Math.round(score * eased));
-    if (elapsed < 1) {
-      requestAnimationFrame(tick);
-    }
+function moveCityTask(direction) {
+  const nextIndex = state.city.currentTaskIndex + direction;
+  if (nextIndex < 0 || nextIndex >= cityTasks.length) {
+    return;
   }
 
-  requestAnimationFrame(tick);
+  state.city.currentTaskIndex = nextIndex;
+  renderCityGame();
 }
 
-function showQuizResults() {
-  const maxScore = quizTasks.length * 10;
-  const tier = getQuizResultTier(state.quiz.score, maxScore);
-  const correctCount = quizTasks.filter(
-    (task, index) => state.quiz.answers[index] === task.correctIndex
-  ).length;
+function selectCityOption(optionIndex) {
+  const task = currentCityTask();
 
-  elements.quizResultsHeadline.textContent = tier.headline;
-  elements.quizResultsSubtext.textContent = `${tier.subtext} You learned ${correctCount} of ${quizTasks.length} new ecology words correctly.`;
+  if (state.city.completed[state.city.currentTaskIndex]) {
+    return;
+  }
 
-  renderQuizResultsWords();
-  renderQuizResultsConfetti();
-  animateQuizResultsScore(state.quiz.score, maxScore);
+  const button = document.querySelector(`[data-city-option-index="${optionIndex}"]`);
 
-  elements.quizResultsOverlay.hidden = false;
-  requestAnimationFrame(() => {
-    elements.quizResultsOverlay.classList.add("is-visible");
+  if (optionIndex === task.correctIndex) {
+    state.city.completed[state.city.currentTaskIndex] = true;
+    state.city.answers[state.city.currentTaskIndex] = optionIndex;
+    state.city.score += 10;
+    renderCityGame();
+
+    if (state.city.currentTaskIndex < cityTasks.length - 1) {
+      setTimeout(() => {
+        state.city.currentTaskIndex += 1;
+        renderCityGame();
+      }, 1100);
+    }
+    return;
+  }
+
+  setCityFeedback("Not quite. Look at the city and try again!", "feedback-error");
+  if (button) {
+    button.classList.add("wrong");
+    setTimeout(() => button.classList.remove("wrong"), 420);
+  }
+}
+
+function setCityFeedback(message, tone) {
+  elements.cityFeedbackText.textContent = message;
+  elements.cityFeedbackText.className = `feedback-text ${tone}`.trim();
+}
+
+function resetCityGame() {
+  state.city.currentTaskIndex = 0;
+  state.city.answers = Array(cityTasks.length).fill(null);
+  state.city.completed = Array(cityTasks.length).fill(false);
+  state.city.score = 0;
+  renderCityGame();
+}
+
+function currentBattleProblem() {
+  return battleProblems[state.battle.currentIndex];
+}
+
+function countBattleAnswered() {
+  return state.battle.answers.filter((answer) => answer !== null).length;
+}
+
+function battleStatusInfo() {
+  if (state.battle.outcome === "victory") {
+    return { text: "Victory! Monster defeated!", tone: "status-live" };
+  }
+  if (state.battle.outcome === "defeat") {
+    return { text: "Defeated...", tone: "status-error" };
+  }
+  if (state.battle.outcome === "end") {
+    return { text: "Battle over", tone: "status-muted" };
+  }
+  if (state.battle.running) {
+    return { text: "Battle in progress...", tone: "status-live" };
+  }
+  if (state.battle.currentIndex > 0) {
+    return { text: "Paused — press Start Battle to continue", tone: "status-idle" };
+  }
+  return { text: "Press Start Battle to begin", tone: "status-idle" };
+}
+
+function resetBattle() {
+  clearTimeout(state.battle.autoAdvanceTimer);
+  state.battle.currentIndex = 0;
+  state.battle.running = false;
+  state.battle.gameOver = false;
+  state.battle.outcome = "";
+  state.battle.score = 0;
+  state.battle.hits = 0;
+  state.battle.monsterHp = 100;
+  state.battle.playerHp = 100;
+  state.battle.answers = Array(battleProblems.length).fill(null);
+  shuffleBattleOptions();
+  renderBattle();
+  setBattleFeedback("Choose the best solution to attack the monster.", "");
+}
+
+function startBattle() {
+  if (state.battle.gameOver) {
+    resetBattle();
+  }
+
+  state.battle.running = true;
+  renderBattle();
+}
+
+function pauseBattle() {
+  if (!state.battle.running) {
+    return;
+  }
+
+  clearTimeout(state.battle.autoAdvanceTimer);
+  state.battle.running = false;
+  renderBattle();
+}
+
+function toggleBattle() {
+  if (state.battle.running) {
+    pauseBattle();
+  } else {
+    startBattle();
+  }
+}
+
+function setBattleFeedback(message, tone) {
+  elements.battleFeedbackText.textContent = message;
+  elements.battleFeedbackText.className = `feedback-text ${tone}`.trim();
+}
+
+function updateBattleHpBars() {
+  const monsterHp = Math.max(0, state.battle.monsterHp);
+  const playerHp = Math.max(0, state.battle.playerHp);
+  elements.battleMonsterHpFill.style.width = `${monsterHp}%`;
+  elements.battleMonsterHpText.textContent = `${monsterHp}%`;
+  elements.battlePlayerHpFill.style.width = `${playerHp}%`;
+  elements.battlePlayerHpText.textContent = `${playerHp}%`;
+}
+
+function renderBattleTaskList() {
+  elements.battleTaskList.innerHTML = battleProblems
+    .map((problem, index) => {
+      const active = index === state.battle.currentIndex;
+      const answer = state.battle.answers[index];
+      const answered = answer !== null;
+      const correct = answer === problem.correctIndex;
+      return `
+        <button class="task-list-item ${active ? "active" : ""} ${answered ? "done" : ""}" data-battle-task-index="${index}" type="button">
+          <img class="task-mini" src="${problem.image}" alt="" />
+          <div class="task-list-copy">
+            <strong>${problem.order}. ${problem.title}</strong>
+            <span>${answered ? (correct ? "Monster hit!" : "Monster struck back") : "Not fought yet"}</span>
+          </div>
+          <span class="completion-dot"></span>
+        </button>
+      `;
+    })
+    .join("");
+
+  document.querySelectorAll("[data-battle-task-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.battle.currentIndex = Number(button.dataset.battleTaskIndex);
+      renderBattle();
+    });
   });
 }
 
-function hideQuizResults() {
-  elements.quizResultsOverlay.classList.remove("is-visible");
-  window.setTimeout(() => {
-    if (!elements.quizResultsOverlay.classList.contains("is-visible")) {
-      elements.quizResultsOverlay.hidden = true;
-    }
-  }, 320);
+function renderBattle() {
+  const problem = currentBattleProblem();
+  const selectedAnswer = state.battle.answers[state.battle.currentIndex];
+  const answered = selectedAnswer !== null;
+  const status = battleStatusInfo();
+
+  elements.battleStatus.textContent = status.text;
+  elements.battleStatus.className = `status-pill ${status.tone}`;
+  elements.battleCurrentProblemLabel.textContent = state.battle.gameOver
+    ? "Battle over"
+    : problem.title;
+  elements.battleTaskTitle.textContent = `${problem.order} / ${battleProblems.length}`;
+  elements.battleTaskIndexBadge.textContent = String(problem.order).padStart(2, "0");
+  elements.battleProblemImage.src = problem.image;
+  elements.battleProblemImage.alt = `${problem.title} illustration`;
+  elements.battleProblemText.textContent = problem.prompt;
+  elements.battleScoreValue.textContent = String(state.battle.score);
+  elements.battleProgressValue.textContent = `${countBattleAnswered()}/${battleProblems.length}`;
+  elements.battleStartButton.textContent = state.battle.running
+    ? "Pause Battle"
+    : state.battle.gameOver
+      ? "Battle Again"
+      : state.battle.currentIndex > 0
+        ? "Resume Battle"
+        : "Start Battle";
+
+  elements.battleOptions.innerHTML = problem.options
+    .map((option, index) => {
+      const isSelected = selectedAnswer === index;
+      const isCorrect = answered && index === problem.correctIndex;
+      const isWrongSelected = isSelected && selectedAnswer !== problem.correctIndex;
+      const resultIcon = isCorrect
+        ? '<span class="quiz-option-result-icon icon-correct">✓</span>'
+        : isWrongSelected
+        ? '<span class="quiz-option-result-icon icon-wrong">✕</span>'
+        : "";
+
+      return `
+        <button
+          class="quiz-option ${isSelected ? "selected" : ""} ${isCorrect ? "correct" : ""} ${isWrongSelected ? "wrong" : ""}"
+          data-battle-option-index="${index}"
+          type="button"
+          ${!state.battle.running || answered ? "disabled" : ""}
+        >
+          <span class="quiz-option-index">${index + 1}</span>
+          <span class="quiz-option-text">${option}</span>
+          ${resultIcon}
+        </button>
+      `;
+    })
+    .join("");
+
+  document.querySelectorAll("[data-battle-option-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectBattleOption(Number(button.dataset.battleOptionIndex));
+    });
+  });
+
+  updateBattleHpBars();
+  renderBattleTaskList();
+}
+
+function selectBattleOption(optionIndex) {
+  if (!state.battle.running || state.battle.gameOver) {
+    return;
+  }
+
+  const problem = currentBattleProblem();
+  if (state.battle.answers[state.battle.currentIndex] !== null) {
+    return;
+  }
+
+  state.battle.answers[state.battle.currentIndex] = optionIndex;
+  const isCorrect = optionIndex === problem.correctIndex;
+
+  if (isCorrect) {
+    state.battle.score += 10;
+    state.battle.hits += 1;
+    state.battle.monsterHp = Math.max(0, state.battle.monsterHp - 10);
+    elements.battleMonsterAvatar.classList.remove("is-hit");
+    void elements.battleMonsterAvatar.offsetWidth;
+    elements.battleMonsterAvatar.classList.add("is-hit");
+    setBattleFeedback(`💥 Direct hit! "${problem.options[optionIndex]}" is correct.`, "feedback-success");
+  } else {
+    state.battle.playerHp = Math.max(0, state.battle.playerHp - 20);
+    elements.battlePlayerAvatar.classList.remove("is-hit");
+    void elements.battlePlayerAvatar.offsetWidth;
+    elements.battlePlayerAvatar.classList.add("is-hit");
+    setBattleFeedback(
+      `The monster struck back! The best answer was "${problem.options[problem.correctIndex]}".`,
+      "feedback-error",
+    );
+  }
+
+  if (state.battle.monsterHp <= 0) {
+    finishBattle("victory");
+    return;
+  }
+
+  if (state.battle.playerHp <= 0) {
+    finishBattle("defeat");
+    return;
+  }
+
+  if (state.battle.currentIndex >= battleProblems.length - 1) {
+    finishBattle("end");
+    return;
+  }
+
+  renderBattle();
+  state.battle.autoAdvanceTimer = setTimeout(() => {
+    state.battle.currentIndex += 1;
+    renderBattle();
+  }, 1300);
+}
+
+function finishBattle(outcome) {
+  clearTimeout(state.battle.autoAdvanceTimer);
+  state.battle.running = false;
+  state.battle.gameOver = true;
+  state.battle.outcome = outcome;
+
+  renderBattle();
+
+  if (outcome === "victory") {
+    setBattleFeedback(`🎉 You defeated the Pollution Monster! Final score: ${state.battle.score}.`, "feedback-success");
+  } else if (outcome === "defeat") {
+    setBattleFeedback(
+      `The Pollution Monster defeated you. Final score: ${state.battle.score}. Press "Restart Battle" to try again.`,
+      "feedback-error",
+    );
+  } else {
+    setBattleFeedback(
+      `The battle ended. You weakened the monster to ${Math.max(0, state.battle.monsterHp)}% HP. Final score: ${state.battle.score}.`,
+      "",
+    );
+  }
 }
 
 function renderVocabGrid() {
@@ -1629,488 +1168,231 @@ async function sendChatMessage() {
   }
 }
 
-function setVoiceGameFallbackMode(active, errorCode = "") {
-  state.voiceGame.fallbackToButtons = active || !state.voiceGame.supported;
+function resetRecycleGame() {
+  clearTimeout(state.recycle.fallTimer);
+  state.recycle.running = false;
+  state.recycle.gameOver = false;
+  state.recycle.queue = shuffleArray(recycleItems.map((item, index) => index));
+  state.recycle.queueIndex = 0;
+  state.recycle.score = 0;
+  state.recycle.sorted = 0;
+  state.recycle.lives = RECYCLE_START_LIVES;
+  state.recycle.log = [];
+  state.recycle.currentItem = null;
 
-  if (!state.voiceGame.supported) {
-    setVoiceGameSupportStatus("Voice service is unavailable here. Use the buttons below.", "status-muted");
+  elements.recycleFallingItem.hidden = true;
+  elements.recycleFallingItem.classList.remove("is-falling", "correct", "wrong");
+
+  renderRecycleGame();
+  setRecycleRules('Press "Start Sorting" and click the correct bin before the item lands.');
+  setRecycleResult("No item sorted yet.");
+  setRecycleStatus("Press Start Sorting to begin", "status-idle");
+}
+
+function startRecycleGame() {
+  if (state.recycle.gameOver) {
+    resetRecycleGame();
+  }
+
+  if (state.recycle.running) {
     return;
   }
 
-  if (!active) {
-    setVoiceGameSupportStatus("Voice commands ready", "status-live");
+  state.recycle.running = true;
+  setRecycleStatus("Sorting in progress...", "status-live");
+  setRecycleRules("Click the matching bin before the item reaches the bottom.");
+  spawnNextRecycleItem();
+}
+
+function pauseRecycleGame() {
+  if (!state.recycle.running) {
     return;
   }
 
-  const supportText =
-    errorCode === "not-allowed"
-      ? "Microphone permission was denied. Use the buttons below."
-      : "The browser voice service is unavailable. Use the buttons below or try again.";
-  setVoiceGameSupportStatus(supportText, "status-muted");
+  clearTimeout(state.recycle.fallTimer);
+  state.recycle.running = false;
+  state.recycle.currentItem = null;
+  elements.recycleFallingItem.hidden = true;
+  elements.recycleFallingItem.classList.remove("is-falling");
+  setRecycleStatus("Paused — press Start Sorting to continue", "status-idle");
+  renderRecycleGame();
 }
 
-function initVoiceGameRecognition() {
-  if (!SpeechRecognitionCtor) {
-    setVoiceGameFallbackMode(true);
-    updateVoiceGameButtons();
+function spawnNextRecycleItem() {
+  if (!state.recycle.running) {
     return;
   }
 
-  const recognition = new SpeechRecognitionCtor();
-  recognition.lang = "en-US";
-  recognition.interimResults = false;
-  recognition.continuous = false;
-  recognition.maxAlternatives = 1;
-
-  recognition.onstart = () => {
-    setVoiceGameFallbackMode(false);
-    setVoiceGameLiveStatus('Listening... say "forward", "jump", or "stop"', "status-live");
-    updateVoiceGameButtons();
-  };
-
-  recognition.onresult = (event) => {
-    const transcript = Array.from(event.results)
-      .map((result) => result[0].transcript.trim())
-      .filter(Boolean)
-      .join(" ")
-      .trim();
-
-    if (!transcript) {
-      return;
-    }
-
-    handleVoiceGameSpeech(transcript);
-  };
-
-  recognition.onerror = (event) => {
-    if (event.error === "no-speech" && state.voiceGame.listening) {
-      setVoiceGameLiveStatus('Still listening... say "forward", "jump", or "stop"', "status-muted");
-      setVoiceGameStateText("Your voice was not clear. Say the command again.");
-      return;
-    }
-
-    if (event.error === "aborted" && !state.voiceGame.listening) {
-      updateVoiceGameButtons();
-      return;
-    }
-
-    if (shouldUseVoiceFallback(event.error)) {
-      setVoiceGameFallbackMode(true, event.error);
-      setVoiceGameLiveStatus("Button controls enabled", "status-idle");
-      setVoiceGameStateText(`${getVoiceGameErrorMessage(event.error)} Use the FORWARD, JUMP, or STOP buttons below.`);
-      state.voiceGame.listening = false;
-      updateVoiceGameButtons();
-      return;
-    }
-
-    setVoiceGameLiveStatus("Voice control error", "status-error");
-    setVoiceGameStateText(getVoiceGameErrorMessage(event.error));
-    state.voiceGame.listening = false;
-    updateVoiceGameButtons();
-  };
-
-  recognition.onend = () => {
-    if (state.voiceGame.listening && state.activeFeature === "featureThree") {
-      updateVoiceGameButtons();
-      setTimeout(() => {
-        if (state.voiceGame.listening && state.activeFeature === "featureThree") {
-          try {
-            recognition.start();
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      }, 220);
-      return;
-    }
-
-    updateVoiceGameButtons();
-  };
-
-  state.voiceGame.recognition = recognition;
-  setVoiceGameFallbackMode(false);
-}
-
-function toggleVoiceGameListening() {
-  if (!state.voiceGame.supported || !state.voiceGame.recognition) {
-    setVoiceGameFallbackMode(true);
-    setVoiceGameLiveStatus("Button controls enabled", "status-idle");
-    setVoiceGameStateText("Voice service is unavailable here. Use the FORWARD, JUMP, and STOP buttons.");
+  if (state.recycle.queueIndex >= state.recycle.queue.length) {
+    finishRecycleGame(true);
     return;
   }
 
-  if (state.voiceGame.listening) {
-    stopVoiceGameListening();
-    return;
-  }
+  const item = recycleItems[state.recycle.queue[state.recycle.queueIndex]];
+  state.recycle.currentItem = item;
 
-  state.voiceGame.listening = true;
-  setVoiceGameLiveStatus('Listening... say "forward", "jump", or "stop"', "status-live");
+  elements.recycleFallingIcon.textContent = item.icon;
+  elements.recycleFallingItem.hidden = false;
+  elements.recycleFallingItem.classList.remove("is-falling", "correct", "wrong");
+  elements.recycleFallingItem.style.transitionDuration = "0ms";
+  elements.recycleFallingItem.style.top = "6%";
+  void elements.recycleFallingItem.offsetHeight;
 
-  try {
-    state.voiceGame.recognition.start();
-  } catch (error) {
-    console.error(error);
-    state.voiceGame.listening = false;
-    setVoiceGameFallbackMode(true);
-    setVoiceGameLiveStatus("Button controls enabled", "status-idle");
-    setVoiceGameStateText("The microphone did not start. Use the FORWARD, JUMP, and STOP buttons or try again.");
-  }
-
-  updateVoiceGameButtons();
-}
-
-function stopVoiceGameListening() {
-  state.voiceGame.listening = false;
-  if (state.voiceGame.recognition) {
-    try {
-      state.voiceGame.recognition.stop();
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  setVoiceGameLiveStatus('Voice control stopped. Turn it on again and say "forward", "jump", or "stop".', "status-idle");
-  updateVoiceGameButtons();
-}
-
-function updateVoiceGameButtons() {
-  elements.voiceGameListenButton.textContent = state.voiceGame.listening
-    ? "Stop Voice Control"
-    : state.voiceGame.fallbackToButtons
-      ? "Try Voice Control Again"
-      : "Start Voice Control";
-  elements.voiceGameListenButton.disabled = !state.voiceGame.supported;
-}
-
-function resetVoiceGame() {
-  state.voiceGame.running = false;
-  state.voiceGame.gameOver = false;
-  state.voiceGame.score = 0;
-  state.voiceGame.apples = 0;
-  state.voiceGame.hits = 0;
-  state.voiceGame.lastCommand = "Waiting...";
-  state.voiceGame.heardText = "No command heard yet.";
-  state.voiceGame.playerY = 0;
-  state.voiceGame.velocityY = 0;
-  state.voiceGame.objects = [];
-  state.voiceGame.nextSpawnInMs = getVoiceGameSpawnDelay(true);
-  state.voiceGame.commandLog = [];
-  state.voiceGame.objectSerial = 0;
-  spawnVoiceGameSet();
-  renderVoiceGame();
-  setVoiceGameStateText('Game restarted. Say "forward" to start moving.');
-  setVoiceGameLiveStatus(
-    state.voiceGame.listening
-      ? 'Listening... say "forward", "jump", or "stop"'
-      : state.voiceGame.fallbackToButtons
-        ? "Button controls ready"
-        : 'Say "forward", "jump", or "stop"',
-    state.voiceGame.listening ? "status-live" : "status-idle",
-  );
-}
-
-function renderVoiceGame() {
-  elements.voiceGameScoreValue.textContent = String(state.voiceGame.score);
-  elements.voiceGameApplesValue.textContent = String(state.voiceGame.apples);
-  elements.voiceGameHitsValue.textContent = String(getVoiceGameRemainingLives());
-  elements.voiceGameLastCommand.textContent = state.voiceGame.lastCommand;
-  elements.voiceGameHeardText.textContent = state.voiceGame.heardText;
-  renderVoiceGameCommandLog();
-  renderVoiceGamePlayer();
-  renderVoiceGameObjects();
-  updateVoiceGameButtons();
-}
-
-function renderVoiceGamePlayer() {
-  elements.voiceGamePlayer.style.transform = `translateY(${-state.voiceGame.playerY}px)`;
-  elements.voiceGamePlayer.classList.toggle("moving", state.voiceGame.running);
-}
-
-function renderVoiceGameObjects() {
-  elements.voiceGameObjects.innerHTML = state.voiceGame.objects
-    .map((object) => {
-      if (object.type === "apple") {
-        return `
-          <div class="voice-game-object apple" style="transform: translate(${object.x}px, 0); bottom: ${VOICE_GAME_CONFIG.groundBottom + object.y}px;" data-voice-object-id="${object.id}">
-            <span>🍎</span>
-          </div>
-        `;
-      }
-
-      return `
-        <div class="voice-game-object crate" style="transform: translate(${object.x}px, 0); bottom: ${VOICE_GAME_CONFIG.groundBottom + object.y}px;" data-voice-object-id="${object.id}"></div>
-      `;
-    })
-    .join("");
-}
-
-function renderVoiceGameCommandLog() {
-  if (!state.voiceGame.commandLog.length) {
-    elements.voiceGameCommandLog.innerHTML = "<li><strong>Ready:</strong> The game is waiting for your first command.</li>";
-    return;
-  }
-
-  elements.voiceGameCommandLog.innerHTML = state.voiceGame.commandLog
-    .slice(0, 6)
-    .map((entry) => `<li><strong>${entry.command.toUpperCase()}</strong> ${entry.text}</li>`)
-    .join("");
-}
-
-function startVoiceGameLoop() {
-  if (state.voiceGame.loopStarted) {
-    return;
-  }
-
-  state.voiceGame.loopStarted = true;
-  requestFrame(stepVoiceGame);
-}
-
-function stepVoiceGame(timestamp) {
-  const last = state.voiceGame.lastFrameTime || timestamp;
-  const deltaMs = Math.min(32, timestamp - last);
-  state.voiceGame.lastFrameTime = timestamp;
-
-  if (state.activeFeature === "featureThree") {
-    updateVoiceGamePhysics(deltaMs / 1000);
-    renderVoiceGamePlayer();
-    renderVoiceGameObjects();
-  } else {
-    state.voiceGame.lastFrameTime = timestamp;
-  }
-
-  requestFrame(stepVoiceGame);
-}
-
-function updateVoiceGamePhysics(deltaSeconds) {
-  state.voiceGame.velocityY -= VOICE_GAME_CONFIG.gravity * deltaSeconds;
-  state.voiceGame.playerY = Math.max(0, state.voiceGame.playerY + state.voiceGame.velocityY * deltaSeconds);
-
-  if (state.voiceGame.playerY === 0 && state.voiceGame.velocityY < 0) {
-    state.voiceGame.velocityY = 0;
-  }
-
-  if (state.voiceGame.running) {
-    const travel = VOICE_GAME_CONFIG.runSpeed * deltaSeconds;
-    state.voiceGame.objects.forEach((object) => {
-      object.x -= travel;
-    });
-    state.voiceGame.nextSpawnInMs -= deltaSeconds * 1000;
-
-    if (state.voiceGame.nextSpawnInMs <= 0) {
-      spawnVoiceGameSet();
-      state.voiceGame.nextSpawnInMs = getVoiceGameSpawnDelay();
-    }
-  }
-
-  state.voiceGame.objects.forEach((object) => {
-    if (object.collected || object.hit) {
-      return;
-    }
-
-    if (checkVoiceGameCollision(object)) {
-      if (object.type === "apple") {
-        object.collected = true;
-        state.voiceGame.apples += 1;
-        state.voiceGame.score += 10;
-        setVoiceGameStateText("Great job! You collected an apple.");
-      } else {
-        object.hit = true;
-        state.voiceGame.hits += 1;
-        state.voiceGame.score = Math.max(0, state.voiceGame.score - 4);
-        triggerVoiceGameHitEffect();
-
-        const remainingLives = getVoiceGameRemainingLives();
-        if (remainingLives <= 0) {
-          state.voiceGame.gameOver = true;
-          state.voiceGame.running = false;
-          setVoiceGameStateText('Game over. The dinosaur lost all 10 lives. Press "Restart Game" to try again.');
-          setVoiceGameLiveStatus("Game over", "status-error");
-        } else {
-          setVoiceGameStateText(`You hit an obstacle. ${remainingLives} lives left.`);
-          setVoiceGameLiveStatus("Obstacle hit, game continues", "status-live");
-        }
-      }
-    } else if (object.type === "crate" && !object.passed && object.x + object.width < VOICE_GAME_CONFIG.playerX) {
-      object.passed = true;
-      state.voiceGame.score += 4;
-    }
+  requestAnimationFrame(() => {
+    elements.recycleFallingItem.style.transitionDuration = `${RECYCLE_FALL_DURATION_MS}ms`;
+    elements.recycleFallingItem.classList.add("is-falling");
+    elements.recycleFallingItem.style.top = "58%";
   });
 
-  state.voiceGame.objects = state.voiceGame.objects.filter((object) => object.x + object.width > -80 && !object.collected && !object.hit);
-  elements.voiceGameScoreValue.textContent = String(state.voiceGame.score);
-  elements.voiceGameApplesValue.textContent = String(state.voiceGame.apples);
-  elements.voiceGameHitsValue.textContent = String(getVoiceGameRemainingLives());
+  state.recycle.fallTimer = setTimeout(handleRecycleMiss, RECYCLE_FALL_DURATION_MS);
+  renderRecycleGame();
 }
 
-function spawnVoiceGameSet() {
-  const crateX =
-    VOICE_GAME_CONFIG.stageWidth +
-    VOICE_GAME_CONFIG.crateSpawnOffsetMin +
-    Math.random() * (VOICE_GAME_CONFIG.crateSpawnOffsetMax - VOICE_GAME_CONFIG.crateSpawnOffsetMin);
-  state.voiceGame.objects.push(createVoiceGameObject("crate", crateX, 0, 48, 48));
-
-  if (Math.random() < VOICE_GAME_CONFIG.appleSpawnChance) {
-    const appleHeight = 36 + Math.random() * 78;
-    const appleX =
-      crateX +
-      VOICE_GAME_CONFIG.appleOffsetMin +
-      Math.random() * (VOICE_GAME_CONFIG.appleOffsetMax - VOICE_GAME_CONFIG.appleOffsetMin);
-    state.voiceGame.objects.push(createVoiceGameObject("apple", appleX, appleHeight, 30, 30));
-  }
-}
-
-function getVoiceGameRemainingLives() {
-  return Math.max(0, VOICE_GAME_CONFIG.maxLives - state.voiceGame.hits);
-}
-
-function getVoiceGameSpawnDelay(isInitial = false) {
-  const min = isInitial ? VOICE_GAME_CONFIG.initialSpawnDelayMin : VOICE_GAME_CONFIG.spawnDelayMin;
-  const max = isInitial ? VOICE_GAME_CONFIG.initialSpawnDelayMax : VOICE_GAME_CONFIG.spawnDelayMax;
-  return min + Math.random() * (max - min);
-}
-
-function createVoiceGameObject(type, x, y, width, height) {
-  state.voiceGame.objectSerial += 1;
-  return {
-    id: `voice-${state.voiceGame.objectSerial}`,
-    type,
-    x,
-    y,
-    width,
-    height,
-    passed: false,
-    collected: false,
-    hit: false,
-  };
-}
-
-function checkVoiceGameCollision(object) {
-  const playerLeft = VOICE_GAME_CONFIG.playerX + 8;
-  const playerRight = playerLeft + VOICE_GAME_CONFIG.playerWidth - 16;
-  const playerBottom = state.voiceGame.playerY + 8;
-  const playerTop = playerBottom + VOICE_GAME_CONFIG.playerHeight - 10;
-
-  const objectLeft = object.x;
-  const objectRight = object.x + object.width;
-  const objectBottom = object.y;
-  const objectTop = object.y + object.height;
-
-  const overlapX = playerRight > objectLeft && playerLeft < objectRight;
-  const overlapY = playerTop > objectBottom && playerBottom < objectTop;
-  return overlapX && overlapY;
-}
-
-function handleVoiceGameSpeech(transcript) {
-  const normalized = normalizeSpeechText(transcript);
-  const command = parseVoiceGameCommand(normalized);
-
-  if (!command) {
-    state.voiceGame.heardText = transcript;
-    elements.voiceGameHeardText.textContent = transcript;
-    setVoiceGameStateText('Command not recognized. Say "forward", "jump", or "stop".');
-    pushVoiceGameCommand("unknown", `heard: "${transcript}"`);
-    renderVoiceGameCommandLog();
+function handleRecycleBinClick(binKey) {
+  if (!state.recycle.running || !state.recycle.currentItem) {
     return;
   }
 
-  applyVoiceGameCommand(command, transcript, `heard: "${transcript}"`);
-}
+  const item = state.recycle.currentItem;
+  const binButton = document.querySelector(`[data-bin="${binKey}"]`);
 
-function triggerVoiceGameButtonCommand(command) {
-  applyVoiceGameCommand(command, `Button: ${command.toUpperCase()}`, "fallback button pressed");
-}
-
-function applyVoiceGameCommand(command, heardText, logText) {
-  state.voiceGame.heardText = heardText;
-  elements.voiceGameHeardText.textContent = heardText;
-  state.voiceGame.lastCommand = command;
-  elements.voiceGameLastCommand.textContent = command.toUpperCase();
-  pushVoiceGameCommand(command, logText);
-  renderVoiceGameCommandLog();
-
-  if (state.voiceGame.gameOver) {
-    setVoiceGameStateText('Game over. Press "Restart Game" to start again.');
-    setVoiceGameLiveStatus("Game over", "status-error");
-    renderVoiceGame();
-    return;
-  }
-
-  if (command === "forward") {
-    state.voiceGame.running = true;
-    setVoiceGameLiveStatus("Running forward", "status-live");
-    setVoiceGameStateText('Great! The character is running. Say "jump" at the next obstacle.');
-  } else if (command === "stop") {
-    state.voiceGame.running = false;
-    setVoiceGameLiveStatus("Running stopped", "status-idle");
-    setVoiceGameStateText('The character stopped. Say "forward" to move again.');
-  } else if (command === "jump") {
-    if (state.voiceGame.playerY === 0) {
-      state.voiceGame.velocityY = VOICE_GAME_CONFIG.jumpVelocity;
-      setVoiceGameLiveStatus("Jump command accepted", "status-live");
-      setVoiceGameStateText("Nice jump! Keep going.");
-    } else {
-      setVoiceGameStateText("The character is already jumping.");
+  if (binKey === item.bin) {
+    clearTimeout(state.recycle.fallTimer);
+    state.recycle.score += 10;
+    state.recycle.sorted += 1;
+    pushRecycleLog(`✅ ${item.icon} ${item.label} → ${RECYCLE_BIN_LABELS[item.bin]}`);
+    setRecycleRules(`Correct! ${item.label} belongs in the ${RECYCLE_BIN_LABELS[item.bin]} bin.`);
+    setRecycleResult(`${item.label} → recycle ✅`);
+    elements.recycleFallingItem.classList.add("correct");
+    if (binButton) {
+      binButton.classList.add("correct");
+      setTimeout(() => binButton.classList.remove("correct"), 420);
     }
+    advanceRecycleQueue();
+    return;
   }
 
-  renderVoiceGame();
+  state.recycle.lives = Math.max(0, state.recycle.lives - 1);
+  pushRecycleLog(`❌ ${item.label} is not ${RECYCLE_BIN_LABELS[binKey].toLowerCase()}`);
+  setRecycleRules(`Not quite. ${item.label} does not go in the ${RECYCLE_BIN_LABELS[binKey]} bin. Try again!`);
+  if (binButton) {
+    binButton.classList.add("wrong");
+    setTimeout(() => binButton.classList.remove("wrong"), 420);
+  }
+  renderRecycleGame();
+
+  if (state.recycle.lives <= 0) {
+    clearTimeout(state.recycle.fallTimer);
+    finishRecycleGame(false);
+  }
 }
 
-function parseVoiceGameCommand(normalizedText) {
-  if (normalizedText.includes("jump")) {
-    return "jump";
+function handleRecycleMiss() {
+  const item = state.recycle.currentItem;
+  if (!item) {
+    return;
   }
 
-  if (normalizedText.includes("stop")) {
-    return "stop";
+  state.recycle.lives = Math.max(0, state.recycle.lives - 1);
+  pushRecycleLog(`⌛ Missed ${item.icon} ${item.label}!`);
+  setRecycleRules(`Too slow! ${item.label} reached the ground. Be quicker next time.`);
+  elements.recycleFallingItem.classList.add("wrong");
+  renderRecycleGame();
+
+  if (state.recycle.lives <= 0) {
+    finishRecycleGame(false);
+    return;
   }
 
-  if (normalizedText.includes("forward") || normalizedText.includes("go")) {
-    return "forward";
-  }
-
-  return "";
+  advanceRecycleQueue();
 }
 
-function pushVoiceGameCommand(command, text) {
-  state.voiceGame.commandLog.unshift({ command, text });
-  state.voiceGame.commandLog = state.voiceGame.commandLog.slice(0, 6);
-}
+function advanceRecycleQueue() {
+  state.recycle.queueIndex += 1;
+  state.recycle.currentItem = null;
+  elements.recycleFallingItem.hidden = true;
+  elements.recycleFallingItem.classList.remove("is-falling");
+  renderRecycleGame();
 
-function triggerVoiceGameHitEffect() {
-  elements.voiceGamePlayer.classList.remove("hit");
-  // Force restart of the hit animation.
-  void elements.voiceGamePlayer.offsetWidth;
-  elements.voiceGamePlayer.classList.add("hit");
   setTimeout(() => {
-    elements.voiceGamePlayer.classList.remove("hit");
-  }, 680);
+    spawnNextRecycleItem();
+  }, 650);
 }
 
-function setVoiceGameSupportStatus(text, tone) {
-  elements.voiceGameSupportStatus.textContent = text;
-  elements.voiceGameSupportStatus.className = `status-pill ${tone}`;
+function finishRecycleGame(success) {
+  clearTimeout(state.recycle.fallTimer);
+  state.recycle.running = false;
+  state.recycle.gameOver = true;
+  state.recycle.currentItem = null;
+  elements.recycleFallingItem.hidden = true;
+
+  if (success) {
+    setRecycleStatus("All sorted! Great job!", "status-live");
+    setRecycleRules(
+      `You sorted all ${recycleItems.length} items! Final score: ${state.recycle.score}. Press "Restart Game" to play again.`,
+    );
+  } else {
+    setRecycleStatus("Out of lives", "status-error");
+    setRecycleRules(
+      `You ran out of lives. Final score: ${state.recycle.score}. Press "Restart Game" to try again.`,
+    );
+  }
+
+  renderRecycleGame();
 }
 
-function setVoiceGameLiveStatus(text, tone) {
-  elements.voiceGameLiveStatus.textContent = text;
-  elements.voiceGameLiveStatus.className = `status-pill ${tone}`;
+function pushRecycleLog(text) {
+  state.recycle.log.unshift(text);
+  state.recycle.log = state.recycle.log.slice(0, 6);
 }
 
-function setVoiceGameStateText(text) {
-  elements.voiceGameStateText.textContent = text;
+function renderRecycleGame() {
+  elements.recycleScoreValue.textContent = String(state.recycle.score);
+  elements.recycleSortedValue.textContent = `${state.recycle.sorted}/${recycleItems.length}`;
+  elements.recycleLivesValue.textContent = String(state.recycle.lives);
+  elements.recycleCurrentItemLabel.textContent = state.recycle.currentItem
+    ? `${state.recycle.currentItem.icon} ${state.recycle.currentItem.label}`
+    : state.recycle.gameOver
+      ? "Game over"
+      : "Press Start";
+  elements.recycleStartButton.textContent = state.recycle.running
+    ? "Pause Sorting"
+    : state.recycle.gameOver
+      ? "Play Again"
+      : state.recycle.queueIndex > 0
+        ? "Resume Sorting"
+        : "Start Sorting";
+  renderRecycleLog();
 }
 
-function getVoiceGameErrorMessage(code) {
-  const messages = {
-    "audio-capture": "No microphone was found.",
-    "not-allowed": "Microphone permission was denied.",
-    "service-not-allowed": "Voice service is not allowed here.",
-    "network": "The browser voice service did not respond. This often happens in Brave or when internet access is limited.",
-    "no-speech": "Voice was not clear.",
-  };
+function renderRecycleLog() {
+  if (!state.recycle.log.length) {
+    elements.recycleLog.innerHTML = "<li><strong>Ready:</strong> Sorted items will appear here.</li>";
+    return;
+  }
 
-  return messages[code] || "Voice control did not understand the command.";
+  elements.recycleLog.innerHTML = state.recycle.log.map((text) => `<li>${text}</li>`).join("");
+}
+
+function toggleRecycleGame() {
+  if (state.recycle.running) {
+    pauseRecycleGame();
+  } else {
+    startRecycleGame();
+  }
+}
+
+function setRecycleStatus(text, tone) {
+  elements.recycleRushStatus.textContent = text;
+  elements.recycleRushStatus.className = `status-pill ${tone}`;
+}
+
+function setRecycleRules(text) {
+  elements.recycleRulesText.textContent = text;
+}
+
+function setRecycleResult(text) {
+  elements.recycleResultText.textContent = text;
 }
 
 function renderCurrentTask() {
@@ -2630,27 +1912,12 @@ function getCameraElements(featureName = state.activeFeature) {
     };
   }
 
-  if (featureName === "featureFour") {
-    return {
-      button: elements.quizCameraButton,
-      status: elements.quizCameraStatus,
-      gestureStatus: elements.quizGestureStatus,
-      video: elements.quizCameraVideo,
-      canvas: elements.quizCameraCanvas,
-    };
-  }
-
   return null;
 }
 
 function updateCameraButtons() {
   elements.cameraButton.textContent =
     state.camera.streamStarted && state.camera.ownerFeature === "featureOne"
-      ? "Turn Camera Off"
-      : "Start Camera";
-
-  elements.quizCameraButton.textContent =
-    state.camera.streamStarted && state.camera.ownerFeature === "featureFour"
       ? "Turn Camera Off"
       : "Start Camera";
 }
@@ -2718,15 +1985,8 @@ async function startCamera() {
   state.gesture.lostFrames = 0;
   state.gesture.lastPinch = false;
 
-  if (ownerFeature === "featureFour") {
-    resetQuizGestureTracking();
-    updateQuizDetectedDisplay();
-    setCameraStatus("Camera on", "status-live", ownerFeature);
-    setGestureStatus("Show 1, 2, or 3 fingers to choose your answer.", "status-live", ownerFeature);
-  } else {
-    setCameraStatus("Camera on", "status-live", ownerFeature);
-    setGestureStatus("Show one hand and pinch to grab a word.", "status-live", ownerFeature);
-  }
+  setCameraStatus("Camera on", "status-live", ownerFeature);
+  setGestureStatus("Show one hand and pinch to grab a word.", "status-live", ownerFeature);
 
   updateCameraButtons();
 }
@@ -2771,15 +2031,8 @@ function stopCamera() {
   elements.cursor.classList.add("hidden");
   elements.cursor.classList.remove("pinching");
 
-  if (ownerFeature === "featureFour") {
-    resetQuizGestureTracking();
-    updateQuizDetectedDisplay();
-    setCameraStatus("Camera off", "status-idle", ownerFeature);
-    setGestureStatus("Turn on the camera and show 1, 2, or 3 fingers", "status-muted", ownerFeature);
-  } else {
-    setCameraStatus("Camera off", "status-idle", ownerFeature);
-    setGestureStatus("Gesture tracking will start when the camera is on", "status-muted", ownerFeature);
-  }
+  setCameraStatus("Camera off", "status-idle", ownerFeature);
+  setGestureStatus("Gesture tracking will start when the camera is on", "status-muted", ownerFeature);
 
   updateCameraButtons();
 }
@@ -2831,14 +2084,6 @@ function handleGesture(results) {
       }
     }
 
-    if (state.activeFeature === "featureFour") {
-      resetQuizGestureTracking();
-      updateQuizDetectedDisplay();
-      setGestureStatus("No hand found. Show your hand clearly to the camera.", "status-muted", "featureFour");
-      elements.cursor.classList.add("hidden");
-      return;
-    }
-
     setGestureStatus("No hand found. Move your hand closer to the camera.", "status-muted");
     elements.cursor.classList.add("tracking-lost");
     elements.cursor.classList.remove("pinching");
@@ -2849,11 +2094,6 @@ function handleGesture(results) {
   elements.cursor.classList.remove("tracking-lost");
 
   const landmarks = results.multiHandLandmarks[0];
-  if (state.activeFeature === "featureFour") {
-    handleQuizGesture(results, landmarks);
-    return;
-  }
-
   const thumb = landmarks[4];
   const index = landmarks[8];
   const wrist = landmarks[0];
@@ -2922,143 +2162,6 @@ function handleGesture(results) {
   }
 
   state.gesture.lastPinch = pinching;
-}
-
-function handleQuizGesture(results, landmarks) {
-  elements.cursor.classList.add("hidden");
-  elements.cursor.classList.remove("pinching");
-
-  const now = performance.now();
-  if (now < state.quiz.gestureLockedUntil) {
-    updateQuizDetectedDisplay();
-    setGestureStatus("Answer saved. Get ready for the next question.", "status-live", "featureFour");
-    return;
-  }
-
-  const rawFingerCount = countQuizSelectionFingers(landmarks);
-  const fingerCount = stabilizeQuizFingerCount(rawFingerCount);
-
-  if (!fingerCount) {
-    state.quiz.detectedFingers = rawFingerCount >= 1 && rawFingerCount <= 3 ? rawFingerCount : 0;
-    state.quiz.lastGestureCount = 0;
-    state.quiz.holdStartedAt = 0;
-    state.quiz.holdProgress = 0;
-    updateQuizDetectedDisplay();
-    setGestureStatus(
-      rawFingerCount >= 1 && rawFingerCount <= 3
-        ? `${rawFingerCount} finger(s) detected. Keep your hand upright and steady.`
-        : "Show 1, 2, or 3 fingers clearly and separately.",
-      rawFingerCount >= 1 && rawFingerCount <= 3 ? "status-live" : "status-muted",
-      "featureFour",
-    );
-    return;
-  }
-
-  state.quiz.detectedFingers = fingerCount;
-
-  if (state.quiz.lastGestureCount !== fingerCount) {
-    state.quiz.lastGestureCount = fingerCount;
-    state.quiz.holdStartedAt = now;
-    state.quiz.holdProgress = 0;
-    updateQuizDetectedDisplay();
-    setGestureStatus(`${fingerCount} finger(s) recognized. Hold a little longer to choose.`, "status-live", "featureFour");
-    return;
-  }
-
-  state.quiz.holdProgress = Math.min(1, (now - state.quiz.holdStartedAt) / 850);
-  updateQuizDetectedDisplay();
-
-  if (state.quiz.holdProgress >= 1) {
-    selectQuizAnswer(fingerCount - 1, "gesture");
-    setGestureStatus(`Option ${fingerCount} selected.`, "status-live", "featureFour");
-    return;
-  }
-
-  setGestureStatus(`${fingerCount} finger(s) recognized. Keep holding.`, "status-live", "featureFour");
-}
-
-function stabilizeQuizFingerCount(count) {
-  if (count < 1 || count > 3) {
-    state.quiz.recentFingerCounts = [];
-    return 0;
-  }
-
-  const lastCount = state.quiz.recentFingerCounts[state.quiz.recentFingerCounts.length - 1];
-  if (lastCount && lastCount !== count) {
-    state.quiz.recentFingerCounts = [count];
-    return 0;
-  }
-
-  state.quiz.recentFingerCounts.push(count);
-  state.quiz.recentFingerCounts = state.quiz.recentFingerCounts.slice(-4);
-  return state.quiz.recentFingerCounts.length >= 4 ? count : 0;
-}
-
-function countQuizSelectionFingers(landmarks) {
-  const wrist = landmarks[0];
-  const indexBase = landmarks[5];
-  const middleBase = landmarks[9];
-  const pinkyBase = landmarks[17];
-  const palmSpan = distance(indexBase, pinkyBase) || 0.12;
-  const palmDirection = normalizeVector({
-    x: middleBase.x - wrist.x,
-    y: middleBase.y - wrist.y,
-  });
-  const indexUp = isFingerRaised(landmarks, 8, 7, 6, 5, wrist, palmDirection, palmSpan);
-  const middleUp = isFingerRaised(landmarks, 12, 11, 10, 9, wrist, palmDirection, palmSpan);
-  const ringUp = isFingerRaised(landmarks, 16, 15, 14, 13, wrist, palmDirection, palmSpan);
-  const pinkyUp = isFingerRaised(landmarks, 20, 19, 18, 17, wrist, palmDirection, palmSpan);
-
-  if (indexUp && !middleUp && !ringUp && !pinkyUp) {
-    return 1;
-  }
-
-  if (indexUp && middleUp && !ringUp && !pinkyUp) {
-    return 2;
-  }
-
-  if (indexUp && middleUp && ringUp && !pinkyUp) {
-    return 3;
-  }
-
-  if (indexUp && middleUp && !ringUp && pinkyUp) {
-    return 3;
-  }
-
-  return 0;
-}
-
-function isFingerRaised(landmarks, tipIndex, dipIndex, pipIndex, mcpIndex, wrist, palmDirection, palmSpan) {
-  const tip = landmarks[tipIndex];
-  const dip = landmarks[dipIndex];
-  const pip = landmarks[pipIndex];
-  const mcp = landmarks[mcpIndex];
-  const baseDirection = normalizeVector({
-    x: pip.x - mcp.x,
-    y: pip.y - mcp.y,
-  });
-  const middleDirection = normalizeVector({
-    x: dip.x - pip.x,
-    y: dip.y - pip.y,
-  });
-  const tipDirection = normalizeVector({
-    x: tip.x - dip.x,
-    y: tip.y - dip.y,
-  });
-  const tipProgress = projectPointOntoAxis(wrist, tip, palmDirection);
-  const dipProgress = projectPointOntoAxis(wrist, dip, palmDirection);
-  const pipProgress = projectPointOntoAxis(wrist, pip, palmDirection);
-  const mcpProgress = projectPointOntoAxis(wrist, mcp, palmDirection);
-  const reachesForward =
-    tipProgress > dipProgress + palmSpan * 0.08 &&
-    dipProgress > pipProgress + palmSpan * 0.03 &&
-    pipProgress > mcpProgress - palmSpan * 0.01;
-  const reachExtended = distance(tip, mcp) > distance(pip, mcp) + palmSpan * 0.18;
-  const straightEnough =
-    dotProduct(baseDirection, middleDirection) > 0.6 &&
-    dotProduct(middleDirection, tipDirection) > 0.72;
-
-  return reachesForward && reachExtended && straightEnough;
 }
 
 function updateCursor(clientX, clientY, pinching) {
@@ -3249,28 +2352,6 @@ function weightedLandmarks(points) {
     x: totals.x / safeWeight,
     y: totals.y / safeWeight,
   };
-}
-
-function normalizeVector(vector) {
-  const length = Math.hypot(vector.x, vector.y) || 1;
-  return {
-    x: vector.x / length,
-    y: vector.y / length,
-  };
-}
-
-function dotProduct(a, b) {
-  return a.x * b.x + a.y * b.y;
-}
-
-function projectPointOntoAxis(origin, point, axis) {
-  return dotProduct(
-    {
-      x: point.x - origin.x,
-      y: point.y - origin.y,
-    },
-    axis,
-  );
 }
 
 function normalizeHotzone(value, min, max) {
