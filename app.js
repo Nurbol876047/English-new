@@ -4,70 +4,71 @@ const tasks = [
   {
     id: "planting-tree",
     title: "Planting a Tree",
-    instruction: "Build an English sentence that says the girl is planting a tree.",
+    instruction: "Make an English sentence that says the girl is planting a tree.",
     answer: ["She", "is", "planting", "a", "tree"],
     image: `./assets/images/task-eco-01-planting.jpg?v=${ASSET_VERSION}`,
+    supportsCamera: false,
   },
   {
     id: "recycling-bottles",
     title: "Recycling Bottles",
-    instruction: "Build an English sentence that says the boy is recycling plastic bottles.",
+    instruction: "Make an English sentence that says the boy is recycling plastic bottles.",
     answer: ["He", "is", "recycling", "plastic", "bottles"],
     image: `./assets/images/task-eco-02-recycling.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "reusable-bag",
     title: "Using a Reusable Bag",
-    instruction: "Build an English sentence that says the girl is using a reusable bag.",
+    instruction: "Make an English sentence that says the girl is using a reusable bag.",
     answer: ["She", "is", "using", "a", "reusable", "bag"],
     image: `./assets/images/task-eco-03-reusable-bag.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "cleaning-beach",
     title: "Cleaning the Beach",
-    instruction: "Build an English sentence that says the kids are cleaning the beach.",
+    instruction: "Make an English sentence that says the kids are cleaning the beach.",
     answer: ["They", "are", "cleaning", "the", "beach"],
     image: `./assets/images/task-eco-04-cleaning-beach.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "saving-water",
     title: "Saving Water",
-    instruction: "Build an English sentence that says the girl is saving water now.",
+    instruction: "Make an English sentence that says the girl is saving water now.",
     answer: ["She", "is", "saving", "water", "now"],
     image: `./assets/images/task-eco-05-saving-water.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "sorting-trash",
     title: "Sorting the Trash",
-    instruction: "Build an English sentence that says the family is sorting the trash.",
+    instruction: "Make an English sentence that says the family is sorting the trash.",
     answer: ["They", "are", "sorting", "the", "trash"],
     image: `./assets/images/task-eco-06-sorting-trash.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "turning-off-lights",
     title: "Turning Off the Lights",
-    instruction: "Build an English sentence that says the boy is turning off the lights.",
+    instruction: "Make an English sentence that says the boy is turning off the lights.",
     answer: ["He", "is", "turning", "off", "the", "lights"],
     image: `./assets/images/task-eco-07-turning-off-lights.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "composting-scraps",
     title: "Composting Food Scraps",
-    instruction: "Build an English sentence that says the girl is composting food scraps.",
+    instruction: "Make an English sentence that says the girl is composting food scraps.",
     answer: ["She", "is", "composting", "food", "scraps"],
     image: `./assets/images/task-eco-08-composting.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "installing-solar",
     title: "Installing Solar Panels",
-    instruction: "Build an English sentence that says the man is installing solar panels.",
+    instruction: "Make an English sentence that says the man is installing solar panels.",
     answer: ["He", "is", "installing", "solar", "panels"],
     image: `./assets/images/task-eco-09-installing-solar.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "protecting-animals",
     title: "Protecting Wild Animals",
-    instruction: "Build an English sentence that says the rangers are protecting wild animals.",
+    instruction: "Make an English sentence that says the rangers are protecting wild animals.",
     answer: ["They", "are", "protecting", "wild", "animals"],
     image: `./assets/images/task-eco-10-protecting-animals.jpg?v=${ASSET_VERSION}`,
   },
@@ -428,6 +429,9 @@ const elements = {
   restartButton: document.querySelector("#restartButton"),
   openSpeechFeatureButton: document.querySelector("#openSpeechFeatureButton"),
   cameraButton: document.querySelector("#cameraButton"),
+  featureOneCameraPanel: document.querySelector("#featureOneCameraPanel"),
+  heroCameraStatus: document.querySelector("#heroCameraStatus"),
+  featureOneHeroText: document.querySelector("#featureOneHeroText"),
   cameraStatus: document.querySelector("#cameraStatus"),
   gestureStatus: document.querySelector("#gestureStatus"),
   cameraVideo: document.querySelector("#cameraVideo"),
@@ -507,7 +511,7 @@ function bindUI() {
   elements.checkButton.addEventListener("click", checkCurrentTask);
   elements.shuffleButton.addEventListener("click", shuffleCurrentTask);
   elements.restartButton.addEventListener("click", restartCurrentTask);
-  elements.cameraButton.addEventListener("click", toggleCamera);
+  elements.cameraButton?.addEventListener("click", toggleCamera);
   elements.openSpeechFeatureButton.addEventListener("click", () => showFeature("featureTwo"));
   elements.backToFeatureOneButton.addEventListener("click", () => showFeature("featureOne"));
   elements.cityRestartButton.addEventListener("click", resetCityGame);
@@ -1395,9 +1399,41 @@ function setRecycleResult(text) {
   elements.recycleResultText.textContent = text;
 }
 
+function taskSupportsCamera(task = currentTask()) {
+  return task.supportsCamera !== false;
+}
+
+function updateTaskCameraUI() {
+  const supported = state.activeFeature === "featureOne" && taskSupportsCamera();
+
+  if (elements.cameraButton) {
+    elements.cameraButton.hidden = !supported;
+  }
+  if (elements.featureOneCameraPanel) {
+    elements.featureOneCameraPanel.hidden = !supported;
+  }
+  if (elements.heroCameraStatus) {
+    elements.heroCameraStatus.hidden = !supported;
+  }
+  if (elements.featureOneHeroText) {
+    elements.featureOneHeroText.textContent = supported
+      ? "Turn on the camera, pinch your fingers to grab a word, and move it to the correct slot. Each picture shows an eco-friendly action, and you build the right English sentence while learning new ecology words."
+      : "Drag each word into the correct slot, or tap a word to place it automatically. Each picture shows an eco-friendly action — build the right English sentence while learning new ecology words.";
+  }
+
+  if (!supported && state.camera.streamStarted && state.camera.ownerFeature === "featureOne") {
+    stopCamera();
+  }
+
+  if (!supported) {
+    elements.cursor.classList.add("hidden");
+  }
+}
+
 function renderCurrentTask() {
   resetSuccessCelebration();
   const task = currentTask();
+  updateTaskCameraUI();
   const placements = currentPlacements();
   const bank = currentBank();
   const taskImageWrap = elements.taskImage.closest(".task-image-wrap");
@@ -1916,6 +1952,10 @@ function getCameraElements(featureName = state.activeFeature) {
 }
 
 function updateCameraButtons() {
+  if (!elements.cameraButton || elements.cameraButton.hidden) {
+    return;
+  }
+
   elements.cameraButton.textContent =
     state.camera.streamStarted && state.camera.ownerFeature === "featureOne"
       ? "Turn Camera Off"
@@ -1923,6 +1963,10 @@ function updateCameraButtons() {
 }
 
 async function toggleCamera() {
+  if (!taskSupportsCamera()) {
+    return;
+  }
+
   if (state.camera.streamStarted) {
     stopCamera();
     return;
@@ -1938,6 +1982,10 @@ async function toggleCamera() {
 }
 
 async function startCamera() {
+  if (!taskSupportsCamera()) {
+    return;
+  }
+
   if (!window.Hands || !window.Camera) {
     throw new Error("MediaPipe scripts are unavailable.");
   }

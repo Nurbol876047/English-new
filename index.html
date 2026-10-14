@@ -16,22 +16,31 @@
         <header class="hero">
           <div class="hero-copy">
             <p class="eyebrow">English Practice · Eco-Dictionary</p>
-            <h1>Build eco-friendly sentences with hand gestures</h1>
-            <p class="hero-text">
-              Turn on the camera, pinch your fingers to grab a word, and move
-              it to the correct slot. Each picture shows an eco-friendly
-              action, and you build the right English sentence while
-              learning new ecology words.
+            <div class="hero-title-row">
+              <img
+                class="hero-title-logo"
+                src="./assets/images/eco-dictionary-logo.png"
+                alt=""
+                width="72"
+                height="72"
+                draggable="false"
+              />
+              <h1>AI Eco-Dictionary Activities</h1>
+            </div>
+            <p id="featureOneHeroText" class="hero-text">
+              Drag each word into the correct slot, or tap a word to place it
+              automatically. Each picture shows an eco-friendly action — build
+              the right English sentence while learning new ecology words.
             </p>
             <div class="hero-actions">
-              <button id="cameraButton" class="primary-button">
+              <button id="cameraButton" class="primary-button" hidden>
                 Start Camera
               </button>
               <button id="restartButton" class="secondary-button">
                 Restart
               </button>
             </div>
-            <div class="hero-status">
+            <div id="heroCameraStatus" class="hero-status" hidden>
               <span id="cameraStatus" class="status-pill status-idle">
                 Camera off
               </span>
@@ -40,7 +49,7 @@
               </span>
             </div>
           </div>
-          <aside class="camera-panel">
+          <aside id="featureOneCameraPanel" class="camera-panel" hidden>
             <div class="camera-frame">
               <video id="cameraVideo" autoplay playsinline muted></video>
               <canvas id="cameraCanvas"></canvas>
@@ -704,7 +713,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="./app.js?v=20261011-games"></script>
+    <script src="./app.js?v=20261014-no-cam-task1"></script>
     <script src="./english-3d.js?v=20260421-2015"></script>
   </body>
 </html>
