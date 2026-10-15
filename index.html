@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gesture Sentence Builder</title>
+    <title>Eco-Dictionary Activities</title>
     <meta
       name="description"
-      content="Eco-Dictionary: learn English ecology vocabulary with hand gestures, eco games, and an AI photo chat."
+      content="Eco-Dictionary: learn English ecology vocabulary with drag-and-drop sentences, eco games, and an AI photo chat."
     />
-    <link rel="stylesheet" href="./styles.css?v=20261011-games" />
+    <link rel="stylesheet" href="./styles.css?v=20261015-no-camera" />
   </head>
   <body>
     <div id="featureOneScreen" class="feature-screen active">
@@ -27,38 +27,17 @@
               />
               <h1>AI Eco-Dictionary Activities</h1>
             </div>
-            <p id="featureOneHeroText" class="hero-text">
+            <p class="hero-text">
               Drag each word into the correct slot, or tap a word to place it
               automatically. Each picture shows an eco-friendly action — build
               the right English sentence while learning new ecology words.
             </p>
             <div class="hero-actions">
-              <button id="cameraButton" class="primary-button" hidden>
-                Start Camera
-              </button>
               <button id="restartButton" class="secondary-button">
                 Restart
               </button>
             </div>
-            <div id="heroCameraStatus" class="hero-status" hidden>
-              <span id="cameraStatus" class="status-pill status-idle">
-                Camera off
-              </span>
-              <span id="gestureStatus" class="status-pill status-muted">
-                Gesture tracking will start when the camera is on
-              </span>
-            </div>
           </div>
-          <aside id="featureOneCameraPanel" class="camera-panel" hidden>
-            <div class="camera-frame">
-              <video id="cameraVideo" autoplay playsinline muted></video>
-              <canvas id="cameraCanvas"></canvas>
-            </div>
-            <p class="camera-hint">
-              Pinch your thumb and index finger together to grab a word, then
-              release it over the correct slot.
-            </p>
-          </aside>
         </header>
 
         <main class="game-layout">
@@ -136,7 +115,7 @@
           <section class="task-list-panel">
             <div class="panel-heading">
               <p class="panel-label">All Tasks</p>
-              <h3>10 gesture tasks</h3>
+              <h3>10 sentence tasks</h3>
             </div>
             <div id="taskList" class="task-list"></div>
           </section>
@@ -708,12 +687,7 @@
       </div>
     </div>
 
-    <div id="cursor" class="hand-cursor hidden"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="./app.js?v=20261014-no-cam-task1"></script>
+    <script src="./app.js?v=20261015-instruction-fix"></script>
     <script src="./english-3d.js?v=20260421-2015"></script>
   </body>
 </html>

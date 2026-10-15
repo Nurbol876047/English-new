@@ -1605,31 +1605,6 @@ button:disabled {
   }
 }
 
-.hand-cursor {
-  position: fixed;
-  width: 34px;
-  height: 34px;
-  margin-left: -17px;
-  margin-top: -17px;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.92);
-  background: radial-gradient(circle at 35% 35%, #ffc857, #ff7b54);
-  box-shadow: 0 12px 24px rgba(18, 48, 74, 0.24);
-  z-index: 2000;
-  pointer-events: none;
-  transition: transform 0.12s ease, opacity 0.12s ease, background 0.12s ease;
-}
-
-.hand-cursor.pinching {
-  transform: scale(0.86);
-  background: radial-gradient(circle at 35% 35%, #63c7b2, #2da18a);
-}
-
-.hand-cursor.tracking-lost {
-  opacity: 0.42;
-  box-shadow: none;
-}
-
 .city-scene {
   isolation: isolate;
 }

@@ -4,71 +4,70 @@ const tasks = [
   {
     id: "planting-tree",
     title: "Planting a Tree",
-    instruction: "Make an English sentence that says the girl is planting a tree.",
+    instruction: "Make a sentence that says the girl is planting a tree.",
     answer: ["She", "is", "planting", "a", "tree"],
     image: `./assets/images/task-eco-01-planting.jpg?v=${ASSET_VERSION}`,
-    supportsCamera: false,
   },
   {
     id: "recycling-bottles",
     title: "Recycling Bottles",
-    instruction: "Make an English sentence that says the boy is recycling plastic bottles.",
+    instruction: "Make a sentence that says the boy is recycling plastic bottles.",
     answer: ["He", "is", "recycling", "plastic", "bottles"],
     image: `./assets/images/task-eco-02-recycling.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "reusable-bag",
     title: "Using a Reusable Bag",
-    instruction: "Make an English sentence that says the girl is using a reusable bag.",
+    instruction: "Make a sentence that says the girl is using a reusable bag.",
     answer: ["She", "is", "using", "a", "reusable", "bag"],
     image: `./assets/images/task-eco-03-reusable-bag.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "cleaning-beach",
     title: "Cleaning the Beach",
-    instruction: "Make an English sentence that says the kids are cleaning the beach.",
+    instruction: "Make a sentence that says the kids are cleaning the beach.",
     answer: ["They", "are", "cleaning", "the", "beach"],
     image: `./assets/images/task-eco-04-cleaning-beach.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "saving-water",
     title: "Saving Water",
-    instruction: "Make an English sentence that says the girl is saving water now.",
+    instruction: "Make a sentence that says the girl is saving water now.",
     answer: ["She", "is", "saving", "water", "now"],
     image: `./assets/images/task-eco-05-saving-water.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "sorting-trash",
     title: "Sorting the Trash",
-    instruction: "Make an English sentence that says the family is sorting the trash.",
+    instruction: "Make a sentence that says the family is sorting the trash.",
     answer: ["They", "are", "sorting", "the", "trash"],
     image: `./assets/images/task-eco-06-sorting-trash.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "turning-off-lights",
     title: "Turning Off the Lights",
-    instruction: "Make an English sentence that says the boy is turning off the lights.",
+    instruction: "Make a sentence that says the boy is turning off the lights.",
     answer: ["He", "is", "turning", "off", "the", "lights"],
     image: `./assets/images/task-eco-07-turning-off-lights.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "composting-scraps",
     title: "Composting Food Scraps",
-    instruction: "Make an English sentence that says the girl is composting food scraps.",
+    instruction: "Make a sentence that says the girl is composting food scraps.",
     answer: ["She", "is", "composting", "food", "scraps"],
     image: `./assets/images/task-eco-08-composting.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "installing-solar",
     title: "Installing Solar Panels",
-    instruction: "Make an English sentence that says the man is installing solar panels.",
+    instruction: "Make a sentence that says the man is installing solar panels.",
     answer: ["He", "is", "installing", "solar", "panels"],
     image: `./assets/images/task-eco-09-installing-solar.jpg?v=${ASSET_VERSION}`,
   },
   {
     id: "protecting-animals",
     title: "Protecting Wild Animals",
-    instruction: "Make an English sentence that says the rangers are protecting wild animals.",
+    instruction: "Make a sentence that says the rangers are protecting wild animals.",
     answer: ["They", "are", "protecting", "wild", "animals"],
     image: `./assets/images/task-eco-10-protecting-animals.jpg?v=${ASSET_VERSION}`,
   },
@@ -325,21 +324,6 @@ const state = {
   drag: null,
   celebrationTimer: null,
   ignoreClickUntil: 0,
-  gesture: {
-    enabled: false,
-    pinchActive: false,
-    lastPinch: false,
-    lostFrames: 0,
-    smoothX: window.innerWidth / 2,
-    smoothY: window.innerHeight / 2,
-    lastGestureText: "Gesture tracking will start when the camera is on",
-  },
-  camera: {
-    streamStarted: false,
-    hands: null,
-    cameraFeed: null,
-    ownerFeature: "",
-  },
   city: {
     currentTaskIndex: 0,
     answers: Array(cityTasks.length).fill(null),
@@ -375,13 +359,6 @@ const state = {
     selectedFilePreviewUrl: null,
     sending: false,
   },
-};
-
-const GESTURE_HOTZONE = {
-  xMin: 0.02,
-  xMax: 0.98,
-  yMin: 0.04,
-  yMax: 0.96,
 };
 
 const elements = {
@@ -428,15 +405,6 @@ const elements = {
   shuffleButton: document.querySelector("#shuffleButton"),
   restartButton: document.querySelector("#restartButton"),
   openSpeechFeatureButton: document.querySelector("#openSpeechFeatureButton"),
-  cameraButton: document.querySelector("#cameraButton"),
-  featureOneCameraPanel: document.querySelector("#featureOneCameraPanel"),
-  heroCameraStatus: document.querySelector("#heroCameraStatus"),
-  featureOneHeroText: document.querySelector("#featureOneHeroText"),
-  cameraStatus: document.querySelector("#cameraStatus"),
-  gestureStatus: document.querySelector("#gestureStatus"),
-  cameraVideo: document.querySelector("#cameraVideo"),
-  cameraCanvas: document.querySelector("#cameraCanvas"),
-  cursor: document.querySelector("#cursor"),
   backToFeatureOneButton: document.querySelector("#backToFeatureOneButton"),
   cityRestartButton: document.querySelector("#cityRestartButton"),
   cityHealthStatus: document.querySelector("#cityHealthStatus"),
@@ -501,8 +469,6 @@ function bootstrap() {
   renderVocabGrid();
   bindUI();
   showFeature("featureOne");
-  window.addEventListener("resize", handleResize);
-  handleResize();
 }
 
 function bindUI() {
@@ -511,7 +477,6 @@ function bindUI() {
   elements.checkButton.addEventListener("click", checkCurrentTask);
   elements.shuffleButton.addEventListener("click", shuffleCurrentTask);
   elements.restartButton.addEventListener("click", restartCurrentTask);
-  elements.cameraButton?.addEventListener("click", toggleCamera);
   elements.openSpeechFeatureButton.addEventListener("click", () => showFeature("featureTwo"));
   elements.backToFeatureOneButton.addEventListener("click", () => showFeature("featureOne"));
   elements.cityRestartButton.addEventListener("click", resetCityGame);
@@ -564,14 +529,6 @@ function showFeature(featureName) {
   elements.featureFiveScreen.classList.toggle("active", showFifth);
   elements.featureSixScreen.classList.toggle("active", showSixth);
 
-  if (state.camera.streamStarted && state.camera.ownerFeature !== featureName) {
-    stopCamera();
-  }
-
-  if (!showFirst) {
-    elements.cursor.classList.add("hidden");
-  }
-
   if (!showThird && state.recycle.running) {
     pauseRecycleGame();
   }
@@ -590,10 +547,6 @@ function showFeature(featureName) {
 
   if (showFourth) {
     renderBattle();
-  }
-
-  if (showFirst) {
-    handleResize();
   }
 }
 
@@ -1399,41 +1352,9 @@ function setRecycleResult(text) {
   elements.recycleResultText.textContent = text;
 }
 
-function taskSupportsCamera(task = currentTask()) {
-  return task.supportsCamera !== false;
-}
-
-function updateTaskCameraUI() {
-  const supported = state.activeFeature === "featureOne" && taskSupportsCamera();
-
-  if (elements.cameraButton) {
-    elements.cameraButton.hidden = !supported;
-  }
-  if (elements.featureOneCameraPanel) {
-    elements.featureOneCameraPanel.hidden = !supported;
-  }
-  if (elements.heroCameraStatus) {
-    elements.heroCameraStatus.hidden = !supported;
-  }
-  if (elements.featureOneHeroText) {
-    elements.featureOneHeroText.textContent = supported
-      ? "Turn on the camera, pinch your fingers to grab a word, and move it to the correct slot. Each picture shows an eco-friendly action, and you build the right English sentence while learning new ecology words."
-      : "Drag each word into the correct slot, or tap a word to place it automatically. Each picture shows an eco-friendly action — build the right English sentence while learning new ecology words.";
-  }
-
-  if (!supported && state.camera.streamStarted && state.camera.ownerFeature === "featureOne") {
-    stopCamera();
-  }
-
-  if (!supported) {
-    elements.cursor.classList.add("hidden");
-  }
-}
-
 function renderCurrentTask() {
   resetSuccessCelebration();
   const task = currentTask();
-  updateTaskCameraUI();
   const placements = currentPlacements();
   const bank = currentBank();
   const taskImageWrap = elements.taskImage.closest(".task-image-wrap");
@@ -1937,379 +1858,6 @@ function countCompleted() {
   return state.completed.filter(Boolean).length;
 }
 
-function getCameraElements(featureName = state.activeFeature) {
-  if (featureName === "featureOne") {
-    return {
-      button: elements.cameraButton,
-      status: elements.cameraStatus,
-      gestureStatus: elements.gestureStatus,
-      video: elements.cameraVideo,
-      canvas: elements.cameraCanvas,
-    };
-  }
-
-  return null;
-}
-
-function updateCameraButtons() {
-  if (!elements.cameraButton || elements.cameraButton.hidden) {
-    return;
-  }
-
-  elements.cameraButton.textContent =
-    state.camera.streamStarted && state.camera.ownerFeature === "featureOne"
-      ? "Turn Camera Off"
-      : "Start Camera";
-}
-
-async function toggleCamera() {
-  if (!taskSupportsCamera()) {
-    return;
-  }
-
-  if (state.camera.streamStarted) {
-    stopCamera();
-    return;
-  }
-
-  try {
-    await startCamera();
-  } catch (error) {
-    console.error(error);
-    setCameraStatus("Camera did not start", "status-error");
-    setGestureStatus("Allow camera access and reload the page.", "status-error");
-  }
-}
-
-async function startCamera() {
-  if (!taskSupportsCamera()) {
-    return;
-  }
-
-  if (!window.Hands || !window.Camera) {
-    throw new Error("MediaPipe scripts are unavailable.");
-  }
-
-  const ownerFeature = state.activeFeature;
-  const cameraElements = getCameraElements(ownerFeature);
-  if (!cameraElements) {
-    throw new Error("No camera screen is active.");
-  }
-
-  const canvas = cameraElements.canvas;
-  const ctx = canvas.getContext("2d");
-  handleResize();
-
-  const hands = new Hands({
-    locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
-  });
-
-  hands.setOptions({
-    maxNumHands: 1,
-    modelComplexity: 0,
-    minDetectionConfidence: 0.55,
-    minTrackingConfidence: 0.5,
-  });
-
-  hands.onResults((results) => {
-    drawHandResults(results, ctx, canvas);
-    handleGesture(results);
-  });
-
-  const cameraFeed = new Camera(cameraElements.video, {
-    onFrame: async () => {
-      await hands.send({ image: cameraElements.video });
-    },
-    width: 640,
-    height: 480,
-  });
-
-  await cameraFeed.start();
-  state.camera.hands = hands;
-  state.camera.cameraFeed = cameraFeed;
-  state.camera.streamStarted = true;
-  state.camera.ownerFeature = ownerFeature;
-  state.gesture.enabled = true;
-  state.gesture.lostFrames = 0;
-  state.gesture.lastPinch = false;
-
-  setCameraStatus("Camera on", "status-live", ownerFeature);
-  setGestureStatus("Show one hand and pinch to grab a word.", "status-live", ownerFeature);
-
-  updateCameraButtons();
-}
-
-function stopCamera() {
-  const ownerFeature = state.camera.ownerFeature || state.activeFeature;
-  const cameraElements = getCameraElements(ownerFeature);
-  const video = cameraElements?.video;
-  const stream = video?.srcObject;
-
-  if (state.camera.cameraFeed?.stop) {
-    state.camera.cameraFeed.stop();
-  }
-
-  if (state.camera.hands?.close) {
-    state.camera.hands.close();
-  }
-
-  if (stream) {
-    stream.getTracks().forEach((track) => track.stop());
-    video.srcObject = null;
-  }
-
-  const ctx = cameraElements?.canvas?.getContext("2d");
-  if (ctx && cameraElements?.canvas) {
-    ctx.clearRect(0, 0, cameraElements.canvas.width, cameraElements.canvas.height);
-  }
-
-  state.camera.streamStarted = false;
-  state.camera.cameraFeed = null;
-  state.camera.hands = null;
-  state.camera.ownerFeature = "";
-  state.gesture.enabled = false;
-  state.gesture.lastPinch = false;
-  state.gesture.pinchActive = false;
-  state.gesture.lostFrames = 0;
-
-  if (state.drag) {
-    cleanupDrag();
-  }
-
-  elements.cursor.classList.add("hidden");
-  elements.cursor.classList.remove("pinching");
-
-  setCameraStatus("Camera off", "status-idle", ownerFeature);
-  setGestureStatus("Gesture tracking will start when the camera is on", "status-muted", ownerFeature);
-
-  updateCameraButtons();
-}
-
-function drawHandResults(results, ctx, canvas) {
-  ctx.save();
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  if (!results.multiHandLandmarks?.length) {
-    ctx.restore();
-    if (state.gesture.enabled && state.activeFeature === "featureOne") {
-      setGestureStatus("No hand found. Move your hand closer to the camera.", "status-muted");
-      elements.cursor.classList.remove("pinching");
-    }
-    if (state.activeFeature !== "featureOne") {
-      elements.cursor.classList.add("hidden");
-    }
-    return;
-  }
-
-  for (const landmarks of results.multiHandLandmarks) {
-    drawConnectors(ctx, landmarks, HAND_CONNECTIONS, {
-      color: "#9dd6ff",
-      lineWidth: 4,
-    });
-    drawLandmarks(ctx, landmarks, {
-      color: "#ffcf73",
-      fillColor: "#ff7b54",
-      lineWidth: 1.5,
-      radius: 4,
-    });
-  }
-
-  ctx.restore();
-}
-
-function handleGesture(results) {
-  if (!state.gesture.enabled) {
-    return;
-  }
-
-  if (!results.multiHandLandmarks?.length) {
-    state.gesture.lostFrames += 1;
-
-    if (state.gesture.lostFrames >= 8) {
-      state.gesture.lastPinch = false;
-      if (state.drag) {
-        cleanupDrag();
-      }
-    }
-
-    setGestureStatus("No hand found. Move your hand closer to the camera.", "status-muted");
-    elements.cursor.classList.add("tracking-lost");
-    elements.cursor.classList.remove("pinching");
-    return;
-  }
-
-  state.gesture.lostFrames = 0;
-  elements.cursor.classList.remove("tracking-lost");
-
-  const landmarks = results.multiHandLandmarks[0];
-  const thumb = landmarks[4];
-  const index = landmarks[8];
-  const wrist = landmarks[0];
-  const middleBase = landmarks[9];
-  const indexBase = landmarks[5];
-  const pinkyBase = landmarks[17];
-
-  const handSize = distance(wrist, middleBase) || 0.1;
-  const palmSpan = distance(indexBase, pinkyBase) || handSize;
-  const pinchDistance = distance(thumb, index);
-  const pinchStartThreshold = palmSpan * 0.26;
-  const pinchEndThreshold = palmSpan * 0.36;
-  const pinching = state.gesture.lastPinch
-    ? pinchDistance < pinchEndThreshold
-    : pinchDistance < pinchStartThreshold;
-
-  const bounds = getGestureBounds();
-  const stablePoint = weightedLandmarks([
-    { point: index, weight: 0.58 },
-    { point: middleBase, weight: 0.2 },
-    { point: indexBase, weight: 0.12 },
-    { point: wrist, weight: 0.1 },
-  ]);
-  const dragPoint = weightedLandmarks([
-    { point: midpoint(thumb, index), weight: 0.72 },
-    { point: index, weight: 0.18 },
-    { point: middleBase, weight: 0.1 },
-  ]);
-  const pointerPoint = state.drag && pinching ? dragPoint : stablePoint;
-  const normalizedX = normalizeHotzone(1 - pointerPoint.x, GESTURE_HOTZONE.xMin, GESTURE_HOTZONE.xMax);
-  const normalizedY = normalizeHotzone(pointerPoint.y, GESTURE_HOTZONE.yMin, GESTURE_HOTZONE.yMax);
-  const rawX = clamp(bounds.left + normalizedX * bounds.width, bounds.left, bounds.right);
-  const rawY = clamp(bounds.top + normalizedY * bounds.height, bounds.top, bounds.bottom);
-  const smoothing = state.drag ? 0.4 : 0.3;
-
-  state.gesture.smoothX += (rawX - state.gesture.smoothX) * smoothing;
-  state.gesture.smoothY += (rawY - state.gesture.smoothY) * smoothing;
-
-  updateCursor(state.gesture.smoothX, state.gesture.smoothY, pinching);
-
-  if (pinching && !state.gesture.lastPinch) {
-    const token = findTokenAt(state.gesture.smoothX, state.gesture.smoothY);
-    if (token) {
-      const rect = token.getBoundingClientRect();
-      startDrag({
-        originNode: token,
-        word: token.dataset.word,
-        source: token.dataset.source,
-        bankIndex: token.dataset.bankIndex !== undefined ? Number(token.dataset.bankIndex) : null,
-        slotIndex: token.dataset.slotIndex !== undefined ? Number(token.dataset.slotIndex) : null,
-        pointerOffsetX: rect.width / 2,
-        pointerOffsetY: rect.height / 2,
-      });
-      moveDragGhost(state.gesture.smoothX, state.gesture.smoothY);
-      setGestureStatus("Pinch detected. Move to a slot and open your fingers.", "status-live");
-    } else {
-      setGestureStatus("Pinch over a word to grab it.", "status-muted");
-    }
-  } else if (!pinching && state.gesture.lastPinch && state.drag) {
-    finishDragAt(state.gesture.smoothX, state.gesture.smoothY);
-    setGestureStatus("Word placed. Pinch again to grab the next word.", "status-live");
-  } else if (pinching && state.drag) {
-    moveDragGhost(state.gesture.smoothX, state.gesture.smoothY);
-  } else if (!pinching) {
-    setGestureStatus("Move over a word and pinch to grab it.", "status-live");
-  }
-
-  state.gesture.lastPinch = pinching;
-}
-
-function updateCursor(clientX, clientY, pinching) {
-  elements.cursor.classList.remove("hidden");
-  elements.cursor.style.left = `${clientX}px`;
-  elements.cursor.style.top = `${clientY}px`;
-  elements.cursor.classList.toggle("pinching", pinching);
-}
-
-function findTokenAt(clientX, clientY) {
-  const tokens = Array.from(document.querySelectorAll(".word-token"));
-  const directHit = tokens.find((token) => {
-    const rect = token.getBoundingClientRect();
-    return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
-  });
-
-  if (directHit) {
-    return directHit;
-  }
-
-  return findNearestElement(tokens, clientX, clientY, 60);
-}
-
-function handleResize() {
-  const activeCameraElements = getCameraElements(state.camera.streamStarted ? state.camera.ownerFeature : state.activeFeature);
-  if (!activeCameraElements?.canvas) {
-    return;
-  }
-
-  const rect = activeCameraElements.canvas.getBoundingClientRect();
-  activeCameraElements.canvas.width = Math.max(1, Math.floor(rect.width));
-  activeCameraElements.canvas.height = Math.max(1, Math.floor(rect.height));
-}
-
-function getGestureBounds() {
-  const shellRect = elements.pageShell?.getBoundingClientRect();
-  const layoutRect = elements.gameLayout?.getBoundingClientRect();
-  const panelRect = elements.gamePanel?.getBoundingClientRect();
-  const taskRect = elements.taskCard?.getBoundingClientRect();
-  const navRect = elements.navigationRow?.getBoundingClientRect();
-  const viewportPadding = 16;
-
-  if (!shellRect && !layoutRect && !panelRect && !taskRect && !navRect) {
-    return {
-      left: viewportPadding,
-      top: viewportPadding,
-      right: window.innerWidth - viewportPadding,
-      bottom: window.innerHeight - viewportPadding,
-      width: window.innerWidth - viewportPadding * 2,
-      height: window.innerHeight - viewportPadding * 2,
-    };
-  }
-
-  const leftSource = Math.min(
-    shellRect?.left ?? window.innerWidth,
-    layoutRect?.left ?? window.innerWidth,
-    panelRect?.left ?? window.innerWidth,
-    taskRect?.left ?? window.innerWidth,
-    navRect?.left ?? window.innerWidth,
-  );
-  const rightSource = Math.max(
-    shellRect?.right ?? 0,
-    layoutRect?.right ?? 0,
-    panelRect?.right ?? 0,
-    taskRect?.right ?? 0,
-    navRect?.right ?? 0,
-  );
-  const topSource = Math.min(
-    layoutRect?.top ?? window.innerHeight,
-    panelRect?.top ?? window.innerHeight,
-    taskRect?.top ?? window.innerHeight,
-    navRect?.top ?? window.innerHeight,
-  );
-  const bottomSource = Math.max(
-    layoutRect?.bottom ?? 0,
-    panelRect?.bottom ?? 0,
-    taskRect?.bottom ?? 0,
-    navRect?.bottom ?? 0,
-  );
-
-  const expandX = 16;
-  const expandTop = 8;
-  const expandBottom = 16;
-  const left = Math.max(leftSource + expandX, viewportPadding);
-  const maxRight = Math.min(rightSource - expandX, window.innerWidth - viewportPadding);
-  const top = Math.max(topSource + expandTop, viewportPadding);
-  const maxBottom = Math.min(bottomSource - expandBottom, window.innerHeight - viewportPadding);
-  const right = Math.max(left + 140, maxRight);
-  const bottom = Math.max(top + 160, maxBottom);
-
-  return {
-    left,
-    top,
-    right,
-    bottom,
-    width: Math.max(140, right - left),
-    height: Math.max(160, bottom - top),
-  };
-}
-
 function findNearestElement(elementsList, clientX, clientY, maxDistance) {
   let nearestElement = null;
   let nearestDistance = maxDistance;
@@ -2329,27 +1877,6 @@ function findNearestElement(elementsList, clientX, clientY, maxDistance) {
   return nearestElement;
 }
 
-function setCameraStatus(text, tone, featureName = state.camera.ownerFeature || state.activeFeature) {
-  const cameraElements = getCameraElements(featureName);
-  if (!cameraElements?.status) {
-    return;
-  }
-
-  cameraElements.status.textContent = text;
-  cameraElements.status.className = `status-pill ${tone}`;
-}
-
-function setGestureStatus(text, tone, featureName = state.camera.ownerFeature || state.activeFeature) {
-  const cameraElements = getCameraElements(featureName);
-  if (!cameraElements?.gestureStatus) {
-    return;
-  }
-
-  state.gesture.lastGestureText = text;
-  cameraElements.gestureStatus.textContent = text;
-  cameraElements.gestureStatus.className = `status-pill ${tone}`;
-}
-
 function shuffleArray(items) {
   const array = [...items];
   for (let index = array.length - 1; index > 0; index -= 1) {
@@ -2357,57 +1884,6 @@ function shuffleArray(items) {
     [array[index], array[swapIndex]] = [array[swapIndex], array[index]];
   }
   return array;
-}
-
-function distance(a, b) {
-  return Math.hypot(a.x - b.x, a.y - b.y);
-}
-
-function midpoint(a, b) {
-  return {
-    x: (a.x + b.x) / 2,
-    y: (a.y + b.y) / 2,
-  };
-}
-
-function averageLandmarks(points) {
-  const totals = points.reduce(
-    (sum, point) => ({
-      x: sum.x + point.x,
-      y: sum.y + point.y,
-    }),
-    { x: 0, y: 0 },
-  );
-
-  return {
-    x: totals.x / points.length,
-    y: totals.y / points.length,
-  };
-}
-
-function weightedLandmarks(points) {
-  const totals = points.reduce(
-    (sum, { point, weight }) => ({
-      x: sum.x + point.x * weight,
-      y: sum.y + point.y * weight,
-      weight: sum.weight + weight,
-    }),
-    { x: 0, y: 0, weight: 0 },
-  );
-
-  const safeWeight = Math.max(totals.weight, 0.001);
-  return {
-    x: totals.x / safeWeight,
-    y: totals.y / safeWeight,
-  };
-}
-
-function normalizeHotzone(value, min, max) {
-  return clamp((value - min) / Math.max(0.001, max - min), 0, 1);
-}
-
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
 }
 
 function taskVisualMarkup(task, compact) {
